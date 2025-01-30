@@ -1,0 +1,278 @@
+<div class=" text-sm bg-white m-4 rounded p-2">
+    <div class="mx-1  mt-1 border-b-2 flex items-center"> 
+        <svg class="w-6 h-6 bi bi-circle-fill" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#34eb37">
+            <circle cx="8" cy="8" r="8" />
+        </svg>
+    <span class="m-2"> انشاء خطة استراتيجية</span>
+    </div>
+    <form class="w-full" [formGroup]="strategicPlanForm">
+        <div class="grid grid-cols-12  lg:m-4 m-1 p-2 items-center">
+            <div class="col-span-8 lg:px-2 px-1 ">
+                <label>اسم الخطة <span class="text-red-500">*</span></label>
+                <input type="text" formControlName="name" name="full_name" id="full_name"
+                    class=" bg-white w-full h-9 border-gray-300 rounded-md mt-1  px-4   bg-gray-60" value="" />
+                @if(strategicPlanForm.get('name')?.invalid && (submitted ||
+                strategicPlanForm.get('name')?.touched))
+                {
+                <div class="w-full bg-red-100  p-1">
+                    الاسم مطلوب
+                </div>
+                }
+            </div>
+            <div class="col-span-2 lg:px-2 px-1">
+                <label> تاريخ البداية <span class="text-red-500">*</span></label>
+                <p-calendar formControlName="start_date"></p-calendar>
+                @if(strategicPlanForm.get('start_date')?.invalid && (submitted ||
+                strategicPlanForm.get('start_date')?.touched))
+                {
+                <div class="w-full bg-red-100  p-1">
+                    تاريخ البداية مطلوب
+                </div>
+                }
+            </div>
+            <div class="col-span-2 lg:px-2 px-1 ">
+                <label> تاريخ النهاية <span class="text-red-500">*</span></label>
+                <p-calendar formControlName="end_date"></p-calendar>
+                @if(strategicPlanForm.get('end_date')?.invalid && (submitted ||
+                strategicPlanForm.get('end_date')?.touched))
+                {
+                <div class="w-full bg-red-100  p-1">
+                    تاريخ النهاية مطلوب
+                </div>
+                }
+            </div>
+            <div class="col-span-12 m-3">
+                <label> بيان الخطة : <span class="text-red-500">*</span></label>
+                <textarea formControlName="introduction" class="w-full mt-2  border-gray-300 rounded-md"
+                    rows=""></textarea>
+
+            </div>
+            <div class="col-span-12 bg-white  p-2 mb-4 ">
+                <div class="">
+                    <h5>الاهداف الاساسية للخطة الاستراتيجية <span class="text-red-500">*</span></h5>
+                    <div class="flex justify-center mt-2">
+                        <div class="p-1 bg-green-400 rounded-full w-6 h-6 m-1">
+                            <!-- <span class=""> -->
+                                <svg (click)="addGoal()" fill="white" version="1.1" id="Capa_1"
+                                    xmlns="http://www.w3.org/2000/svg" class="w-4 h-4"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 45.402 45.402"
+                                    xml:space="preserve">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <g>
+                                            <path
+                                                d="M41.267,18.557H26.832V4.134C26.832,1.851,24.99,0,22.707,0c-2.283,0-4.124,1.851-4.124,4.135v14.432H4.141 c-2.283,0-4.139,1.851-4.138,4.135c-0.001,1.141,0.46,2.187,1.207,2.934c0.748,0.749,1.78,1.222,2.92,1.222h14.453V41.27 c0,1.142,0.453,2.176,1.201,2.922c0.748,0.748,1.777,1.211,2.919,1.211c2.282,0,4.129-1.851,4.129-4.133V26.857h14.435 c2.283,0,4.134-1.867,4.133-4.15C45.399,20.425,43.548,18.557,41.267,18.557z">
+                                            </path>
+                                        </g>
+                                    </g>
+                                </svg>
+                            <!-- </span>  -->
+                        </div>
+                        <table class="table-auto border-collapse border border-slate-400 w-full bg-white text-sm">
+                            <thead class="bg-blue-200 ">
+                                <tr class="p-1 whitespace-nowrap">
+
+                                    <th class="border border-slate-300 p-1 w-5/12"> الهدف</th>
+                                    <th class="border border-slate-300 p-1 w-5/12"> الشرح</th>
+                                    <th class="border border-slate-300 p-1 w-1/12 "> الاختصار</th>
+                                    <th class="border border-slate-300 p-1 w-1/12 "> </th>
+                                </tr>
+                            </thead>
+                            <tbody formArrayName="goals">
+                                @for (item of goals.controls; track item;let i=$index) {
+                                <tr class="p-2 " [formGroupName]="i">
+                                    <!-- <td></td> -->
+                                    <td class=" border border-slate-300 ">
+                                        <input type="text" formControlName="name" id="first_name"
+                                            class="border-0 py-1 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="من فضلك ادخل الهدف هنا" required />
+                                        @if(item.get('name')?.invalid && (submitted ||
+                                        item.get('name')?.touched))
+                                        {
+                                        <div class="w-full bg-red-100  p-1">
+                                            يجب ادخال هدف واحد علي الاقل
+                                        </div>
+                                        }
+
+                                    </td>
+                                    <td class=" px-1 border border-slate-300 ">
+                                        <input type="text" formControlName="description" id="first_name"
+                                            class="border-0 py-1 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="من فضلك ادخل الشرح هنا" />
+                                        @if(item.get('description')?.invalid && (submitted ||
+                                        item.get('description')?.touched))
+                                        {
+                                        <div class="w-full bg-red-100  p-1">
+                                            يجب ادخال وصف
+                                        </div>
+                                        }
+
+                                    </td>
+                                    <td class=" px-1 border border-slate-300 text-center">
+                                        <input type="text" formControlName="abbreviation" id="first_name"
+                                            class="text-center border-0 py-1 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="" required />
+                                        @if(item.get('abbreviation')?.invalid && (submitted ||
+                                        item.get('abbreviation')?.touched))
+                                        {
+                                        <div class="w-full bg-red-100  p-1">
+                                            الاختصار مطلوب
+                                        </div>
+                                        }
+                                    </td>
+                                    <td class=" px-1 border border-slate-300 text-center">
+                                        <svg (click)="removeGoal(i)" fill="red" version="1.1" id="Capa_1"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" class="size-5"
+                                            viewBox="0 0 482.428 482.429" xml:space="preserve">
+                                            <g>
+                                                <g>
+                                                    <path d="M381.163,57.799h-75.094C302.323,25.316,274.686,0,241.214,0c-33.471,0-61.104,25.315-64.85,57.799h-75.098
+                                        			c-30.39,0-55.111,24.728-55.111,55.117v2.828c0,23.223,14.46,43.1,34.83,51.199v260.369c0,30.39,24.724,55.117,55.112,55.117
+                                        			h210.236c30.389,0,55.111-24.729,55.111-55.117V166.944c20.369-8.1,34.83-27.977,34.83-51.199v-2.828
+                                        			C436.274,82.527,411.551,57.799,381.163,57.799z M241.214,26.139c19.037,0,34.927,13.645,38.443,31.66h-76.879
+                                        			C206.293,39.783,222.184,26.139,241.214,26.139z M375.305,427.312c0,15.978-13,28.979-28.973,28.979H136.096
+                                        			c-15.973,0-28.973-13.002-28.973-28.979V170.861h268.182V427.312z M410.135,115.744c0,15.978-13,28.979-28.973,28.979H101.266
+                                        			c-15.973,0-28.973-13.001-28.973-28.979v-2.828c0-15.978,13-28.979,28.973-28.979h279.897c15.973,0,28.973,13.001,28.973,28.979
+                                        			V115.744z" />
+                                                    <path
+                                                        d="M171.144,422.863c7.218,0,13.069-5.853,13.069-13.068V262.641c0-7.216-5.852-13.07-13.069-13.07
+                                        			c-7.217,0-13.069,5.854-13.069,13.07v147.154C158.074,417.012,163.926,422.863,171.144,422.863z" />
+                                                    <path
+                                                        d="M241.214,422.863c7.218,0,13.07-5.853,13.07-13.068V262.641c0-7.216-5.854-13.07-13.07-13.07
+                                        			c-7.217,0-13.069,5.854-13.069,13.07v147.154C228.145,417.012,233.996,422.863,241.214,422.863z" />
+                                                    <path
+                                                        d="M311.284,422.863c7.217,0,13.068-5.853,13.068-13.068V262.641c0-7.216-5.852-13.07-13.068-13.07
+                                        			c-7.219,0-13.07,5.854-13.07,13.07v147.154C298.213,417.012,304.067,422.863,311.284,422.863z" />
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-12 bg-white lg:p-4">
+                <div class="">
+                    <h5>الاهداف الفرعية للخطة الاستراتيجية <span class="text-red-500">*</span></h5>
+                    <div class="flex justify-center mt-2">
+                        <div class="p-1  bg-green-400 rounded-full w-6 h-6 m-1">
+                            <svg (click)="addSubGoal()" fill="white" version="1.1" id="Capa_1"
+                                xmlns="http://www.w3.org/2000/svg" class="w-4 h-4"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 45.402 45.402"
+                                xml:space="preserve">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <g>
+                                        <path
+                                            d="M41.267,18.557H26.832V4.134C26.832,1.851,24.99,0,22.707,0c-2.283,0-4.124,1.851-4.124,4.135v14.432H4.141 c-2.283,0-4.139,1.851-4.138,4.135c-0.001,1.141,0.46,2.187,1.207,2.934c0.748,0.749,1.78,1.222,2.92,1.222h14.453V41.27 c0,1.142,0.453,2.176,1.201,2.922c0.748,0.748,1.777,1.211,2.919,1.211c2.282,0,4.129-1.851,4.129-4.133V26.857h14.435 c2.283,0,4.134-1.867,4.133-4.15C45.399,20.425,43.548,18.557,41.267,18.557z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                        <table class="table-auto border-collapse border border-slate-400 w-full bg-white text-sm mb-2">
+                            <thead class="bg-blue-200 ">
+                                <tr class="p-1 whitespace-nowrap">
+                                    <th class="border border-slate-300 p-1 w-5/12 "> الهدف </th>
+                                    <th class="border border-slate-300 p-1 w-5/12"> الشرح</th>
+                                    <th class="border border-slate-300 p-1 w-1/12 "> الهدف الرئيسي</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody formArrayName="sub_goals">
+                                @for (item of sub_goals.controls; track item;let j=$index) {
+                                <tr class="" [formGroupName]="j">
+                                    <td class="border border-slate-300 ">
+                                        <input type="text" formControlName="name" id="first_name"
+                                            class=" py-1 border-0  text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="من فضلك ادخل الهدف هنا" required />
+                                        @if(item.get('name')?.invalid && (submitted ||
+                                        item.get('name')?.touched))
+                                        {
+                                        <div class="w-full bg-red-100  p-1">
+                                            يجب ادخال هدف واحد علي الاقل
+                                        </div>
+                                        }
+                                    </td>
+                                    <td class="border border-slate-300 ">
+                                        <input type="text" formControlName="description" id="first_name"
+                                            class="border-0 py-1  text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="من فضلك ادخل الشرح هنا" />
+                                        @if(item.get('description')?.invalid && (submitted ||
+                                        item.get('description')?.touched))
+                                        {
+                                        <div class="w-full bg-red-100  p-1">
+                                            يجب ادخال وصف
+                                        </div>
+                                        }
+                                    </td>
+                                    <td class="  border border-slate-300 ">
+                                        <select formControlName="goal_abbreviation"
+                                            class="select-dropdown text-sm w-full border-0 py-0">
+                                            <option value="1" disabled selected>اختر الاختصار </option>
+                                            @for (item of abbreviations; track $index) {
+                                            <option [value]="item.abbreviation">{{item.abbreviation}} - {{item.name}}</option>
+                                            }
+                                        </select>
+                                        @if(item.get('abbreviation')?.invalid && (submitted ||
+                                        item.get('abbreviation')?.touched))
+                                        {
+                                        <div class="w-full bg-red-100  p-1">
+                                            الاختصار مطلوب
+                                        </div>
+                                        }
+                                    </td>
+                                    <td class=" px-1 border border-slate-300 text-center">
+                                        <svg (click)="removeSubGoal(j)" fill="red" version="1.1" id="Capa_1"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" class="size-5"
+                                            viewBox="0 0 482.428 482.429" xml:space="preserve">
+                                            <g>
+                                                <g>
+                                                    <path d="M381.163,57.799h-75.094C302.323,25.316,274.686,0,241.214,0c-33.471,0-61.104,25.315-64.85,57.799h-75.098
+                                                                            			c-30.39,0-55.111,24.728-55.111,55.117v2.828c0,23.223,14.46,43.1,34.83,51.199v260.369c0,30.39,24.724,55.117,55.112,55.117
+                                                                            			h210.236c30.389,0,55.111-24.729,55.111-55.117V166.944c20.369-8.1,34.83-27.977,34.83-51.199v-2.828
+                                                                            			C436.274,82.527,411.551,57.799,381.163,57.799z M241.214,26.139c19.037,0,34.927,13.645,38.443,31.66h-76.879
+                                                                            			C206.293,39.783,222.184,26.139,241.214,26.139z M375.305,427.312c0,15.978-13,28.979-28.973,28.979H136.096
+                                                                            			c-15.973,0-28.973-13.002-28.973-28.979V170.861h268.182V427.312z M410.135,115.744c0,15.978-13,28.979-28.973,28.979H101.266
+                                                                            			c-15.973,0-28.973-13.001-28.973-28.979v-2.828c0-15.978,13-28.979,28.973-28.979h279.897c15.973,0,28.973,13.001,28.973,28.979
+                                                                            			V115.744z" />
+                                                    <path
+                                                        d="M171.144,422.863c7.218,0,13.069-5.853,13.069-13.068V262.641c0-7.216-5.852-13.07-13.069-13.07
+                                                                            			c-7.217,0-13.069,5.854-13.069,13.07v147.154C158.074,417.012,163.926,422.863,171.144,422.863z" />
+                                                    <path
+                                                        d="M241.214,422.863c7.218,0,13.07-5.853,13.07-13.068V262.641c0-7.216-5.854-13.07-13.07-13.07
+                                                                            			c-7.217,0-13.069,5.854-13.069,13.07v147.154C228.145,417.012,233.996,422.863,241.214,422.863z" />
+                                                    <path
+                                                        d="M311.284,422.863c7.217,0,13.068-5.853,13.068-13.068V262.641c0-7.216-5.852-13.07-13.068-13.07
+                                                                            			c-7.219,0-13.07,5.854-13.07,13.07v147.154C298.213,417.012,304.067,422.863,311.284,422.863z" />
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </td>
+                                </tr>
+
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-12 bg-white mt-8 p-3 justify-end flex">
+                <button class="bg-[#014daa] rounded-lg px-3 text-white py-2 mx-1" (click)="backRoute()">السابق</button>
+                <!-- <button class="bg-[#014daa] rounded-lg px-3 text-white py-2 mx-1  " >حفظ -->
+                <!-- </button> -->
+                <button class="bg-[#014daa] rounded-lg px-3 text-white py-2 mx-1" (click)="addStratigicPlan()"> 
+                    حفظ </button>
+            </div>
+        </div>
+    </form>
+    <!-- {{strategicPlanForm.valid | json}}
+    {{strategicPlanForm.value | json}} -->

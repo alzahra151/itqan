@@ -1,0 +1,29 @@
+:host ::ng-deep .p-calendar  .p-inputtext {
+    padding: .1rem !important;
+    // padding-top: 0rem;
+    // padding-bottom: 0rem;
+    border: unset;
+}
+::ng-deep .p-dropdown {
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    border-radius: 0px !important;
+    width: 100%;
+    padding: 0px !important;
+ 
+}
+::ng-deep .p-dropdown-label {
+    font-family: arabicFont !important;
+     font-size: small;
+}
+::ng-deep .p-dropdown-item {
+    font-family: arabicFont !important;
+     font-size: small;
+}
+::ng-deep .p-inputtext{
+    padding: .30rem;
+}
+.text-weight{
+    font-weight: bolder;
+}

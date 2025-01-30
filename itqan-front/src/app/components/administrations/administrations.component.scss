@@ -1,0 +1,32 @@
+.verticalline {
+  border-right: 2px solid black; /* Adjust thickness and color as needed */
+  height: 70px; /* Adjust height as needed */
+}
+
+hr{
+    // padding: 1px;
+    border-top-width: 0px; 
+    border: 1px solid black;
+}
+svg {
+  cursor: pointer;
+}
+
+:host ::ng-deep .p-button.p-button-danger.p-button-text, .p-buttonset.p-button-danger > .p-button.p-button-text, .p-splitbutton.p-button-danger > .p-button.p-button-text {
+    background-color: transparent;
+    color: #ef4444;
+    border-color: transparent;
+}
+:host ::ng-deep .p-dialog .p-dialog-footer button {
+    margin: 0 0.5rem 0 0;
+    width: auto;
+}
+
+::ng-deep .p-dialog .p-dialog-content {
+    background: #ffffff;
+    color: #4b5563;
+    padding: 0 1rem 1rem 1rem;
+}
+::ng-deep .p-dialog  {
+   font-family: arabicFont !important;
+}

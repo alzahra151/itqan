@@ -1,0 +1,136 @@
+<div class=" text-sm bg-white rounded-md m-4">
+    <h5 class="mx-1 text-center mt-1"> </h5>
+    <!-- <form class="w-full"> -->
+    <div class="grid grid-cols-12   p-2  items-center bg-blue-100">
+        <div class="col-span-8 lg:px-2 px-1   p-1  bg-blue-100">
+            الخطة استراتيجية : {{strategicPlan.name}}
+        </div>
+        <div class="col-span-2 lg:px-2 px-1 bg-blue-100 p-1 mx-1">
+            من : {{strategicPlan.start_date | date}}
+        </div>
+        <div class="col-span-2 lg:px-2 px-1 bg-blue-100 p-1 mx-1">
+
+            الي : {{strategicPlan.end_date | date}}
+        </div>
+    </div>
+    <h5 class="mx-1 border-b-2 mt-1 flex p-2">
+        <svg class="w-5 h-5 bi bi-circle-fill mx-2" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
+            fill="#b3ff66">
+            <circle cx="8" cy="8" r="8" />
+        </svg>
+        انشاء خطة مرحلية
+    </h5>
+    <form class="w-full" [formGroup]="planForm">
+        <div class="grid grid-cols-12  lg:m-4 m-1 p-2  items-center">
+            <div class="col-span-8 lg:px-2 px-1 ">
+                <input formControlName="title" type="text" name="full_name" id="full_name"
+                    placeholder="عنوان الخطة المرحلية"
+                    class=" rounded-md border-gray-300 w-full h-9  mt-1  px-4   bg-gray-60" value="" />
+                @if(planForm.get('title')?.invalid && (submitted ||
+                planForm.get('title')?.touched))
+                {
+                <div class="w-full bg-red-100  p-1">
+                    العنوان مطلوب
+                </div>
+                }
+            </div>
+            <div class="col-span-2 lg:px-2 px-1">
+                <p-calendar formControlName="start_date" placeholder="تاريخ البداية"></p-calendar>
+                @if(planForm.get('start_date')?.invalid && (submitted ||
+                planForm.get('start_date')?.touched))
+                {
+                <div class="w-full bg-red-100  p-1">
+                    تاريخ البداية مطلوب
+                </div>
+                }
+            </div>
+            <div class="col-span-2 lg:px-2 px-1 ">
+                <p-calendar formControlName="end_date" placeholder="تاريخ النهاية"></p-calendar>
+                @if(planForm.get('end_date')?.invalid && (submitted ||
+                planForm.get('end_date')?.touched))
+                {
+                <div class="w-full bg-red-100  p-1">
+                    تاريخ النهاية مطلوب
+                </div>
+                }
+            </div>
+            <div class="col-span-12 m-2">
+                <textarea formControlName="description" class="w-full mt-2 rounded-md border-gray-300" rows=""
+                    placeholder="مقدمة الخطة"></textarea>
+            </div>
+            <div class="col-span-12   pt-5 mb-4 mt-8">
+                <div class="">
+
+                    <div class=" flex">
+                        <div class="w-6/12 p-2">
+                            <h5 class="mb-1"> الهدف الاساسي للخطة</h5>
+                            <p-dropdown [options]="strategicPlan.goals " class="" dataKey="id" optionValue="id"
+                                (onChange)="selecteGoal($event)" optionLabel="name" [showClear]="false"
+                                placeholder="اختر الهدف الرئيسي"></p-dropdown>
+                            @if(planForm.get('goal_id')?.invalid && (submitted ||
+                            planForm.get('goal_id')?.touched))
+                            {
+                            <div class="w-full bg-red-100  p-1">
+                                الهدف مطلوب
+                            </div>
+                            }
+                            <!-- {{planForm.get('goal_id')?.invalid | json}}
+                                {{planForm.get('goal_id')?.touched | json}} -->
+                        </div>
+                        <div class="w-6/12  p-2">
+                            <!-- <p-dropdown [options]="subGoals" class="" dataKey="id" optionValue="id" 
+                                optionLabel="name" [showClear]="false" placeholder="اختر الاهداف الفرعية"></p-dropdown>
+                            @if(planForm.get('sub_goal_id')?.invalid && (submitted ||
+                            planForm.get('sub_goal_id')?.touched))
+                            {
+                            <div class="w-full bg-red-100  p-1">
+                                الهدف مطلوب
+                            </div>
+                            } -->
+                            <h5 class="mb-1"> الاهداف الفرعية للخطة</h5>
+                            <ng-multiselect-dropdown formControlName="subGoals"
+                                [placeholder]="' اختر الاهداف الفرعيةالخاصة بهذا الهدف '" name="city" [data]="subGoals"
+                                [settings]="dropdownSettings">
+                            </ng-multiselect-dropdown>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-span-12 bg-white lg:p-4 p-2 mb-4 ">
+                <div class="">
+                    <h5> الاهداف الفرعية للخطة</h5>
+                    <div class="flex bg-[#3076D8]">
+                        <div class="w-6/12 p-2 text-white">
+                            الاهداف الفرعية
+                        </div>
+                        <div class="w-6/12 p-2 text-white">
+                            الوصف
+                        </div>
+                    </div>
+                    <div class="border border-1 grid grid-cols-12">
+                        @for (item of subGoals; track $index) {
+                        <div class="col-span-6">
+                            <div class=" border border-1 p-1">
+                                {{item.name}}
+                            </div>
+                        </div>
+
+                        <div class="col-span-6">
+                            <div class=" border border-1 p-1">
+                                {{item.description}}
+                            </div>
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div> -->
+            <div class="col-span-12 bg-white mt-8 p-3 justify-end flex">
+                <button class="bg-[#014daa] rounded-lg px-3 text-white py-2 mx-1" (click)="backRoute()">السابق</button>
+                <!-- <button class="bg-[#014daa] rounded-lg px-3 text-white py-2 mx-1   ">حفظ
+                </button> -->
+                <button (click)="addPhasedPlan()" class="bg-[#014daa] rounded-lg px-3 text-white py-2 mx-1"> حفظ
+                </button>
+            </div>
+        </div>
+    </form>
+    <!-- {{planForm.value | json}} -->

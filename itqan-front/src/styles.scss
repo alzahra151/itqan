@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: arabicFont;
+    src: url('./assets/Noto_Kufi_Arabic/static/NotoKufiArabic-Regular.ttf');
+}
+
+body{
+    font-family: arabicFont !important;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

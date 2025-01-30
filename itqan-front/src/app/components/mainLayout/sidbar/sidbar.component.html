@@ -1,0 +1,296 @@
+<!-- <div class="flex items-center space-x-4 p-2 mb-5">
+    <img class="h-12 rounded-full" src="http://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp"
+        alt="James Bhatta">
+    <div>
+        <h4 class="font-semibold text-lg text-gray-700 capitalize font-poppins tracking-wide">James Bhatta</h4>
+        <span class="text-sm tracking-wide flex items-center space-x-1">
+            <svg class="h-4 svgArrow text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg><span class="text-gray-600">Verified</span>
+        </span>
+    </div>
+</div> -->
+<div class="sideBar">
+    <ul class="space-y-2 font-medium mt-5  ">
+        @if (emplyeeRole.name==='manager') {
+        <li>
+            <button type="button"
+                class="flex items-center w-full  text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px"
+                    y="0px" viewBox="0 0 512 640" enable-background="new 0 0 512 512" xml:space="preserve"
+                    class="svg w-8 h-8">
+                    <g>
+                        <path
+                            d="M75.4,125h110.2c7.8,0,14.1-6.3,14.1-14.1c0-7.8-6.3-14.1-14.1-14.1H75.4c-7.8,0-14.1,6.3-14.1,14.1   C61.3,118.7,67.6,125,75.4,125z" />
+                        <path
+                            d="M75.4,203.7h222.1c7.8,0,14.1-6.3,14.1-14.1c0-7.8-6.3-14.1-14.1-14.1H75.4c-7.8,0-14.1,6.3-14.1,14.1   C61.3,197.4,67.6,203.7,75.4,203.7z" />
+                        <path
+                            d="M75.4,282.4h222.1c7.8,0,14.1-6.3,14.1-14.1c0-7.8-6.3-14.1-14.1-14.1H75.4c-7.8,0-14.1,6.3-14.1,14.1   C61.3,276.1,67.6,282.4,75.4,282.4z" />
+                        <path
+                            d="M182,332.8H75.4c-7.8,0-14.1,6.3-14.1,14.1c0,7.8,6.3,14.1,14.1,14.1H182c7.8,0,14.1-6.3,14.1-14.1   C196.1,339.2,189.8,332.8,182,332.8z" />
+                        <path
+                            d="M148.5,411.5H75.4c-7.8,0-14.1,6.3-14.1,14.1c0,7.8,6.3,14.1,14.1,14.1h73.1c7.8,0,14.1-6.3,14.1-14.1   C162.7,417.8,156.3,411.5,148.5,411.5z" />
+                        <path
+                            d="M494.7,177.7c-17-17.4-45.4-22-65.3-3.4l-58.5,58.5V117.3c0-3.7-1.5-7.3-4.1-10L265.6,6.1c-2.6-2.6-6.2-4.1-10-4.1H44.4   C21,2,2,21,2,44.3v423.3C2,491,21,510,44.4,510h284.2c23.3,0,42.3-19,42.3-42.3v-97.5L498.1,243   C515.2,225.9,513.7,196.6,494.7,177.7z M322.7,103.2h-53l0-53L322.7,103.2z M342.7,467.7c0,7.8-6.3,14.1-14.1,14.1H44.4   c-7.8,0-14.1-6.3-14.1-14.1V44.3c0-7.8,6.3-14.1,14.1-14.1h197.2l0,87c0,7.8,6.3,14.1,14.1,14.1h87v129.8L219.5,384.3   c-1.9,1.9-3.2,4.3-3.8,6.9l-13.9,62.6c-1,4.7,0.4,9.6,3.8,13c4,3.8,8.4,4.6,13,3.8l62.6-13.9c2.6-0.6,5-1.9,6.9-3.8l54.5-54.5   V467.7z M478.1,223.1l-207,207l-36.9,8.2l8.2-36.9l207-207c6.5-6.2,17.4-4.3,25.4,3.4C482.6,205.5,484.1,217.1,478.1,223.1z" />
+                    </g>
+                </svg>
+                <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">البيانات والاعدادات</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-4 h-4 svgArrow">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5" />
+                </svg>
+
+            </button>
+            <ul id="dropdown-example" class=" py-2  ms-8  subMenu">
+                <!-- @if (!associationId) { -->
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-4 svgArrow">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
+                    <a routerLink="/home"
+                        class="flex items-center w-full p-1 text-gray-900 transition duration-75 rounded-lg  group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        الرئيسية</a>
+                </li>
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-4 svgArrow">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
+                    <a routerLink="/home/add-association"
+                        class="flex items-center w-full p-1 text-gray-900 transition duration-75 rounded-lg  group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">بيانات
+                        الجمعية</a>
+                </li>
+                <!-- }@else {
+            <li class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-5 h-4 svgArrow">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                </svg>
+                <a routerLink="/home/association"
+                    class="flex items-center w-full p-1 text-gray-900 transition duration-75 rounded-lg  group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">بيانات
+                    الجمعية</a>
+            </li>
+            } -->
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-4 svgArrow">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
+                    <a routerLink="/home/administrations"
+                        class=" flex items-center w-full p-1 text-gray-900 transition duration-75 rounded-lg  group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">بيانات
+                        الادارات والاقسام</a>
+                </li>
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-4 svgArrow">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
+                    <a routerLink="/home/directors-board-members"
+                        class=" flex items-center w-full p-1 text-gray-900 transition duration-75 rounded-lg  group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">بيانات
+                        أعضاء الجمعية العمومية ومجلس الادارة </a>
+                </li>
+                <li class="flex items-center mb-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-4 svgArrow">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
+                    <a routerLink="/home/supporters"
+                        class="flex items-center w-full  text-gray-900 transition duration-75 rounded-lg  group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        بيانات الداعمين
+                    </a>
+                </li>
+                <li class="flex items-center mb-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-4 svgArrow">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
+                    <a routerLink="/home/volunteers"
+                        class="flex items-center w-full  text-gray-900 transition duration-75 rounded-lg  group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        بيانات المتطوعين
+                    </a>
+                </li>
+                <li class="flex items-center mb-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-4 svgArrow">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
+                    <a routerLink="/home/services"
+                        class="flex items-center w-full  text-gray-900 transition duration-75 rounded-lg  group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        اضافة الخدمات
+                    </a>
+                </li>
+                <li class="flex items-center mb-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-4 svgArrow">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
+                    <a routerLink="/home/indicators"
+                        class="flex items-center w-full  text-gray-900 transition duration-75 rounded-lg  group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        اضافة المؤشرات
+                    </a>
+                </li>
+                <li class="flex items-center mb-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-4 svgArrow">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
+                    <a routerLink="/home/add-employee"
+                        class="flex items-center w-full p-1 text-gray-900 transition duration-75 rounded-lg  group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">بيانات
+                        الموظفين</a>
+                </li>
+                <li class="flex items-center mb-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-4 svgArrow">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
+                    <a routerLink="/home/add-beneficiary"
+                        class="flex items-center w-full  text-gray-900 transition duration-75 rounded-lg  group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">بيانات
+                        المستفيدين
+                    </a>
+                </li>
+                <li class="flex items-center mb-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-4 svgArrow">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
+                    <a routerLink="/home/beneficaries"
+                        class="flex items-center w-full  text-gray-900 transition duration-75 rounded-lg  group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">عرض
+                        المستفيدين
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+        <li>
+            <button type="button"
+                class="flex items-center w-full  text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                aria-controls="dropdown-example2" data-collapse-toggle="dropdown-example2">
+                <img style="height: 30px;width: 30px;" src="../../../assets/imags/target.png">
+                <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap"> الخطط والاهداف</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-4 h-4 svgArrow">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5" />
+                </svg>
+
+            </button>
+            <ul id="dropdown-example2" class=" py-2   ms-8   subMenu">
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-4 svgArrow">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
+                    <a [routerLink]='["/home/add-stratgy-plan"]'
+                        class="flex items-center w-full p-1 text-gray-900 transition duration-75 rounded-lg  group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">الخطة
+                        الاستراتيجية الحالية
+                    </a>
+                </li>
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-4 svgArrow">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
+                    <a routerLink="/home/plans"
+                        class=" flex items-center w-full p-1 text-gray-900 transition duration-75 rounded-lg  group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        عرض الخطط الاستراتيجية </a>
+                </li>
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-4 svgArrow">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
+                    <a
+                        class="flex items-center w-full p-1 text-gray-900 transition duration-75 rounded-lg  group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">التقارير
+                        التحليلية
+                    </a>
+                </li>
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-4 svgArrow">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
+                    <a
+                        class="flex items-center w-full  text-gray-900 transition duration-75 rounded-lg  group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">التقاير
+                        التفصيلية
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+        }@else {
+
+
+        }
+        <li>
+            <button type="button"
+                class="flex items-center w-full  text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px"
+                    y="0px" viewBox="0 0 512 640" enable-background="new 0 0 512 512" xml:space="preserve"
+                    class="svg w-8 h-8">
+                    <g>
+                        <path
+                            d="M75.4,125h110.2c7.8,0,14.1-6.3,14.1-14.1c0-7.8-6.3-14.1-14.1-14.1H75.4c-7.8,0-14.1,6.3-14.1,14.1   C61.3,118.7,67.6,125,75.4,125z" />
+                        <path
+                            d="M75.4,203.7h222.1c7.8,0,14.1-6.3,14.1-14.1c0-7.8-6.3-14.1-14.1-14.1H75.4c-7.8,0-14.1,6.3-14.1,14.1   C61.3,197.4,67.6,203.7,75.4,203.7z" />
+                        <path
+                            d="M75.4,282.4h222.1c7.8,0,14.1-6.3,14.1-14.1c0-7.8-6.3-14.1-14.1-14.1H75.4c-7.8,0-14.1,6.3-14.1,14.1   C61.3,276.1,67.6,282.4,75.4,282.4z" />
+                        <path
+                            d="M182,332.8H75.4c-7.8,0-14.1,6.3-14.1,14.1c0,7.8,6.3,14.1,14.1,14.1H182c7.8,0,14.1-6.3,14.1-14.1   C196.1,339.2,189.8,332.8,182,332.8z" />
+                        <path
+                            d="M148.5,411.5H75.4c-7.8,0-14.1,6.3-14.1,14.1c0,7.8,6.3,14.1,14.1,14.1h73.1c7.8,0,14.1-6.3,14.1-14.1   C162.7,417.8,156.3,411.5,148.5,411.5z" />
+                        <path
+                            d="M494.7,177.7c-17-17.4-45.4-22-65.3-3.4l-58.5,58.5V117.3c0-3.7-1.5-7.3-4.1-10L265.6,6.1c-2.6-2.6-6.2-4.1-10-4.1H44.4   C21,2,2,21,2,44.3v423.3C2,491,21,510,44.4,510h284.2c23.3,0,42.3-19,42.3-42.3v-97.5L498.1,243   C515.2,225.9,513.7,196.6,494.7,177.7z M322.7,103.2h-53l0-53L322.7,103.2z M342.7,467.7c0,7.8-6.3,14.1-14.1,14.1H44.4   c-7.8,0-14.1-6.3-14.1-14.1V44.3c0-7.8,6.3-14.1,14.1-14.1h197.2l0,87c0,7.8,6.3,14.1,14.1,14.1h87v129.8L219.5,384.3   c-1.9,1.9-3.2,4.3-3.8,6.9l-13.9,62.6c-1,4.7,0.4,9.6,3.8,13c4,3.8,8.4,4.6,13,3.8l62.6-13.9c2.6-0.6,5-1.9,6.9-3.8l54.5-54.5   V467.7z M478.1,223.1l-207,207l-36.9,8.2l8.2-36.9l207-207c6.5-6.2,17.4-4.3,25.4,3.4C482.6,205.5,484.1,217.1,478.1,223.1z" />
+                    </g>
+                </svg>
+                <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap"> المهام التنفيذية</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-4 h-4 svgArrow">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5" />
+                </svg>
+
+            </button>
+            <ul id="dropdown-example" class=" py-2  ms-8   subMenu">
+                @if (emplyeeRole.name==='manager') {
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-4 svgArrow">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
+                    <a routerLink="/home/completed-missions"
+                        class="flex items-center w-full p-1 text-gray-900 transition duration-75 rounded-lg  group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        متابعة المهام </a>
+                </li>
+                }
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-4 svgArrow">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
+                    <a routerLink="/home/employee-missions"
+                        class=" flex items-center w-full p-1 text-gray-900 transition duration-75 rounded-lg  group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        تنفيذ المهام</a>
+                </li>
+
+            </ul>
+        </li>
+        <li class="mt-8">
+            <a (click)="logout()"
+                class="cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3" />
+                </svg>
+                <span class="flex-1 ms-3 whitespace-nowrap"> تسجيل الخروج</span>
+            </a>
+        </li>
+       
+    </ul>
+</div>

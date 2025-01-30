@@ -1,0 +1,12 @@
+::ng-deep .p-dialog .p-dialog-footer button {
+    margin: 0 0.5rem 0 0;
+    width: auto;
+}
+:host ::ng-deep .p-accordion{
+    font-family: arabicFont !important;
+    border-right: 1px solid gainsboro;
+}
+:host ::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link{
+    // padding: 0;
+    background-color: #C3DDFD;
+}

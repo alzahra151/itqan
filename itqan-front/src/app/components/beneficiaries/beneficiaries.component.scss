@@ -1,0 +1,37 @@
+:host ::ng-deep .p-datatable .p-datatable-thead > tr > th {
+     text-align: right; 
+ padding: .2rem .2rem; 
+    border: 1px solid #4b92da;
+    border-width: 0 0 1px 0;
+    font-weight: 700;
+    color: white;
+ background: #4b92da; 
+    transition: box-shadow 0.2s;
+}
+:host ::ng-deep .p-datatable .p-datatable-tbody> tr > td {
+     text-align: right ; 
+       border-bottom: 1px solid #4b92da;
+}
+:host ::ng-deep .p-dropdown {
+    // background: #f8f085;
+    border: 1px solid #d1d5db;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    border-radius: 6px;
+    width: 100%;
+    border-radius: 0px;
+//     padding-top:3px;
+//  padding-bottom:3px;
+padding: .2rem;
+    font-family: arabicFont !important;
+}
+::ng-deep .p-dropdown-label {
+    font-family: arabicFont !important;
+}
+::ng-deep .p-dropdown-item {
+    font-family: arabicFont !important;
+}
+
+:host ::ng-deep .p-inputtext	{
+  padding: 0rem;
+  border: unset;
+}

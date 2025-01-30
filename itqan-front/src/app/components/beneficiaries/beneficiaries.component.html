@@ -1,0 +1,115 @@
+<div class="Container px-3 " dir="rtl">
+    <div class="grid grid-cols-12 gap-2 my-2 bg-blue-100 p-3 " dir="rtl">
+        <div class="col-span-2">
+            <input dir="rtl" type="text" placeholder="البحث بالاسم" [(ngModel)]="beneficaryFilters.name"
+                (input)="onBeneficiaryFilterChange()"
+                class="w-full h-8 border-gray-300 border mt-1  px-4   bg-gray-60" />
+            <input dir="rtl" type="text" placeholder="البحث بالهوية" [(ngModel)]="beneficaryFilters.identity"
+                (input)="onBeneficiaryFilterChange()"
+                class="w-full h-8 border-gray-300 border mt-1  px-4   bg-gray-60" />
+        </div>
+
+        <div class="col-span-2">
+            <input dir="rtl" type="text" placeholder="البحث برقم الملف" [(ngModel)]="beneficaryFilters.file_no"
+                (input)="onBeneficiaryFilterChange()"
+                class="w-full h-8 border-gray-300 border mt-1  px-4   bg-gray-60" />
+            <input dir="rtl" type="text" placeholder="البحث باسم المرض" [(ngModel)]="beneficaryFilters.illness_name"
+                (input)="onBeneficiaryFilterChange()"
+                class="w-full h-8 border-gray-300 border mt-1  px-4   bg-gray-60" />
+        </div>
+        <div class="col-span-2">
+            <p-dropdown [options]="services" optionLabel="name" optionValue="id" appendTo="body"
+                (onChange)="onServiceChange($event)" class="col-span-2  " [showClear]="true"
+                placeholder="بالحث بالخدمة"></p-dropdown>
+            <input dir="rtl" type="text" placeholder="البحث بالجوال" [(ngModel)]="beneficaryFilters.contact_number"
+                (input)="onBeneficiaryFilterChange()"
+                class="w-full h-8 border-gray-300 border mt-1  px-4   bg-gray-60" />
+        </div>
+        <div class="col-span-1  mt-1"></div>
+        <div class="col-span-3">
+            <div class="flex w-full">
+                <span class="mx-1 w-3/12">من تاريخ</span>
+                <p-calendar class="myCalender mb-2 w-9/12" (onSelect)="onBeneficiaryFilterChange()" appendTo="body"
+                    [(ngModel)]="beneficaryFilters.start_date" />
+            </div>
+            <div class="flex">
+                <span class="mx-1 w-3/12">الي تاريخ</span>
+                <p-calendar class="myCalender w-9/12" (onSelect)="onBeneficiaryFilterChange()" appendTo="body"
+                    [(ngModel)]="beneficaryFilters.end_date" />
+            </div>
+        </div>
+
+    </div>
+    <p-table #myTab [value]="beneficiaries" dataKey="id" [tableStyle]="{ 'min-width': '50rem' }" [paginator]="true"
+        [rows]="8" [totalRecords]="beneficiaries.length" [loading]="loading">
+        <ng-template pTemplate="header">
+            <tr class="bg-[#3076D8]">
+                <th> رقم الملف</th>
+                <th>اسم الحالة </th>
+                <th>رقم الهوية </th>
+                <th> تاريخ التسجيل</th>
+                <th>العمر</th>
+                <th>الجنس</th>
+               
+                <th>المرض</th>
+                <th>الجوال</th>
+                <th>الحالة الاجتماعية</th>
+                <th>الخدمات</th>
+                <th>التفاعلات</th>
+            </tr>
+
+        </ng-template>
+        <ng-template pTemplate="body" let-beneficiary>
+            <tr>
+                <td>{{beneficiary?.id}}</td>
+                <td>{{ beneficiary?.name }}</td>
+                <td>{{ beneficiary?.identity?.value }}{{ beneficiary?.identity?.type }}</td>
+                <td>{{ beneficiary?.createdAt | date }}</td>
+                <td>{{ beneficiary.age}}</td>
+                <td>{{beneficiary?.gender}}</td>
+               
+                <td>{{beneficiary.illnesse?.name}}</td>
+                <td>{{beneficiary?.contact_numbers[0]?.number}}
+                    <ul>
+                        @for (mobile of beneficiary.contact_numbers; track $index) {
+                        <li>{{mobile?.number}}</li>
+                        }
+                    </ul>
+                </td>
+                <td>{{beneficiary?.marital_status}}</td>
+                <td>
+                    <ul>
+                        @for (service of beneficiary.beneficiary_sevices; track $index) {
+
+                        <li>{{service.service?.name}}</li>
+                        }
+                    </ul>
+                </td>
+                <td class="	p-2 border border-slate-300 mt-2 h-full">
+                    <div class="flex flex-col justify-between h-full ">
+                        <svg stroke-width=".5" stroke="blue" fill="#000000"
+                            [routerLink]="['/home/beneficaries',beneficiary.id]" version="1.1" id="Capa_1"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            class="size-6 mx-1 cursor-pointer mb-2" viewBox="0 0 32 32" xml:space="preserve">
+                            <g>
+                                <path d="M17.962,24.725l1.806,0.096v2.531h-7.534v-2.406l1.045-0.094c0.568-0.063,0.916-0.254,0.916-1.014v-8.801
+                    		c0-0.699-0.188-0.92-0.791-0.92l-1.106-0.062v-2.626h5.666L17.962,24.725L17.962,24.725z M15.747,4.648
+                    		c1.394,0,2.405,1.047,2.405,2.374c0,1.331-1.014,2.313-2.438,2.313c-1.454,0-2.404-0.982-2.404-2.313
+                    		C13.31,5.695,14.26,4.648,15.747,4.648z M16,32C7.178,32,0,24.822,0,16S7.178,0,16,0c8.82,0,16,7.178,16,16S24.82,32,16,32z M16,3
+                    		C8.832,3,3,8.832,3,16s5.832,13,13,13s13-5.832,13-13S23.168,3,16,3z" />
+                            </g>
+                        </svg>
+                       
+                        <svg  (click)="confirmDeleteEmployee($event,beneficiary.id)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="red" class="size-6 mx-1 cursor-pointer">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                        </svg>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>

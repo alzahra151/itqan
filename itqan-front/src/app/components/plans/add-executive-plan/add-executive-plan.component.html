@@ -1,0 +1,856 @@
+<form [formGroup]="ExcutivePlanForm">
+    <div class=" p-2 m-2 mx-3 bg-white Container">
+
+        <div class="col-span-12 border-b-2 flex  p-1 font-bold mb-2">
+            {{sub_gaol?.name}} الهدف
+        </div>
+        <div class="grid formContainer  gap-4 gap-y-2 z-50 text-sm grid-cols-1 lg:grid-cols-6 mb-2 ps-5">
+            <div class="lg:col-span-3 ms-6">
+                <div class="grid grid-cols-12">
+                    <div class="md:col-span-11 col-span-1  mt-3">
+                        <!-- <div class="grid md:grid-cols-12 grid-cols-1  items-center"> -->
+                        <label class="md:col-span-1 " for="full_name"> الهدف العام<span
+                                class="text-red-500 font-bold">*</span></label>
+                        <!-- <input formControlName="plan_name" type="text" pInputText placeholder="ادخل عنوان الخطة"
+                             /> -->
+                        <div
+                            class="w-full  p-2 rounded-md bg-blue-200  border-gray-300 md:col-span-11  h-8 mt-1 px-4 bg-gray-60">
+                            {{plan?.goal?.name}}</div>
+                        <!-- </div> -->
+                    </div>
+                    <div class="md:col-span-11 col-span-1 mt-3 ">
+                        <label class=" " for="full_name">اسم المهمة <span
+                                class="text-red-500 font-bold">*</span></label>
+                        <input type="text" formControlName="name" name="full_name" id="full_name"
+                            placeholder="ادخل الاسم"
+                            class="w-full h-8 border-gray-300  rounded-md   border mt-1  px-4  " />
+                    </div>
+                    <div class="md:col-span-11  col-span-1  mt-3">
+                        <label class="" for="full_name">طبيعة النشاط <span
+                                class="text-red-500 font-bold mb-1">*</span></label>
+                        <div class="flex items-center">
+                            <p-dropdown [options]="activites" dataKey="id" optionValue="id"
+                                formControlName="activity_id" class="w-full    bg-gray-60" optionLabel="name"
+                                [showClear]="false" placeholder=" اختر طبيعة النشاط"></p-dropdown>
+
+                        </div>
+                    </div>
+                    <div class="col-span-1 mt-3 flex items-end rounded-full justify-center">
+                        <div class="bg-green-500 flex items-end rounded-full justify-center p-1"
+                            (click)="addActivityVisible=!addActivityVisible">
+                            <svg fill="white" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" class="size-5" viewBox="0 0 45.402 45.402"
+                                xml:space="preserve">
+                                <g>
+                                    <path
+                                        d="M41.267,18.557H26.832V4.134C26.832,1.851,24.99,0,22.707,0c-2.283,0-4.124,1.851-4.124,4.135v14.432H4.141
+                                                                                		c-2.283,0-4.139,1.851-4.138,4.135c-0.001,1.141,0.46,2.187,1.207,2.934c0.748,0.749,1.78,1.222,2.92,1.222h14.453V41.27
+                                                                                		c0,1.142,0.453,2.176,1.201,2.922c0.748,0.748,1.777,1.211,2.919,1.211c2.282,0,4.129-1.851,4.129-4.133V26.857h14.435
+                                                                                		c2.283,0,4.134-1.867,4.133-4.15C45.399,20.425,43.548,18.557,41.267,18.557z" />
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="md:col-span-11 col-span-1  mt-3">
+                        <label class="md:col-span-1 " for="full_name"> الاثرالتنموي
+                            المتوقع</label>
+                        <!-- <input type="text" name="full_name" id="full_name" formControlName="expected_impacts"
+                            class="w-full h-8 border-gray-300  rounded-md   border mt-1  px-4   bg-gray-60" value="" /> -->
+                        <ng-multiselect-dropdown [placeholder]="' اختر الاثر التنموي المتوقع'" name="city"
+                            formControlName="expected_impacts" [data]="expectedImpacts?.result"
+                            [settings]="dropdownSettings">
+                        </ng-multiselect-dropdown>
+                    </div>
+                    <div class="col-span-1 mt-3 flex items-end rounded-full justify-center">
+                        <div class="bg-green-500 flex items-end rounded-full justify-center p-1"
+                            (click)="addExpected_impactVisible=!addExpected_impactVisible">
+                            <svg fill="white" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" class="size-5" viewBox="0 0 45.402 45.402"
+                                xml:space="preserve">
+                                <g>
+                                    <path
+                                        d="M41.267,18.557H26.832V4.134C26.832,1.851,24.99,0,22.707,0c-2.283,0-4.124,1.851-4.124,4.135v14.432H4.141
+                                                                                                    		c-2.283,0-4.139,1.851-4.138,4.135c-0.001,1.141,0.46,2.187,1.207,2.934c0.748,0.749,1.78,1.222,2.92,1.222h14.453V41.27
+                                                                                                    		c0,1.142,0.453,2.176,1.201,2.922c0.748,0.748,1.777,1.211,2.919,1.211c2.282,0,4.129-1.851,4.129-4.133V26.857h14.435
+                                                                                                    		c2.283,0,4.134-1.867,4.133-4.15C45.399,20.425,43.548,18.557,41.267,18.557z" />
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="md:col-span-11 col-span-1 mt-3 ">
+                        <label class="md:col-span-1 " for="full_name"> التكلفة التقديرية</label>
+                        <input type="text" name="full_name" id="full_name" formControlName="cost"
+                            class="w-full h-8 border-gray-300  rounded-md   border mt-1  px-4   bg-gray-60" value="" />
+                    </div>
+                    <div class="md:col-span-11 col-span-1  mt-3  ">
+                        <label class="md:col-span-1" for="full_name"> وصف المشروع</label>
+                        <textarea rows="1" formControlName="description"
+                            class="w-full  border-gray-300  rounded-md   border mt-1  px-4   bg-gray-60"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:col-span-3 ms-6">
+                <div class="grid grid-cols-12">
+                    <div class="md:col-span-11 col-span-1 gap-x-12 mt-3">
+                        <div class="grid md:grid-cols-6 grid-cols-1 gap-x-12 items-center">
+                            <div class="md:col-span-3 ">
+                                <label class="md:col-span-1 mb-1 " for="full_name"> تاريخ البداية<span
+                                        class="text-red-500 font-bold">*</span></label>
+                                <div class="md:col-span-5 rounded-md border border-gray-300 mt-1">
+                                    <p-calendar placeholder="" formControlName="start_date" class="w-full"></p-calendar>
+                                </div>
+                            </div>
+                            <div class="md:col-span-3 ">
+                                <label class="" for="full_name"> تاريخ النهاية<span
+                                        class="text-red-500 font-bold">*</span></label>
+                                <div class=" rounded-md border border-gray-300 mt-1">
+                                    <p-calendar placeholder=" " formControlName="end_date" class="w-full"></p-calendar>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-11 col-span-1  mt-3">
+                        <label class="md:col-span-1 mb-1" for="full_name">المستفيدين <span
+                                class="text-red-500 font-bold">*</span></label>
+                        <div class="grid md:grid-cols-6 grid-cols-1 gap-x-12 items-center mt-1">
+                            <div class="col-span-3 rounded-md border p-1 border-gray-300">
+                                {{beneficaiaryTypeParam}}
+                            </div>
+                            <div class="col-span-3 flex items-center ms-2">
+                                <label class="checkbox">
+                                    <input type="checkbox" formControlName="completion_requires_beneficiaries" />
+                                    <svg viewBox="0 0 21 18">
+                                        <symbol id="tick-path" viewBox="0 0 21 18" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M5.22003 7.26C5.72003 7.76 7.57 9.7 8.67 11.45C12.2 6.05 15.65 3.5 19.19 1.69"
+                                                fill="none" stroke-width="2.25" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </symbol>
+                                        <defs>
+                                            <mask id="tick">
+                                                <use class="tick mask" href="#tick-path" />
+                                            </mask>
+                                        </defs>
+                                        <use class="tick" href="#tick-path" stroke="currentColor" />
+                                        <path fill="white" mask="url(#tick)"
+                                            d="M18 9C18 10.4464 17.9036 11.8929 17.7589 13.1464C17.5179 15.6054 15.6054 17.5179 13.1625 17.7589C11.8929 17.9036 10.4464 18 9 18C7.55357 18 6.10714 17.9036 4.85357 17.7589C2.39464 17.5179 0.498214 15.6054 0.241071 13.1464C0.0964286 11.8929 0 10.4464 0 9C0 7.55357 0.0964286 6.10714 0.241071 4.8375C0.498214 2.39464 2.39464 0.482143 4.85357 0.241071C6.10714 0.0964286 7.55357 0 9 0C10.4464 0 11.8929 0.0964286 13.1625 0.241071C15.6054 0.482143 17.5179 2.39464 17.7589 4.8375C17.9036 6.10714 18 7.55357 18 9Z" />
+                                    </svg>
+                                    <svg class="lines" viewBox="0 0 11 11">
+                                        <path d="M5.88086 5.89441L9.53504 4.26746" />
+                                        <path d="M5.5274 8.78838L9.45391 9.55161" />
+                                        <path d="M3.49371 4.22065L5.55387 0.79198" />
+                                    </svg>
+                                </label>
+                                <span class="px-2 text-xs"> اكتمال المهمة مرتبط بالمستفيدين</span>
+                            </div>
+                            <!-- <p-dropdown [options]="type" optionLabel="value" optionValue="value" (onChange)="onSelectChange($event)"
+                                                    formControlName="type" class="md:col-span-5  mt-1   bg-gray-60" [showClear]="true"
+                                                    placeholder="اختر المستفيد"></p-dropdown> -->
+                            <!-- <button class="p-1 border" (click)="clearDropdown()">x</button> -->
+                        </div>
+                    </div>
+                    <div class="md:col-span-11 col-span-1  mt-3">
+                        <!-- <label class="md:col-span-1 mb-1" for="full_name"> <span class="text-red-500 font-bold">*</span></label> -->
+                        <button (click)="openDialog()"
+                            class="bg-[#014daa] text-white h-8 rounded px-2 my-4 w-full text-center">اختيار
+                            المستفيدين</button>
+                    </div>
+                    <div class="md:col-span-11 col-span-1  mt-3">
+                        <label class="" for="full_name">المؤشر <span class="text-red-500 font-bold">*</span></label>
+                        <!-- <p-dropdown [options]="indicators" dataKey="id" optionValue="id" formControlName="indicator_id"
+                            class=" py-1 bg-gray-60" optionLabel="title" [showClear]="false"
+                            placeholder=" اختر المؤشر "></p-dropdown> -->
+                        <!-- <p-multiSelect [options]="indicators" dataKey="id" optionValue="id" formControlName="indicator_id" [filter]="false" 
+                              optionLabel="title"   placeholder="Select Cities" /> -->
+                        <ng-multiselect-dropdown [placeholder]="' اختر المؤشر'" name="city" formControlName="indicators"
+                            [data]="indicators" [settings]="dropdownSettings">
+                        </ng-multiselect-dropdown>
+                    </div>
+                    <div class="col-span-1 mt-3 flex items-end rounded-full justify-center">
+                        <div class="bg-green-500 flex items-end rounded-full justify-center p-1"
+                            (click)="addIndicatorVisible=!addIndicatorVisible">
+                            <svg fill="white" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" class="size-5" viewBox="0 0 45.402 45.402"
+                                xml:space="preserve">
+                                <g>
+                                    <path
+                                        d="M41.267,18.557H26.832V4.134C26.832,1.851,24.99,0,22.707,0c-2.283,0-4.124,1.851-4.124,4.135v14.432H4.141
+                                                                                		c-2.283,0-4.139,1.851-4.138,4.135c-0.001,1.141,0.46,2.187,1.207,2.934c0.748,0.749,1.78,1.222,2.92,1.222h14.453V41.27
+                                                                                		c0,1.142,0.453,2.176,1.201,2.922c0.748,0.748,1.777,1.211,2.919,1.211c2.282,0,4.129-1.851,4.129-4.133V26.857h14.435
+                                                                                		c2.283,0,4.134-1.867,4.133-4.15C45.399,20.425,43.548,18.557,41.267,18.557z" />
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="md:col-span-11 col-span-1  mt-3">
+                        <label class="md:col-span-1 " for="full_name"> المتطلبات</label>
+                        <input type="text" name="full_name" id="full_name" formControlName="Requirements"
+                            class="w-full h-8 border-gray-300  rounded-md   border mt-1  px-4   bg-gray-60" value="" />
+                    </div>
+
+                    <div class="md:col-span-11 col-span-1  mt-3">
+                        <label class="md:col-span-1 " for="full_name"> مكان التنفيذ </label>
+                        <input type="text" name="full_name" id="full_name" formControlName="implementation_place"
+                            class="w-full h-8 border-gray-300  rounded-md   border mt-1  px-4   bg-gray-60" value="" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="overflow-x-auto overflow-y-auto p-5">
+            <h1 class="font-bold p-3 flex items-center">
+                <svg fill="#014daa" class="size-8" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 6 6 L 6 26 L 26 26 L 26 6 L 6 6 z" />
+                </svg>
+                المشاركين في التنفيذ
+            </h1>
+            <table class="table-auto border-collapse border border-slate-400 w-full bg-white text-sm">
+                <thead class="bg-blue-200 font-light ">
+                    <tr class="p-1 whitespace-nowrap">
+                        <th><svg fill="green" version="1.1" id="Capa_1" (click)="addMission()"
+                                xmlns="http://www.w3.org/2000/svg" class="w-4 h-4"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 45.402 45.402"
+                                xml:space="preserve">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <g>
+                                        <path
+                                            d="M41.267,18.557H26.832V4.134C26.832,1.851,24.99,0,22.707,0c-2.283,0-4.124,1.851-4.124,4.135v14.432H4.141 c-2.283,0-4.139,1.851-4.138,4.135c-0.001,1.141,0.46,2.187,1.207,2.934c0.748,0.749,1.78,1.222,2.92,1.222h14.453V41.27 c0,1.142,0.453,2.176,1.201,2.922c0.748,0.748,1.777,1.211,2.919,1.211c2.282,0,4.129-1.851,4.129-4.133V26.857h14.435 c2.283,0,4.134-1.867,4.133-4.15C45.399,20.425,43.548,18.557,41.267,18.557z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </svg></th>
+                        <th class="border border-slate-300 p-1  flex items-center font-medium">
+                            <span>الادارة المسؤلة</span>
+                        </th>
+                        <th class="border border-slate-300 p-1 px-4  font-medium"> الموظف المسؤل</th>
+                        <th class="border border-slate-300 p-1  px-4 font-medium"> من تاريخ</th>
+                        <th class="border border-slate-300 p-1  px-4   font-medium"> حتي تاريخ</th>
+
+                        <th class="border border-slate-300 px-8 font-medium">
+                            <span class=""> الاجراء</span>
+                        </th>
+                        <th class="border border-slate-300 p-1 px-3 font-medium"> عدد\قيمة </th>
+                        <th class="border border-slate-300 p-1 px-3 font-medium w-80">وصف الاجراء </th>
+                        <th class="border border-slate-300 p-1 px-5 font-medium">تاريخ التذكير </th>
+
+                        <th class="border border-slate-300 p-1 px-5 font-medium"> </th>
+
+                    </tr>
+                </thead>
+                <tbody formArrayName="missions">
+
+                    @for (item of missions().controls; track item; let j = $index) {
+                    <tr class="p-1" [formGroupName]="j">
+                        <td></td>
+                        <td class=" border border-slate-300 ">
+                            <select class="select-dropdown w-full text-sm" formControlName="administration_id">
+                                <option value="0" selected>اختر الادارة</option>
+                                @for (item of administrations; track $index) {
+                                <option [value]="+item?.id">
+                                    {{item?.name}}
+                                </option>
+                                }
+                            </select>
+                        </td>
+                        <td class="  border border-slate-300 ...">
+                            <select class="select-dropdown w-full text-sm px-0 pr-0" formControlName="employee_id">
+                                <option class="test-xs px-0 mx-0" value="0">الموظف اختر </option>
+                                @for (item of employees; track $index) {
+                                <option class="test-xs px-0" [value]="item?.id"> {{item?.name}}
+                                </option>
+                                }
+
+                            </select>
+                        </td>
+                        <td class="  border border-slate-300  ...">
+                            <div class=" text-sm ">
+                                <p-calendar dir="ltr" appendTo="body" formControlName="start_date"
+                                    [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" />
+                            </div>
+                        </td>
+                        <td class="  border border-slate-300  ...">
+                            <div class=" flex items-center justify-between text-sm px-1">
+                                <div class="relative max-w-sm">
+                                    <div class="absolute inset-y-0 end-0 flex items-center ps-0  pointer-events-none">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"
+                                            class="w-4 h-4">
+                                            <path
+                                                d="M12.75 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM7.5 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM8.25 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM9.75 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM10.5 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM12.75 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM14.25 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM15 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM16.5 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM15 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM16.5 13.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" />
+                                            <path fill-rule="evenodd"
+                                                d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <p-calendar dir="ltr" appendTo="body" formControlName="end_date"
+                                        [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" />
+                                </div>
+
+                            </div>
+                        </td>
+
+                        <td class=" border border-slate-300 ...">
+                            <select class="select-dropdown w-full text-sm" formControlName="procedure">
+                                <option value="0" selected>اختر الادارة</option>
+                                @for (item of procedure; track $index) {
+                                <option [value]="item?.key">
+                                    {{item?.value}}
+                                </option>
+                                }
+                            </select>
+                        </td>
+                        <td class=" border border-slate-300 ...">
+                            <input class="w-full" formControlName="number_value">
+                        </td>
+                        <td class=" px-2 border border-slate-300 w-80">
+                            <input class="w-full" formControlName="description">
+                        </td>
+                        <td class=" px-2 border border-slate-300 ...">
+                            <div class=" flex items-center justify-between text-sm px-1">
+                                <div class="relative max-w-sm">
+                                    <div class="absolute inset-y-0 end-0 flex items-center ps-0  pointer-events-none">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"
+                                            class="w-4 h-4">
+                                            <path
+                                                d="M12.75 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM7.5 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM8.25 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM9.75 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM10.5 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM12.75 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM14.25 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM15 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM16.5 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM15 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM16.5 13.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" />
+                                            <path fill-rule="evenodd"
+                                                d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <p-calendar dir="ltr" appendTo="body" formControlName="reminder_date"
+                                        [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" />
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-2 border border-slate-300">
+                            <svg (click)="deleteMission(j)" fill="red" version="1.1" id="Capa_1"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                class="size-5" viewBox="0 0 482.428 482.429" xml:space="preserve">
+                                <g>
+                                    <g>
+                                        <path d="M381.163,57.799h-75.094C302.323,25.316,274.686,0,241.214,0c-33.471,0-61.104,25.315-64.85,57.799h-75.098
+                                                                                			c-30.39,0-55.111,24.728-55.111,55.117v2.828c0,23.223,14.46,43.1,34.83,51.199v260.369c0,30.39,24.724,55.117,55.112,55.117
+                                                                                			h210.236c30.389,0,55.111-24.729,55.111-55.117V166.944c20.369-8.1,34.83-27.977,34.83-51.199v-2.828
+                                                                                			C436.274,82.527,411.551,57.799,381.163,57.799z M241.214,26.139c19.037,0,34.927,13.645,38.443,31.66h-76.879
+                                                                                			C206.293,39.783,222.184,26.139,241.214,26.139z M375.305,427.312c0,15.978-13,28.979-28.973,28.979H136.096
+                                                                                			c-15.973,0-28.973-13.002-28.973-28.979V170.861h268.182V427.312z M410.135,115.744c0,15.978-13,28.979-28.973,28.979H101.266
+                                                                                			c-15.973,0-28.973-13.001-28.973-28.979v-2.828c0-15.978,13-28.979,28.973-28.979h279.897c15.973,0,28.973,13.001,28.973,28.979
+                                                                                			V115.744z" />
+                                        <path
+                                            d="M171.144,422.863c7.218,0,13.069-5.853,13.069-13.068V262.641c0-7.216-5.852-13.07-13.069-13.07
+                                                                                			c-7.217,0-13.069,5.854-13.069,13.07v147.154C158.074,417.012,163.926,422.863,171.144,422.863z" />
+                                        <path
+                                            d="M241.214,422.863c7.218,0,13.07-5.853,13.07-13.068V262.641c0-7.216-5.854-13.07-13.07-13.07
+                                                                                			c-7.217,0-13.069,5.854-13.069,13.07v147.154C228.145,417.012,233.996,422.863,241.214,422.863z" />
+                                        <path
+                                            d="M311.284,422.863c7.217,0,13.068-5.853,13.068-13.068V262.641c0-7.216-5.852-13.07-13.068-13.07
+                                                                                			c-7.219,0-13.07,5.854-13.07,13.07v147.154C298.213,417.012,304.067,422.863,311.284,422.863z" />
+                                    </g>
+                                </g>
+                            </svg>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            <!-- <div class="grid md:grid-cols-12 grid-cols-1  items-center gap-x-4  my-3">
+                <label class="md:col-span-3   bg-blue-200 p-2 mt-1" for="full_name">الموظف المسؤل عن اخذ
+                    الموافقة </label>
+                <p-dropdown appendTo="body" [options]="employees" optionLabel="name" dataKey="id" optionValue="id"
+                    formControlName="approval_employee_id" class="md:col-span-9  mt-1   bg-gray-60" [showClear]="false"
+                    placeholder="اختر الموظف"></p-dropdown>
+            </div> -->
+            <ul class="flex flex-wrap text-sm text-gray-900 dark:text-white pt-5">
+                <li class="flex items-center">
+                    <label class="checkbox">
+                        <input type="checkbox" />
+                        <svg viewBox="0 0 21 18">
+                            <symbol id="tick-path" viewBox="0 0 21 18" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.22003 7.26C5.72003 7.76 7.57 9.7 8.67 11.45C12.2 6.05 15.65 3.5 19.19 1.69"
+                                    fill="none" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" />
+                            </symbol>
+                            <defs>
+                                <mask id="tick">
+                                    <use class="tick mask" href="#tick-path" />
+                                </mask>
+                            </defs>
+                            <use class="tick" href="#tick-path" stroke="currentColor" />
+                            <path fill="white" mask="url(#tick)"
+                                d="M18 9C18 10.4464 17.9036 11.8929 17.7589 13.1464C17.5179 15.6054 15.6054 17.5179 13.1625 17.7589C11.8929 17.9036 10.4464 18 9 18C7.55357 18 6.10714 17.9036 4.85357 17.7589C2.39464 17.5179 0.498214 15.6054 0.241071 13.1464C0.0964286 11.8929 0 10.4464 0 9C0 7.55357 0.0964286 6.10714 0.241071 4.8375C0.498214 2.39464 2.39464 0.482143 4.85357 0.241071C6.10714 0.0964286 7.55357 0 9 0C10.4464 0 11.8929 0.0964286 13.1625 0.241071C15.6054 0.482143 17.5179 2.39464 17.7589 4.8375C17.9036 6.10714 18 7.55357 18 9Z" />
+                        </svg>
+                        <svg class="lines" viewBox="0 0 11 11">
+                            <path d="M5.88086 5.89441L9.53504 4.26746" />
+                            <path d="M5.5274 8.78838L9.45391 9.55161" />
+                            <path d="M3.49371 4.22065L5.55387 0.79198" />
+                        </svg>
+                    </label>
+                    <span class="mx-4  md:me-6 ">اكتمال المهمه يتطلب استطالع راي المستفيدين الكترونيا</span>
+                </li>
+                <li class="flex items-center">
+                    <label class="checkbox">
+                        <input type="checkbox" formControlName="repetition_on_faild" />
+                        <svg viewBox="0 0 21 18">
+                            <symbol id="tick-path" viewBox="0 0 21 18" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.22003 7.26C5.72003 7.76 7.57 9.7 8.67 11.45C12.2 6.05 15.65 3.5 19.19 1.69"
+                                    fill="none" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" />
+                            </symbol>
+                            <defs>
+                                <mask id="tick">
+                                    <use class="tick mask" href="#tick-path" />
+                                </mask>
+                            </defs>
+                            <use class="tick" href="#tick-path" stroke="currentColor" />
+                            <path fill="white" mask="url(#tick)"
+                                d="M18 9C18 10.4464 17.9036 11.8929 17.7589 13.1464C17.5179 15.6054 15.6054 17.5179 13.1625 17.7589C11.8929 17.9036 10.4464 18 9 18C7.55357 18 6.10714 17.9036 4.85357 17.7589C2.39464 17.5179 0.498214 15.6054 0.241071 13.1464C0.0964286 11.8929 0 10.4464 0 9C0 7.55357 0.0964286 6.10714 0.241071 4.8375C0.498214 2.39464 2.39464 0.482143 4.85357 0.241071C6.10714 0.0964286 7.55357 0 9 0C10.4464 0 11.8929 0.0964286 13.1625 0.241071C15.6054 0.482143 17.5179 2.39464 17.7589 4.8375C17.9036 6.10714 18 7.55357 18 9Z" />
+                        </svg>
+                        <svg class="lines" viewBox="0 0 11 11">
+                            <path d="M5.88086 5.89441L9.53504 4.26746" />
+                            <path d="M5.5274 8.78838L9.45391 9.55161" />
+                            <path d="M3.49371 4.22065L5.55387 0.79198" />
+                        </svg>
+                    </label>
+                    <span class="mx-4  md:me-6 ">تكرار المهمه حال فشلها</span>
+                </li>
+                <li class="flex items-center">
+                    <label class="checkbox">
+                        <input type="checkbox" (change)="onCheckRepeate($event)" />
+                        <svg viewBox="0 0 21 18">
+                            <symbol id="tick-path" viewBox="0 0 21 18" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.22003 7.26C5.72003 7.76 7.57 9.7 8.67 11.45C12.2 6.05 15.65 3.5 19.19 1.69"
+                                    fill="none" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" />
+                            </symbol>
+                            <defs>
+                                <mask id="tick">
+                                    <use class="tick mask" href="#tick-path" />
+                                </mask>
+                            </defs>
+                            <use class="tick" href="#tick-path" stroke="currentColor" />
+                            <path fill="white" mask="url(#tick)"
+                                d="M18 9C18 10.4464 17.9036 11.8929 17.7589 13.1464C17.5179 15.6054 15.6054 17.5179 13.1625 17.7589C11.8929 17.9036 10.4464 18 9 18C7.55357 18 6.10714 17.9036 4.85357 17.7589C2.39464 17.5179 0.498214 15.6054 0.241071 13.1464C0.0964286 11.8929 0 10.4464 0 9C0 7.55357 0.0964286 6.10714 0.241071 4.8375C0.498214 2.39464 2.39464 0.482143 4.85357 0.241071C6.10714 0.0964286 7.55357 0 9 0C10.4464 0 11.8929 0.0964286 13.1625 0.241071C15.6054 0.482143 17.5179 2.39464 17.7589 4.8375C17.9036 6.10714 18 7.55357 18 9Z" />
+                        </svg>
+                        <svg class="lines" viewBox="0 0 11 11">
+                            <path d="M5.88086 5.89441L9.53504 4.26746" />
+                            <path d="M5.5274 8.78838L9.45391 9.55161" />
+                            <path d="M3.49371 4.22065L5.55387 0.79198" />
+                        </svg>
+                    </label>
+                    <span class="mx-4  md:me-6 ">تكرار المهمه خلال فترة محددة</span>
+                </li>
+
+            </ul>
+            <p-dialog header="تحديد تكرار المهمة" [modal]="true" [(visible)]="visible2"
+                [style]="{ width: '25rem','min-height':'20rem' }">
+
+                <div class=" gap-3 mb-3">
+                    <label for="username" class="font-semibold w-6rem">تتكرر المهمة بشكل :</label>
+                    <p-dropdown [options]="repeate_type" optionValue="key" formControlName="repeat_type"
+                        class="w-full    bg-gray-60" optionLabel="value" [showClear]="false"
+                        placeholder="اختر طبيعة التكرار"></p-dropdown>
+                </div>
+                <div class="flex align-items-center gap-3 my-4">
+                    <div class="w-6/12">
+                        <label for="username" class="font-semibold w-6rem"> زمن تكرار المهمة :</label>
+                        <input type="number" name="full_name" id="full_name" formControlName="repeat_interval"
+                            class="w-full h-8 border-gray-300  rounded-md   border mt-1  px-4   bg-gray-60" value="" />
+                    </div>
+                    <div class=" w-6/12 mb-5">
+                        <label for="email" class="font-semibold w-6rem">تتكرر حتي تاريخ:</label>
+                        <div class=" rounded border-2">
+                            <p-calendar appendTo="body" placeholder="" formControlName="repeat_until"
+                                class="w-full"></p-calendar>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="flex justify-content-end gap-2">
+                    <button class=" bg-red-500 rounded-lg px-3 text-white py-1 mx-1"
+                        (click)="closeRepeateModal()">الغاء</button>
+                    <button class=" bg-[#014daa] rounded-lg px-3 text-white py-1 mx-1"
+                        (click)="closeRepeateModal()">حفظ</button>
+                </div>
+            </p-dialog>
+        </div>
+        <div class="col-span-12 mx-1 bg-white  p-1 justify-end flex">
+            <button class="bg-[#014daa] rounded-lg px-3 text-white py-1 mx-1" (click)="backRoute()">السابق</button>
+            <button class="bg-[#014daa] rounded-lg px-3 text-white py-1 mx-1 " (click)="addExecutivePlan()">حفظ
+            </button>
+            <!-- <button class="bg-[#014daa] rounded-lg px-3 text-white py-2 mx-1" (click)="confirm2($event)">التالي</button> -->
+        </div>
+    </div>
+    <!-- {{ExcutivePlanForm.value| json}} -->
+</form>
+<div class="m-2 mt-3 bg-white">
+    <h1 class="font-bold p-2 flex items-center">
+        <svg fill="#014daa" class="size-8" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 6 6 L 6 26 L 26 26 L 26 6 L 6 6 z" />
+        </svg>
+        المستفيدون
+    </h1>
+    <div class="card" dir="rtl">
+        @if ((selectedbeneficiaries ?? []).length>0) {
+        <p-table [value]="selectedbeneficiaries ?? []" [paginator]="true" [rows]="10"
+            [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>اسم الحالة </th>
+                    <th>رقم الهوية </th>
+                    <th> تاريخ التسجيل</th>
+                    <th>العمر</th>
+                    <th>الجنس</th>
+                    <th> رقم الملف</th>
+                    <th>الجوال</th>
+                    <th>المرض</th>
+                    <th>الحالة الاجتماعية</th>
+                    <th>الخدمات</th>
+                    <!-- <th>تم تقديم الخدمة</th> -->
+                    <th>ملاحظة</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-beneficiary>
+                <tr>
+                    <td>{{beneficiary?.name }}</td>
+                    <td>{{ beneficiary?.identity?.value }}</td>
+                    <td>{{ beneficiary?.createdAt | date }}</td>
+                    <td>{{beneficiary?.age}}</td>
+                    <td>{{beneficiary?.gender}}</td>
+                    <td>{{beneficiary?.file_no}}</td>
+                    <td>{{beneficiary?.contact_numbers.number}}</td>
+                    <td>{{beneficiary?.illnesse?.name}}</td>
+
+                    <td>{{beneficiary?.marital_status}}</td>
+                    <td>
+                        <ul>
+                            @for (service of
+                            beneficiary?.beneficiary_sevices; track
+                            $index) {
+                            <li>{{service.service?.name}}</li>
+                            }
+                        </ul>
+                    </td>
+
+                    <td>{{beneficiary.note}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+        }@else if ((selectedEmployees ?? []).length>0) {
+        <!-- <p-table [value]="selectedEmployees ?? []" [paginator]="true" [rows]="5"
+            [tableStyle]="{ 'min-width': '70rem' }">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>الاسم </th>
+                    <th> القسم</th>
+                    <th> الجوال</th>
+                    <th>العنوان </th>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-employee>
+                <tr>
+                    <td>{{ employee?.name }}</td>
+                    <td>{{employee?.department?.name}}</td>
+                    <td>{{ employee?.mobile }}</td>
+                    <td>{{ employee?.address }}</td>
+
+                </tr>
+            </ng-template>
+        </p-table> -->
+        <app-beneficiary-employees [data]="selectedEmployees ?? []" [paginator]="true" [rows]="5"
+            [tableStyle]="{ 'min-width': '70rem' }"></app-beneficiary-employees>
+        }@else if((selectedDirecBoard ?? []).length>0){
+            <app-beneficiary-director-board [data]="selectedDirecBoard ?? []" [paginator]="true" [rows]="5"
+            [tableStyle]="{ 'min-width': '70rem' }"></app-beneficiary-director-board>
+        }
+    </div>
+</div>
+<p-confirmDialog></p-confirmDialog>
+<!-- table dialog to choose beneficiaries -->
+<p-dialog header="اختيار المستفيدون" [(visible)]="visible" [modal]="true" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+    [style]="{ width: '90vw',height:'90vh' }" [draggable]="false" [resizable]="false">
+    <div class="card p-3" dir="ltr">
+        @if (displayEmplyees) {
+        <p-table #myTab [value]="employees" dataKey="id" [tableStyle]="{ 'min-width': '50rem' }"
+            [selection]="selectedEmployees" (selectionChange)="onEmplyeeSelectionChange($event)" [selectAll]="selectAll"
+            (selectAllChange)="onEmployeeSelectAllChange($event)" [paginator]="true" [rows]="9"
+            [totalRecords]="employees.length" [loading]="loading">
+            <ng-template pTemplate="header">
+                <tr>
+                    <!-- <th style="width: 4rem"></th> -->
+                    <th> القسم</th>
+                    <th> الجوال</th>
+                    <th>العنوان </th>
+                    <th>الاسم </th>
+                    <th style="width: 4rem">
+                        <p-tableHeaderCheckbox />
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <p-dropdown [options]="departments" optionLabel="name" optionValue="id" appendTo="body"
+                            (onChange)="onDeparmentChange($event)" class="md:col-span-5  mt-1 " [showClear]="false"
+                            placeholder="اختر القسم"></p-dropdown>
+                    </th>
+                    <th></th>
+                    <th></th>
+                    <th>
+                        <input dir="rtl" pInputText type="text" placeholder="البحث بالاسم"
+                            [(ngModel)]="emplyeeFilters.name" (input)="onFilterChange()" />
+                    </th>
+                    <th></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-employee>
+                <tr>
+                    <td>{{employee?.department?.name}}</td>
+                    <td>{{ employee?.mobile }}</td>
+                    <td>{{ employee?.address }}</td>
+                    <td>{{ employee?.name }}</td>
+                    <td>
+                        <p-tableCheckbox [value]="employee"></p-tableCheckbox>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        }
+        @else if (beneficiaries.length>0){
+        <!--  filters  -->
+        <div class="grid grid-cols-12 gap-2 my-2" dir="rtl">
+            <div class="col-span-2">
+                <input dir="rtl" type="text" placeholder="البحث بالاسم" [(ngModel)]="beneficaryFilters.name"
+                    (input)="onBeneficiaryFilterChange()"
+                    class="w-full h-8 border-gray-300  rounded-md   border mt-1  px-4   bg-gray-60" />
+                <input dir="rtl" type="text" placeholder="البحث بالهوية" [(ngModel)]="beneficaryFilters.identity"
+                    (input)="onBeneficiaryFilterChange()"
+                    class="w-full h-8 border-gray-300  rounded-md   border mt-1  px-4   bg-gray-60" />
+            </div>
+            <div class="col-span-2">
+                <input dir="rtl" type="text" placeholder="البحث بالجوال" [(ngModel)]="beneficaryFilters.contact_number"
+                    (input)="onBeneficiaryFilterChange()"
+                    class="w-full h-8 border-gray-300  rounded-md   border mt-1  px-4   bg-gray-60" />
+                <input dir="rtl" type="text" placeholder="البحث بالهاتف" [(ngModel)]="beneficaryFilters.contact_number"
+                    (input)="onBeneficiaryFilterChange()"
+                    class="w-full h-8 border-gray-300  rounded-md   border mt-1  px-4   bg-gray-60" />
+            </div>
+            <div class="col-span-2">
+                <input dir="rtl" type="text" placeholder="البحث برقم الملف" [(ngModel)]="beneficaryFilters.file_no"
+                    (input)="onBeneficiaryFilterChange()"
+                    class="w-full h-8 border-gray-300  rounded-md   border mt-1  px-4   bg-gray-60" />
+                <input dir="rtl" type="text" placeholder="البحث باسم المرض" [(ngModel)]="beneficaryFilters.illness_name"
+                    (input)="onBeneficiaryFilterChange()"
+                    class="w-full h-8 border-gray-300  rounded-md   border mt-1  px-4   bg-gray-60" />
+            </div>
+            <div class="col-span-2">
+                <input dir="rtl" type="text" placeholder="البحث بالاسم" [(ngModel)]="beneficaryFilters.name"
+                    (input)="onBeneficiaryFilterChange() "
+                    class="w-full h-8 border-gray-300  rounded-md   border   px-4  mb-1  bg-gray-60" />
+                <p-dropdown [options]="services" optionLabel="name" optionValue="id" appendTo="body"
+                    (onChange)="onServiceChange($event)" class="col-span-2  mt-1 " [showClear]="true"
+                    placeholder="بالحث بالخدمة"></p-dropdown>
+
+            </div>
+            <div class="col-span-3">
+                <div class="flex">
+                    <span class="mx-1">من تاريخ</span>
+                    <p-calendar class="myCalender mb-2" (onSelect)="onBeneficiaryFilterChange()" appendTo="body"
+                        [(ngModel)]="beneficaryFilters.start_date" />
+                </div>
+                <div class="flex">
+                    <span class="mx-1">الي تاريخ</span>
+                    <p-calendar class="myCalender" (onSelect)="onBeneficiaryFilterChange()" appendTo="body"
+                        [(ngModel)]="beneficaryFilters.end_date" />
+                </div>
+            </div>
+
+        </div>
+        <p-table #myTab [value]="beneficiaries" dataKey="id" [tableStyle]="{ 'min-width': '50rem' }"
+            [selection]="selectedbeneficiaries" (selectionChange)="onBeneficiarySelectionChange($event)"
+            [selectAll]="selectAll" (selectAllChange)="onbenficiarySelectAllChange($event)" [paginator]="false"
+            [rows]="9" [totalRecords]="beneficiaries.length">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>الخدمات</th>
+                    <th>المرض</th>
+                    <th>الجوال</th>
+                    <th>الحالة الاجتماعية</th>
+                    <th>العمر</th>
+                    <th>الجنس</th>
+                    <th> رقم الملف</th>
+                    <th> تاريخ التسجيل</th>
+                    <th>رقم الهوية </th>
+                    <th>اسم الحالة </th>
+                    <th style="width: 4rem">
+                        <p-tableHeaderCheckbox />
+                    </th>
+                </tr>
+
+            </ng-template>
+            <ng-template pTemplate="body" let-beneficiary>
+                <tr>
+                    <td>
+                        <ul>
+                            @for (service of beneficiary.beneficiary_sevices; track $index) {
+                            <li>{{service.service?.name}}</li>
+                            }
+                        </ul>
+                    </td>
+                    <td>{{beneficiary.illnesse?.name}}</td>
+                    <td>{{beneficiary?.contact_numbers[0]?.number}}</td>
+                    <td>{{beneficiary?.marital_status}}</td>
+                    <td>{{beneficiary?.age}}</td>
+                    <td>{{beneficiary?.gender}}</td>
+                    <td>{{beneficiary?.file_no}}</td>
+                    <td>{{ beneficiary?.createdAt | date }}</td>
+                    <td>{{ beneficiary?.identity?.value }}</td>
+                    <td>{{ beneficiary?.name }}</td>
+                    <td>
+                        <p-tableCheckbox [value]="beneficiary"></p-tableCheckbox>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        }@else if(directorBoardsMemebers?.length){
+        <p-table #myTab [value]="directorBoardsMemebers" dataKey="id" [tableStyle]="{ 'min-width': '50rem' }"
+            [selection]="selectedDirecBoard" (selectionChange)="onDirectorBoardsMemebersSelectionChange($event)"
+            [selectAll]="selectAll" (selectAllChange)="onDiectorsBoardSelectAllChange($event)" [paginator]="true"
+            [rows]="9" [totalRecords]="directorBoardsMemebers.length" [loading]="loading">
+            <ng-template pTemplate="header">
+                <tr>
+                    <!-- <th style="width: 4rem"></th> -->
+                    
+                    <th class="border border-slate-300 p-1 ...">رقم التواصل</th>
+                    <th class="border border-slate-300 p-1 ...">رقم الهوية</th>
+                    <th class="border border-slate-300 p-1 ...">نوع العضوية </th>
+                    <th class="border border-slate-300 p-1  ...">العنوان الوطني </th>
+                    <th class="border border-slate-300 p-1 ...">اسم العضو</th>
+                  
+
+                    <th style="width: 4rem">
+                        <p-tableHeaderCheckbox />
+                    </th>
+                </tr>
+                <!-- <tr>
+                        <th>
+                            <p-dropdown [options]="departments" optionLabel="name" optionValue="id" appendTo="body"
+                                (onChange)="onDeparmentChange($event)" class="md:col-span-5  mt-1 " [showClear]="false"
+                                placeholder="اختر القسم"></p-dropdown>
+                        </th>
+                        <th></th>
+                        <th></th>
+                        <th>
+                            <input dir="rtl" pInputText type="text" placeholder="البحث بالاسم" [(ngModel)]="emplyeeFilters.name"
+                                (input)="onFilterChange()" />
+                        </th>
+                        <th></th>
+                    </tr> -->
+            </ng-template>
+            <ng-template pTemplate="body" let-item>
+                <tr>
+
+                   
+                    <td class=" p-2 border border-slate-300 ...">{{item.mobile}}</td>
+                    <td class=" p-2 border border-slate-300 ...">{{item.ID_number}}</td>
+                    <td class=" p-2 border border-slate-300 ...">{{item.membership_type}}</td>
+                    <td class=" p-2 border border-slate-300 ...">{{item.address}}</td>
+                    <td class=" p-2 border border-slate-300 ...">{{item.name}}</td>
+                    <td>
+                        <p-tableCheckbox [value]="item"></p-tableCheckbox>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        }
+        <button class="bg-blue-700 text-white rounded px-3 py-1" (click)="closeModal()">تم</button>
+    </div>
+</p-dialog>
+<!-- add indicator form modal -->
+<p-dialog header="اضافة مؤشر" [modal]="true" [(visible)]="addIndicatorVisible"
+    [style]="{ 'width': '50%','max-width':'90%' }">
+    <div class="">
+        <form class=" bg-white" [formGroup]="addIndicatorForm">
+            <div class=" grid grid-cols-12 gap-4 p-8">
+                <div class="col-span-12">
+                    <label class=" text-sm mt-2">اسم المؤشر <span class="text-red-500 font-bold">*</span></label>
+                    <input type="text" placeholder="ادخل اسم المؤشر" formControlName="title"
+                        class=" mb-2 bg-white border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+                <div class="col-span-12">
+                    <label class="col-span-2 text-sm mt-2">الوصف</label>
+                    <textarea id="message" rows="4" formControlName="description"
+                        class="col-span-10 block p-2.5 w-full text-sm text-gray-900 bg-white  border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="ادخل وصف المؤشر"></textarea>
+                </div>
+                <div class="col-span-12">
+                    <label class=" text-sm mt-2">المستهدف <span class="text-red-500 font-bold">*</span></label>
+                    <input type="number" placeholder="ادخل اسم المؤشر" formControlName="target"
+                        class=" mb-2 bg-white border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+                <div class="bg-white flex justify-end col-span-12 px-1  p-2">
+
+                    <button class="bg-blue-800 rounded-lg px-8 py-1 text-white" (click)="addIndicator()">حفظ</button>
+
+                </div>
+            </div>
+        </form>
+        <!-- {{addIndicatorForm.value | json}} -->
+    </div>
+</p-dialog>
+<p-dialog header="اضافة نشاط" [modal]="true" [(visible)]="addActivityVisible"
+    [style]="{ 'width': '50%','max-width':'90%' }">
+    <div class="">
+        <form class=" bg-white" [formGroup]="addActivityForm">
+            <div class=" grid grid-cols-12 gap-4 p-8">
+                <div class="col-span-12">
+                    <label class=" text-sm mt-2">اسم النشاط <span class="text-red-500 font-bold">*</span></label>
+                    <input type="text" placeholder="ادخل اسم النشاط" formControlName="name"
+                        class=" mb-2 bg-white border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+                <div class="col-span-12">
+                    <label class="col-span-2 text-sm mt-2">الوصف</label>
+                    <textarea id="message" rows="4" formControlName="description"
+                        class="col-span-10 block p-2.5 w-full text-sm text-gray-900 bg-white  border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="ادخل وصف النشاط"></textarea>
+                </div>
+                <div class="bg-white flex justify-end col-span-12 px-1  p-2">
+
+                    <button class="bg-blue-800 rounded-lg px-8 py-1 text-white" (click)="addActivity()">حفظ</button>
+
+                </div>
+            </div>
+        </form>
+        <!-- {{addActivityForm.value | json}} -->
+    </div>
+</p-dialog>
+<p-dialog header="اضافة أثر متوقع" [modal]="true" [(visible)]="addExpected_impactVisible"
+    [style]="{ 'width': '50%','max-width':'90%' }">
+    <div class="">
+        <form class=" bg-white" [formGroup]="addExpected_impactForm">
+            <div class=" grid grid-cols-12 gap-4 p-8">
+                <div class="col-span-12">
+                    <label class=" text-sm mt-2">اسم الاثر <span class="text-red-500 font-bold">*</span></label>
+                    <input type="text" placeholder="ادخل اسم المؤشر" formControlName="title"
+                        class=" mb-2 bg-white border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+                <div class="col-span-12">
+                    <label class="col-span-2 text-sm mt-2">الوصف</label>
+                    <textarea id="message" rows="4" formControlName="description"
+                        class="col-span-10 block p-2.5 w-full text-sm text-gray-900 bg-white  border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="ادخل وصف الاثر"></textarea>
+                </div>
+                <div class="col-span-12">
+                    <label class=" text-sm mt-2">المستهدف <span class="text-red-500 font-bold">*</span></label>
+                    <input type="number" placeholder="ادخل اسم المؤشر" formControlName="target"
+                        class=" mb-2 bg-white border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+                <div class="bg-white flex justify-end col-span-12 px-1  p-2">
+
+                    <button class="bg-blue-800 rounded-lg px-8 py-1 text-white"
+                        (click)="addExpected_impact()">حفظ</button>
+
+                </div>
+            </div>
+        </form>
+        <!-- {{addExpected_impactForm.value | json}} -->
+    </div>
+</p-dialog>

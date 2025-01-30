@@ -1,0 +1,195 @@
+<div class=" bg-white m-4 rounded-lg">
+    <div class="flex justify-between border-b-2 p-2">
+        <span class="flex items-center">
+            <svg class="w-5 h-5 bi bi-circle-fill" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
+                fill="#b3ff66">
+                <circle cx="8" cy="8" r="8" />
+            </svg>
+            <span class="font-bold mx-1"> عرض الخطة المرحلية</span>
+        </span>
+        <h3 class="mx-1  mt-1   text-sm p-2"> الخطة الاستراتيجية :
+            {{plan.Strategic_plan?.name}}
+        </h3>
+    </div>
+    @if(plan){
+    <div class="grid grid-cols-12 lg:gap-x-16 lg:m-4 m-1 p-2  items-center">
+        <div class="col-span-8 lg:px-2 px-1 rounded-md border border-gray-300 bg-blue-100 p-2">
+            {{plan?.title}}
+        </div>
+        <div class="col-span-2 lg:px-2 px-1 rounded-md border-gray-300 bg-blue-100 mx-1 p-2">
+            {{plan?.start_date |date}}
+        </div>
+        <div class="col-span-2 lg:px-2 px-1 rounded-md border-gray-300 bg-blue-100 p-2 ">
+            {{plan?.end_date | date}}
+        </div>
+        <div class="col-span-12 bg-white lg:p-4 p-2 pt-0 mb-4 mt-8 text-sm">
+            <div class="">
+                <div class="flex items-center">
+                    <svg fill="#014daa" class="size-6" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 6 6 L 6 26 L 26 26 L 26 6 L 6 6 z" />
+                    </svg>
+                    <h5 class="my-1  font-bold "> الهدف الاساسي للخطة</h5>
+                </div>
+
+                <div class="flex bg-blue-100">
+                    <div class="w-6/12 p-2 ">
+                        الهدف الرئيسي
+                    </div>
+                    <div class="w-6/12 p-2 ">
+                        الوصف
+                    </div>
+                </div>
+                <div class="border border-1 grid grid-cols-12">
+                    <div class="col-span-6">
+                        <div class=" border border-1 p-1">
+                            {{plan.goal?.name}}
+                        </div>
+                    </div>
+                    <div class="col-span-6">
+                        <div class=" border border-1 p-1">
+                            {{plan.goal?.description}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-12  lg:p-4 p-2 mt-8 text-sm">
+            <div class="">
+                <div class="flex items-center">
+                    <svg fill="#014daa" class="size-6" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 6 6 L 6 26 L 26 26 L 26 6 L 6 6 z" />
+                    </svg>
+                    <h5 class="my-1  font-bold "> الاهداف الفرعية للخطة</h5>
+                </div>
+
+                <div class="flex bg-blue-100">
+                    <div class="w-5/12 p-2 ">
+                        الاهداف الفرعية
+                    </div>
+                    <div class="w-5/12 p-2 ">
+                        الوصف
+                    </div>
+                    <div class="w-2/12 p-2 ">
+                        الوصف
+                    </div>
+                </div>
+                <div class="border border-1 grid grid-cols-12">
+                    @for (item of plan?.sub_goals; track $index) {
+                    <div class="col-span-5 border border-1">
+                        <div class="  p-1">
+                            {{item.sub_goal.name}}
+                        </div>
+                    </div>
+                    <div class="col-span-5 border border-1">
+                        <div class="  p-1">
+                            {{item.sub_goal.description}}
+                        </div>
+                    </div>
+                    <div class="col-span-2 border border-1">
+                        <div class="  p-1">
+                            <button (click)="showDialog(item.sub_goal.id)" routerLinkActive="router-link-active"
+                                class=" border-b px-3 text-sm  py-1 mx-1 ">اضافة مهمة تنفيذية </button>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+    <div class=" p-2  mx-3  Container">
+        <div class="grid grid-cols-12 px-3 Container">
+            <div class="col-span-12  p-2 mb-2">
+                <div class="border-b-2 w-full flex  items-center justify-between p-2 ">
+                    <span class="px-1 text-sm">المهام التنفيذية</span>
+                    <div class="   p-1.5 justify-end flex">
+                        <button class="border border-[#014daa] rounded-lg px-3  py-1 mx-1"
+                            (click)="backRoute()">السابق</button>
+                        <button class="bg-[#014daa] rounded-lg px-3 text-white py-1 mx-1"
+                            [routerLink]="['/home/edit-phased-plan',plan.id]">تعديل</button>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-12 flex mb-2 justify-end">
+                <input type="text" class="h-8 border border-gray-500 input-search mx-2 w-4/12" [(ngModel)]="nameQuery"
+                    (input)="searchPlans()" placeholder="البحث بالهدف" />
+                <p-calendar class="mx-2 w-2/12" placeholder="تاريخ البداية" [(ngModel)]="startDateQuery"
+                    (ngModelChange)="searchPlans()" [showButtonBar]="true"></p-calendar>
+                <p-calendar placeholder="تاريخ النهاية" [(ngModel)]="endDateQuery" class="w-2/12"
+                    (ngModelChange)="searchPlans()" [showButtonBar]="true"></p-calendar>
+
+            </div>
+            <div class="col-span-12 ">
+                @for (item of filteredPlansByMonth ; track $index){
+                <div class="col-span-12 ">
+                    <div class="grid grid-cols-12 mx-3 w-full">
+                        <h2 class="col-span-12 ">{{ item.month }}</h2>
+                        @for (plan of item.plans ; track $index) {
+                        <div class="md:col-span-3 border border-gray-400 col-span-12 mx-2 p-3 bg-blue-100 rounded-lg mb-2 mt-3 text-sm cursor-pointer"
+                            [routerLink]="['/home/excutive-plan',plan.id]" routerLinkActive="router-link-active">
+
+                            <div class="grid grid-cols-12">
+                                <div class="col-span-9">
+                                    <span class="flex items-center">
+                                        <svg class="w-4 h-4 bi bi-circle-fill" viewBox="0 0 16 16"
+                                            xmlns="http://www.w3.org/2000/svg" fill="green">
+                                            <circle cx="8" cy="8" r="8" />
+                                        </svg>
+                                        <span class="font-bold mx-1"> {{plan.name}}</span>
+                                    </span>
+                                    <h1 class="text-sm col-span-12 mt-1"> {{plan.sub_goal.name}}</h1>
+                                </div>
+                                <div class="col-span-3 m-auto flex justify-end">
+                                    <svg  viewBox="0 0 270.92 270.92" fill="#808184"
+                                        style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                                        version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" class="size-12">
+
+                                        <defs>
+                                        </defs>
+                                        <g id="Layer_x0020_1">
+                                            <path class="fil0"
+                                                d="M191.33 45.73l-20.59 0c-1.95,0 -3.53,1.57 -3.53,3.52 0,1.95 1.58,3.53 3.53,3.53l20.59 0c6.14,0 11.15,5.29 11.15,11.82l0 154.28c0,6.52 -5.01,11.82 -11.15,11.82l-111.73 0c-6.15,0 -11.15,-5.3 -11.15,-11.82l0 -154.28c0,-6.53 5,-11.82 11.15,-11.82l20.59 0c1.95,0 3.53,-1.58 3.53,-3.53 0,-1.95 -1.58,-3.52 -3.53,-3.52l-20.59 0c-10.05,0 -18.21,8.45 -18.21,18.87l0 154.28c0,10.42 8.16,18.87 18.21,18.87l111.73 0c10.04,0 18.21,-8.45 18.21,-18.87l0 -154.28c0,-10.42 -8.17,-18.87 -18.21,-18.87zm-86.94 123.83c-1.96,0 -3.54,1.58 -3.54,3.53 0,1.95 1.58,3.53 3.54,3.53l31.07 0c1.95,0 3.53,-1.58 3.53,-3.53 0,-1.95 -1.58,-3.53 -3.53,-3.53l-31.07 0zm65.69 -21c0,-1.95 -1.58,-3.52 -3.53,-3.52l-62.16 0c-1.96,0 -3.54,1.57 -3.54,3.52 0,1.95 1.58,3.53 3.54,3.53l62.16 0c1.95,0 3.53,-1.58 3.53,-3.53zm-3.53 -29.29l-62.16 0c-1.96,0 -3.54,1.58 -3.54,3.53 0,1.95 1.58,3.53 3.54,3.53l62.16 0c1.95,0 3.53,-1.58 3.53,-3.53 0,-1.95 -1.58,-3.53 -3.53,-3.53zm-65.7 -21.42c0,1.95 1.58,3.52 3.54,3.52l62.16 0c1.95,0 3.53,-1.57 3.53,-3.52 0,-1.95 -1.58,-3.53 -3.53,-3.53l-62.16 0c-1.96,0 -3.54,1.58 -3.54,3.53zm2.87 -32.92c0,-1.95 -1.58,-3.53 -3.53,-3.53l-6.24 0c-7.56,0 -13.7,6.15 -13.7,13.71l0 127.78c0,7.55 6.14,13.71 13.7,13.71l83.03 0c7.56,0 13.69,-6.16 13.69,-13.71l0 -127.78c0,-7.56 -6.13,-13.71 -13.69,-13.71l-6.24 0c-1.95,0 -3.53,1.58 -3.53,3.53 0,1.95 1.58,3.53 3.53,3.53l6.24 0c3.66,0 6.64,2.98 6.64,6.65l0 127.78c0,3.66 -2.98,6.65 -6.64,6.65l-83.03 0c-3.66,0 -6.64,-2.99 -6.64,-6.65l0 -127.78c0,-3.67 2.98,-6.65 6.64,-6.65l6.24 0c1.95,0 3.53,-1.58 3.53,-3.53zm13.29 -12.6l36.91 0 0 17.04 -36.91 0 0 -17.04zm18.61 -12.09c3.33,0 6.17,2.1 7.3,5.04l-14.61 0c1.12,-2.94 3.97,-5.04 7.31,-5.04zm-22.14 36.17l43.97 0c1.95,0 3.53,-1.58 3.53,-3.53l0 -24.07c0,-1.95 -1.58,-3.53 -3.53,-3.53l-7.26 0c-1.31,-6.87 -7.33,-12.1 -14.57,-12.1 -7.24,0 -13.26,5.21 -14.58,12.1l-7.56 0c-1.95,0 -3.53,1.58 -3.53,3.53l0 24.07c0,1.95 1.58,3.53 3.53,3.53z" />
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <!-- <div class="flex justify-end w-full text-xs px-4 items-center">
+                                <div class="w-full bg-gray-200 rounded-full h-2.5 mx-1 dark:bg-gray-700" dir="ltr">
+                                    <div class="bg-green-300 h-2.5 rounded-full" style="width: 45%"></div>
+                                </div>
+                                <svg fill="#00FF00" width="17px" height="17px" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" />
+                                </svg>
+                            </div> -->
+                            <!-- <button [routerLink]="['/home/plans',item.id]" routerLinkActive="router-link-active"
+                                class="text-sm bg-blue-600 text-white px-2 rounded">التفاصيل</button> -->
+                        </div>
+                        }
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+
+    </div>
+    <p-dialog header="اختر الفئة المستفيدة " [(visible)]="visible" [style]="{ width:'25rem' }">
+
+        <!-- <p-dropdown [options]="type" optionLabel="value" optionValue="value" 
+         [(ngModel)]="selectedType" class="md:col-span-5  mt-1   bg-gray-60" [showClear]="true"
+        placeholder="اختر المستفيد"></p-dropdown> -->
+        <div *ngFor="let type of type" class="field-checkbox">
+            <p-radioButton [inputId]="type.key" [value]="type.value" [(ngModel)]="selectedType" />
+            <label [for]="type.key" class="ml-2">
+                {{ type.value }}
+            </label>
+        </div>
+        <div class="flex justify-end gap-2 items-end ">
+            <!-- <p-button label="اغلاق" severity="secondary"  (onClick)="visible = false" /> -->
+            <p-button label="حفظ" class="bg-blue-500 text-white rounded px-2 py-1" (onClick)="visible = false"
+                [routerLink]="['/home/add-executive-plan',plan.id,sub_goal_id]"
+                [queryParams]="{ beneficiariesType: selectedType}" />
+        </div>
+    </p-dialog>

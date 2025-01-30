@@ -1,0 +1,324 @@
+<div class="card flex justify-content-center">
+    <p-accordion [activeIndex]="accordioneIndex">
+        <p-accordionTab header="اضافة موظف جديد">
+            <div class="m-3">
+                <form [formGroup]="employeeForm">
+                    @if (!updatedMood) {
+                    <div class="flex md:justify-end justify-center   w-full  px-8">
+                        <button class=" bg-blue-800 rounded-lg px-8 py-1 text-white " (click)="addEmployee()"
+                            label="Submit">حفظ</button>
+                    </div>
+                    }@else if (updatedMood) {
+                    <div class="flex md:justify-end justify-center   w-full  px-8">
+                        <button class=" bg-blue-800 rounded-lg px-5 py-1 text-white " (click)="updateEmplyee()"
+                            label="Submit">حفظ</button>
+                    </div>
+                    }
+                    <div class="bg-white rounded  shadow-lg p-1 px-4 p-4 mb-6 w-full">
+                        <div class="flex p-1 bg-blue-200 mb-5"><svg xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px"
+                                viewBox="0 0 512 640" enable-background="new 0 0 512 512" xml:space="preserve"
+                                width="20px" height="30px">
+                                <g>
+                                    <path
+                                        d="M75.4,125h110.2c7.8,0,14.1-6.3,14.1-14.1c0-7.8-6.3-14.1-14.1-14.1H75.4c-7.8,0-14.1,6.3-14.1,14.1   C61.3,118.7,67.6,125,75.4,125z" />
+                                    <path
+                                        d="M75.4,203.7h222.1c7.8,0,14.1-6.3,14.1-14.1c0-7.8-6.3-14.1-14.1-14.1H75.4c-7.8,0-14.1,6.3-14.1,14.1   C61.3,197.4,67.6,203.7,75.4,203.7z" />
+                                    <path
+                                        d="M75.4,282.4h222.1c7.8,0,14.1-6.3,14.1-14.1c0-7.8-6.3-14.1-14.1-14.1H75.4c-7.8,0-14.1,6.3-14.1,14.1   C61.3,276.1,67.6,282.4,75.4,282.4z" />
+                                    <path
+                                        d="M182,332.8H75.4c-7.8,0-14.1,6.3-14.1,14.1c0,7.8,6.3,14.1,14.1,14.1H182c7.8,0,14.1-6.3,14.1-14.1   C196.1,339.2,189.8,332.8,182,332.8z" />
+                                    <path
+                                        d="M148.5,411.5H75.4c-7.8,0-14.1,6.3-14.1,14.1c0,7.8,6.3,14.1,14.1,14.1h73.1c7.8,0,14.1-6.3,14.1-14.1   C162.7,417.8,156.3,411.5,148.5,411.5z" />
+                                    <path
+                                        d="M494.7,177.7c-17-17.4-45.4-22-65.3-3.4l-58.5,58.5V117.3c0-3.7-1.5-7.3-4.1-10L265.6,6.1c-2.6-2.6-6.2-4.1-10-4.1H44.4   C21,2,2,21,2,44.3v423.3C2,491,21,510,44.4,510h284.2c23.3,0,42.3-19,42.3-42.3v-97.5L498.1,243   C515.2,225.9,513.7,196.6,494.7,177.7z M322.7,103.2h-53l0-53L322.7,103.2z M342.7,467.7c0,7.8-6.3,14.1-14.1,14.1H44.4   c-7.8,0-14.1-6.3-14.1-14.1V44.3c0-7.8,6.3-14.1,14.1-14.1h197.2l0,87c0,7.8,6.3,14.1,14.1,14.1h87v129.8L219.5,384.3   c-1.9,1.9-3.2,4.3-3.8,6.9l-13.9,62.6c-1,4.7,0.4,9.6,3.8,13c4,3.8,8.4,4.6,13,3.8l62.6-13.9c2.6-0.6,5-1.9,6.9-3.8l54.5-54.5   V467.7z M478.1,223.1l-207,207l-36.9,8.2l8.2-36.9l207-207c6.5-6.2,17.4-4.3,25.4,3.4C482.6,205.5,484.1,217.1,478.1,223.1z" />
+                                </g>
+                            </svg>
+                            <h6 class="mx-1">بيانات الموظف</h6>
+                        </div>
+
+                        <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-6">
+                            <div class="lg:col-span-4">
+                                <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-6">
+                                    <div class="md:col-span-6 col-span-1  ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1 flex items-center">
+                                            <label class="md:col-span-1 " for="full_name">اسم الموظف</label>
+                                            <div class="md:col-span-5 ">
+                                                <input type="text" formControlName="name" name="full_name"
+                                                    class="w-full h-8 border-gray-400 border  mt-1  px-4   bg-gray-60"
+                                                    value="" />
+                                                @if(employeeForm.get('name')?.invalid && (submitted ||
+                                                employeeForm.get('name')?.touched))
+                                                {
+                                                <div class="w-full bg-red-100  p-1">
+                                                    الاسم مطلوب
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="md:col-span-6 col-span-1  ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1 flex items-center">
+                                            <label class="md:col-span-1 " for="full_name">الرقم الوظيفي </label>
+                                            <div class="md:col-span-5 ">
+                                                <input type="text" formControlName="job_number" name="full_name"
+                                                    class="w-full  h-8 border-gray-400 border mt-1  px-4   bg-gray-60"
+                                                    value="" />
+                                                @if(employeeForm.get('job_number')?.invalid && (submitted ||
+                                                employeeForm.get('job_number')?.touched))
+                                                {
+                                                <div class="w-full bg-red-100  p-1">
+                                                    الاسم مطلوب
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="md:col-span-6 col-span-1  ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1 flex items-center">
+                                            <label class="md:col-span-1 " for="full_name">رقم الهوية</label>
+                                            <div class="md:col-span-5 ">
+                                                <input type="text" formControlName="ID_number" name="full_name"
+                                                    class="w-full h-8 border-gray-400 border mt-1  px-4   bg-gray-60"
+                                                    value="" />
+                                                @if(employeeForm.get('ID_number')?.invalid && (submitted ||
+                                                employeeForm.get('ID_number')?.touched))
+                                                {
+                                                <div class="w-full bg-red-100  p-1">
+                                                    رقم الهوية مطلوب
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="md:col-span-6 col-span-1  ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1 flex items-center">
+                                            <label class="md:col-span-1 " for="full_name">العنوان </label>
+                                            <div class="md:col-span-5 ">
+                                                <input type="text" formControlName="address" name="full_name"
+                                                    class="w-full h-8 border-gray-400 border mt-1  px-4   bg-gray-60"
+                                                    value="" />
+                                                @if(employeeForm.get('address')?.invalid && (submitted ||
+                                                employeeForm.get('address')?.touched))
+                                                {
+                                                <div class="w-full bg-red-100  p-1">
+                                                    العنوان مطلوب
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="md:col-span-6 col-span-1  ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1 flex items-center">
+                                            <label class="md:col-span-1 " for="full_name">رقم الجوال</label>
+                                            <div class="md:col-span-5 ">
+                                                <input type="text" formControlName="mobile" name="full_name"
+                                                    class="w-full h-8 border-gray-400 border mt-1  px-4   bg-gray-60"
+                                                    value="" />
+                                                @if(employeeForm.get('mobile')?.invalid && (submitted ||
+                                                employeeForm.get('mobile')?.touched))
+                                                {
+                                                <div class="w-full bg-red-100  p-1">
+                                                    رقم الهاتف مطلوب
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="md:col-span-3 col-span-1  ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1 flex items-center">
+                                            <label class="md:col-span-2 " for="full_name">الجنس</label>
+                                            <div class="md:col-span-4 mt-1">
+                                                <!-- <input type="text" formControlName="gender" name="full_name"
+                                        class="w-full h-8 border-gray-400 border mt-1  px-4   bg-gray-60" value="" /> -->
+                                                <p-dropdown formControlName="gender" class="w-full mt-1"
+                                                    [options]="gender" optionValue="value" optionLabel="value"
+                                                    [showClear]="false" placeholder=""></p-dropdown>
+                                                @if(employeeForm.get('gender')?.invalid && (submitted ||
+                                                employeeForm.get('gender')?.touched))
+                                                {
+                                                <div class="w-full bg-red-100  p-1">
+                                                    الجنس مطلوب
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="md:col-span-3 col-span-1  ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1 flex items-center">
+                                            <label class="md:col-span-2 " for="full_name">تاريخ الميلاد</label>
+                                            <div class="md:col-span-4 ">
+                                                <p-calendar formControlName="birth_date" class="w-full  mt-1" />
+                                                @if(employeeForm.get('birth_date')?.invalid && (submitted ||
+                                                employeeForm.get('birth_date')?.touched))
+                                                {
+                                                <div class="w-full bg-red-100  p-1">
+                                                    تاريخ الميلاد مطلوب
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="md:col-span-6 col-span-1 bg-blue-50 p-2 ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1 flex items-center">
+                                            <label class="md:col-span-2 " for="full_name">هل الموظف نشط علي
+                                                السيستم؟</label>
+                                            <div class="col-span-4 flex items-center ">
+                                                <input id="default-checkbox" type="checkbox"
+                                                    formControlName="active_on_system"
+                                                    class=" w-4 h-4 text-blue-600 bg-gray-100 border-gray-500 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                <label for="default-checkbox"
+                                                    class=" ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                                    نعم </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @if (active_on_system?.value) {
+                                    <div class="md:col-span-3 col-span-1 ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1 flex items-center">
+                                            <label class="md:col-span-2 " for="full_name">الايميل </label>
+                                            <input type="email" formControlName="email" name="full_name"
+                                                class="md:col-span-4 h-8 border-gray-400 border mt-1  px-4   bg-gray-60"
+                                                value="" />
+                                        </div>
+                                    </div>
+                                    <div class="md:col-span-3 col-span-1 ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1 flex items-center">
+                                            <label class="md:col-span-2 " for="full_name">اسم المستخدم </label>
+                                            <input type="text" formControlName="user_name" name="full_name"
+                                                class="md:col-span-4 h-8 border-gray-400 border mt-1  px-4   bg-gray-60"
+                                                value="" />
+                                        </div>
+                                    </div>
+                                    @if (!updatedMood) {
+                                    <div class="md:col-span-3 col-span-1  ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1 flex items-center">
+                                            <label class="md:col-span-2 " for="full_name">كلمة المرور </label>
+                                            <input data-tooltip-target="tooltip-right" data-tooltip-placement="right"
+                                                type="password" formControlName="password" name="full_name"
+                                                class="md:col-span-4 h-8 border-gray-400 border mt-1  px-4   bg-gray-60"
+                                                value="" />
+                                            <div id="tooltip-right" role="tooltip"
+                                                class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                                رجاء حفظ كلمة المرور جيدا وتسليمها للموظف
+                                                <div class="tooltip-arrow" data-popper-arrow></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="md:col-span-3 col-span-1  ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1 flex items-center">
+                                            <label class="md:col-span-2 " for="full_name"> تاكيد كلمة المرور </label>
+                                            <input type="password" formControlName="confirmPassword" name="full_name"
+                                                class="md:col-span-4 h-8 border-gray-400 border mt-1  px-4   bg-gray-60"
+                                                value="" />
+                                        </div>
+                                        <div class="grid md:grid-cols-6 grid-cols-1 flex items-center"
+                                            *ngIf="employeeForm.get('confirmPassword')?.touched && employeeForm.get('confirmPassword')?.hasError('passwordMismatch')">
+                                            <small class="col-span-2"></small>
+                                            <small class="col-span-4 text-red-500">كلمة المرور غير متطابقة</small>
+                                        </div>
+                                    </div>
+                                    }
+                                    }
+                                    <div class="md:col-span-6 col-span-1  ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1 flex items-center ">
+                                            <label class="md:col-span-1 " for="full_name">صلاحية المستخدم </label>
+                                            <div class="md:col-span-5">
+                                                <p-dropdown formControlName="role_id" [options]="roles!" class="w-full "
+                                                    dataKey="id" optionValue="id" optionLabel="name" [showClear]="false"
+                                                    placeholder="اختر صلاحية المستخدم"></p-dropdown>
+                                                @if(employeeForm.get('role_id')?.invalid && (submitted ||
+                                                employeeForm.get('role_id')?.touched))
+                                                {
+                                                <div class="w-full bg-red-100  p-1">
+                                                    صلاحية المستخدم مطلوبة
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="md:col-span-6 col-span-1  ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1 flex items-center ">
+                                            <label class="md:col-span-1 " for="full_name">القسم التابع له</label>
+                                            <div class="md:col-span-5">
+                                                <p-dropdown formControlName="department_id" [options]="departments!"
+                                                    class="w-full " dataKey="id" optionValue="id" optionLabel="name"
+                                                    [showClear]="false" placeholder="اختر القسم"></p-dropdown>
+                                                @if(employeeForm.get('department_id')?.invalid && (submitted ||
+                                                employeeForm.get('department_id')?.touched))
+                                                {
+                                                <div class="w-full bg-red-100  p-1">
+                                                    القسم مطلوب
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @if (!employeeForm.get('image')!.value) {
+                            <div class="lg:col-span-2 p-8 pt-2 fileUploadContainer">
+                                <img class="m-auto" src="../../../assets/imags/profile.jpg">
+                                <input #fileInput class="fileInput" type="file" accept="image/*"
+                                    (change)="setFileData($event)" />
+                            </div>
+                            }
+                            @if (employeeForm.get('image')!.value) {
+                            <div class="lg:col-span-2 p-8 pt-2 fileUploadContainer">
+                                <img class="m-auto w-full" [src]='photoSrc'>
+                                <input #fileInput class="fileInput" type="file" multiple="multiple" accept="image/*"
+                                    (change)="setFileData($event)" />
+                            </div>
+                            }
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </p-accordionTab>
+    </p-accordion>
+</div>
+<div class="card p-2">
+    <table class="border-collapse border border-slate-400 w-full bg-white text-sm">
+        <thead class="bg-blue-500 text-white">
+            <tr class="p-1">
+                <th class="border border-slate-300 p-1 ...">اسم الموظف</th>
+                <th class="border border-slate-300 p-1 ...">رقم التواصل</th>
+                <th class="border border-slate-300 p-1 ...">رقم الهوية</th>
+                <th class="border border-slate-300 p-1 ...">العمر </th>
+                <th class="border border-slate-300 p-1  ...">القسم التابع له</th>
+                <th>التفاعلات</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of employees; track $index) {
+            <tr class="p-2">
+                <td class=" p-2 border border-slate-300 ...">{{item.name}}</td>
+                <td class=" p-2 border border-slate-300 ...">{{item.mobile}}</td>
+                <td class=" p-2 border border-slate-300 ...">{{item.ID_number}}</td>
+                <td class="p-2 border border-slate-300 text-center">{{item.age }} </td>
+                <td class=" p-2 border border-slate-300 ...">{{item?.department?.name}}</td>
+                <td class="flex justify-around	p-2 border border-slate-300">
+                    <svg (click)="getUdatedEmplyee(item)" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke-width="1.5" stroke="#1E429F" class="size-6 mx-1 cursor-pointer">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                    </svg>
+                    <svg (click)="confirmDeleteEmployee($event,item.id)" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke-width="1.5" stroke="red" class="size-6 mx-1 cursor-pointer">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                    </svg>
+
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
+<!-- {{employeeForm.value| json}} -->

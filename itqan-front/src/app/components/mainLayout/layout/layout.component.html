@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<p-sidebar [(visible)]="gfg" [baseZIndex]="10000" position="right" styleClass="p-sidebar-sm" dir="rtl">
+    <app-sidbar class=""></app-sidbar>
+</p-sidebar>
+
+<div class=" m-0 p-0 " dir="rtl">
+    <div class="grid grid-cols-12">
+        <div class="col-span-12  shadow-lg ">
+            <app-navbar></app-navbar>
+        </div>
+        <div class="col-span-12 mt-16">
+            <div class="flex flex-wrap bg-gray-100 w-full   h-screen">
+                <div class="lg:w-2/12 lg:block hidden  bg-white rounded p-3 shadow-lg pt-5   ">
+
+                    <app-sidbar></app-sidbar>
+                </div>
+                <div class="lg:w-10/12 w-full bg-gray-100 relative">
+                    <router-outlet></router-outlet>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

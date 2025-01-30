@@ -1,0 +1,27 @@
+.p-sidebar-content{
+    flex-grow: unset;
+}
+.sidebar{
+    width:300px;
+    position: fixed;
+}
+.test{
+    position: fixed;
+    top: 0px;
+    left: 0%;
+    right: 0%;
+    // height: 100px;
+}
+// .fixed-sidebar {
+//     position: fixed; /* Keeps the sidebar in a fixed position */
+//     top: 0; /* Aligns the sidebar with the top of the viewport */
+//     bottom: 0; /* Extends the sidebar to the bottom of the viewport */
+//     left: 0;
+//     overflow-y: auto; /* Adds a scrollbar when content overflows */
+//     height: 100vh; /* Ensures the sidebar spans the full height of the viewport */
+//     width: 16.6667%; /* Ensures proper width (e.g., 2/12 in Tailwind's terms) */
+//     background-color: white; /* Sidebar background */
+//     z-index: 10; /* Ensures it stacks above other content if necessary */
+//     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow for better appearance */
+// }
+

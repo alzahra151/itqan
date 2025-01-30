@@ -1,0 +1,82 @@
+:host ::ng-deep .p-accordion{
+    font-family: arabicFont !important;
+}
+:host ::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link{
+    // padding: 0;
+    background-color: #C3DDFD;
+}
+:host ::ng-deep .p-dropdown {
+  // background: #f8f085;
+  border: 1px solid #d1d5db;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+  border-radius: 0px;
+  width: 100%;
+  border-radius: 0px;
+  font-family: arabicFont !important;
+  //    padding-top:3px;
+  // padding-bottom:3px;
+}
+::ng-deep .p-inputtext {
+  padding: 0.3rem;
+}
+.fileUploadContainer {
+  padding: 10px;
+  display: flex;
+  // border: dashed 1px #979797;
+  text-align: center;
+  // max-height: 400px;
+  //  max-width: 400px;
+//   justify-content: center;
+  position: relative;
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  .noImageContainet {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+    button {
+      font-size: 11px;
+    }
+  }
+
+  .deleteButton {
+    position: absolute;
+    z-index: 10;
+    top: -25px;
+    inset-inline-end: -10px;
+    opacity: 50%;
+  }
+
+  .fileInput {
+    position: absolute;
+    z-index: 9;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    cursor: pointer;
+  }
+}
+::ng-deep .p-calendar .p-inputtext {
+  // height: 1.5rem;
+  padding: 0rem;
+  border: 1px solid rgb(161, 160, 160);
+
+}
+::ng-deep .p-calendar {
+  // height: 1.5rem;
+  padding: 0rem;
+  // direction: ltr;
+    width: 100%;
+//   background-color: aqua;
+}

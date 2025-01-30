@@ -1,0 +1,79 @@
+:host ::ng-deep .p-calendar  .p-inputtext {
+    padding: .1rem !important;
+    // padding-top: 0rem;
+    // padding-bottom: 0rem;
+    border: 1px solid rgb(225, 222, 222);
+    border-radius: 6px;
+}
+::ng-deep .p-dropdown {
+    background: #ffffff;
+    border: 1px solid #9fa0a2;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    border-radius: 5px !important;
+    width: 100%;
+    padding: 2px !important;
+ 
+}
+::ng-deep .p-dropdown-label {
+    font-family: arabicFont !important;
+     font-size: small;
+     color: #050505;
+}
+::ng-deep .p-dropdown-item {
+    font-family: arabicFont !important;
+     font-size: small;
+}
+::ng-deep .p-inputtext{
+    padding: .30rem;
+}
+
+::ng-deep .multiselect-dropdown .dropdown-btn .selected-item-container {
+    display: flex;
+    float: right !important;
+}
+::ng-deep .multiselect-dropdown .dropdown-btn  {
+    text-align: right !important;
+}
+::ng-deep .multiselect-dropdown[_ngcontent-ng-c692748064] .dropdown-btn[_ngcontent-ng-c692748064] .dropdown-multiselect__caret[_ngcontent-ng-c692748064] {
+    line-height: 16px;
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    width: 40px;
+    height: 38px;
+    right: unset !important;
+    left: 1px !important;
+    top: 0;
+    padding: 4px 8px;
+    margin: 0;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: transform .2s ease;
+}
+::ng-deep .dropdown-list li{
+    padding: 6px 10px;
+    cursor: pointer;
+     text-align: right !important; 
+}
+::ng-deep .multiselect-dropdown .dropdown-btn .selected-item-container .selected-item {
+    border: 1px solid #b7b8b8 !important;
+    margin-right: 4px;
+    background: #cfe9ff !important;
+    padding: 2px 5px;
+    color: #050505 !important;
+    border-radius: 6px !important;
+    float: left;
+    max-width: unset !important;
+}
+::ng-deep .multiselect-dropdown .dropdown-btn .selected-item-container .selected-item>span{
+    color: #050505 !important;  
+}
+::ng-deep .multiselect-dropdown .dropdown-btn .selected-item-container .selected-item>a{
+    color: red !important;  
+    // background-color: red !important;
+    border-radius: 50% !important;
+    width: 8px !important;
+    height: 8px !important;
+    margin: 5px !important;
+}

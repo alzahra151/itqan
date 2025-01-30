@@ -1,0 +1,50 @@
+<!-- <body class="antialiased bg-gray-200 text-gray-900 font-sans"> -->
+<p-toast />
+<div class="flex  items-center justify-center h-screen" dir="rtl">
+    <div class=" grid lg:grid-cols-12 grid-cols-6">
+        <div class="col-span-6 bg-white rounded shadow-lg p-8  md:max-w-sm ">
+            <span class="block w-full text-xl uppercase font-bold mb-4 text-center text-[#1E429F] "> اتقان</span>
+            <span class="block w-full text-xl uppercase font-bold mb-4 text-center">تسجيل الدخول</span>
+            @if (backError) {
+            <div class="p-1 border border-red-500 bg-red-100 text-center ">
+                {{backError}}
+            </div>
+            }
+            <form [formGroup]="loginForm" class="mb-4" action="/" method="post">
+                <div class="mb-4 md:w-full">
+                    <input formControlName="email" class="w-full border rounded p-2 outline-none focus:shadow-outline"
+                        type="text" name="email" id="email" placeholder="ادخل رقم الجوال ">
+                    @if (loginForm.get('email')?.errors && loginForm.get('email')?.hasError('required')&& showErrors)
+                    {
+                    <div class="text-red-500">
+                        رقم الهاتف لا يجب ان يكون فارغ
+                    </div>
+                    }
+                </div>
+
+                <div class="mb-6 md:w-full">
+
+                    <input formControlName="password"
+                        class="w-full border rounded p-2 outline-none focus:shadow-outline" type="password"
+                        name="password" id="password" placeholder="ادخل كلمة المرور">
+                    @if (loginForm.get('password')?.errors && loginForm.get('password')?.hasError('required')&&
+                    showErrors)
+                    {
+                    <div class="text-red-500">
+                        كلمة المرور لا يجب ان تكون فارغة
+                    </div>
+                    }
+                </div>
+                <button (click)="login()"
+                    class=" bg-[#1E429F]  hover:bg-blue-500 w-full text-white uppercase text-sm font-semibold px-4 py-2 rounded">تسجيل
+                    الدخول</button>
+            </form>
+            <a class="cursor-pointer text-blue-800 text-center text-sm" (click)="resetPassword()"> هل نسيت كلمة
+                المرور؟</a>
+        </div>
+        <div class="col-span-6 login  bg-white rounded shadow-lg p-8  md:max-w-sm ">
+            <img src="../../../assets/imags/logo1-Photoroom.png-Photoroom.png">
+        </div>
+    </div>
+</div>
+<!-- {{loginForm.value | json}} -->

@@ -1,0 +1,320 @@
+<div class="card flex justify-content-center">
+    <p-accordion [activeIndex]="accordioneIndex">
+        <p-accordionTab header=" اضافة عضو جديد ">
+            <div class="">
+                <form [formGroup]="VolunteerForm">
+                    <div class="flex md:justify-end justify-center   w-full  px-8">
+                        <button class=" bg-blue-800 rounded-lg px-8 py-1 text-white " (click)="addOrUpdateVolunteer()"
+                            label="Submit">حفظ</button>
+                    </div>
+                    <div class="bg-white rounded  shadow-lg  px-4 p-4 mb-6 w-full">
+                        <div class="flex p-1 bg-blue-200 mb-5"><svg xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px"
+                                viewBox="0 0 512 640" enable-background="new 0 0 512 512" xml:space="preserve"
+                                width="20px" height="30px">
+                                <g>
+                                    <path
+                                        d="M75.4,125h110.2c7.8,0,14.1-6.3,14.1-14.1c0-7.8-6.3-14.1-14.1-14.1H75.4c-7.8,0-14.1,6.3-14.1,14.1   C61.3,118.7,67.6,125,75.4,125z" />
+                                    <path
+                                        d="M75.4,203.7h222.1c7.8,0,14.1-6.3,14.1-14.1c0-7.8-6.3-14.1-14.1-14.1H75.4c-7.8,0-14.1,6.3-14.1,14.1   C61.3,197.4,67.6,203.7,75.4,203.7z" />
+                                    <path
+                                        d="M75.4,282.4h222.1c7.8,0,14.1-6.3,14.1-14.1c0-7.8-6.3-14.1-14.1-14.1H75.4c-7.8,0-14.1,6.3-14.1,14.1   C61.3,276.1,67.6,282.4,75.4,282.4z" />
+                                    <path
+                                        d="M182,332.8H75.4c-7.8,0-14.1,6.3-14.1,14.1c0,7.8,6.3,14.1,14.1,14.1H182c7.8,0,14.1-6.3,14.1-14.1   C196.1,339.2,189.8,332.8,182,332.8z" />
+                                    <path
+                                        d="M148.5,411.5H75.4c-7.8,0-14.1,6.3-14.1,14.1c0,7.8,6.3,14.1,14.1,14.1h73.1c7.8,0,14.1-6.3,14.1-14.1   C162.7,417.8,156.3,411.5,148.5,411.5z" />
+                                    <path
+                                        d="M494.7,177.7c-17-17.4-45.4-22-65.3-3.4l-58.5,58.5V117.3c0-3.7-1.5-7.3-4.1-10L265.6,6.1c-2.6-2.6-6.2-4.1-10-4.1H44.4   C21,2,2,21,2,44.3v423.3C2,491,21,510,44.4,510h284.2c23.3,0,42.3-19,42.3-42.3v-97.5L498.1,243   C515.2,225.9,513.7,196.6,494.7,177.7z M322.7,103.2h-53l0-53L322.7,103.2z M342.7,467.7c0,7.8-6.3,14.1-14.1,14.1H44.4   c-7.8,0-14.1-6.3-14.1-14.1V44.3c0-7.8,6.3-14.1,14.1-14.1h197.2l0,87c0,7.8,6.3,14.1,14.1,14.1h87v129.8L219.5,384.3   c-1.9,1.9-3.2,4.3-3.8,6.9l-13.9,62.6c-1,4.7,0.4,9.6,3.8,13c4,3.8,8.4,4.6,13,3.8l62.6-13.9c2.6-0.6,5-1.9,6.9-3.8l54.5-54.5   V467.7z M478.1,223.1l-207,207l-36.9,8.2l8.2-36.9l207-207c6.5-6.2,17.4-4.3,25.4,3.4C482.6,205.5,484.1,217.1,478.1,223.1z" />
+                                </g>
+                            </svg>
+                            <h6 class="mx-1">بيانات الموظف</h6>
+                        </div>
+
+                        <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-6">
+                            <div class="lg:col-span-4">
+                                <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-6">
+                                    <div class="md:col-span-6 col-span-1  ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1  items-center">
+                                            <label class="md:col-span-1 " for="full_name">اسم المتطوع</label>
+                                            <div class="md:col-span-5 ">
+                                                <input type="text" formControlName="name" name="full_name"
+                                                    class="w-full h-8 border-gray-400 border  mt-1  px-4   bg-gray-60"
+                                                    value="" />
+                                                @if(VolunteerForm.get('name')?.invalid && (submitted ||
+                                                VolunteerForm.get('name')?.touched))
+                                                {
+                                                <div class="w-full bg-red-100  p-1">
+                                                    الاسم مطلوب
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="md:col-span-6 col-span-1  ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1  items-center">
+                                            <label class="md:col-span-1 " for="ID_number">رقم الهوية</label>
+                                            <div class="md:col-span-5 ">
+                                                <input type="text" formControlName="ID_number" name="ID_number"
+                                                    class="w-full h-8 border-gray-400 border mt-1  px-4   bg-gray-60"
+                                                    value="" />
+                                                @if(VolunteerForm.get('ID_number')?.invalid && (submitted ||
+                                                VolunteerForm.get('ID_number')?.touched))
+                                                {
+                                                <div class="w-full bg-red-100  p-1">
+                                                    رقم الهوية مطلوب
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="md:col-span-6 col-span-1  ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1  items-center">
+                                            <label class="md:col-span-1 " for="email">البريد الالكتروني </label>
+                                            <div class="md:col-span-5 ">
+                                                <input type="text" formControlName="email" name="email"
+                                                    class="w-full h-8 border-gray-400 border mt-1  px-4   bg-gray-60"
+                                                    value="" />
+                                                @if(VolunteerForm.get('email')?.invalid && (submitted ||
+                                                VolunteerForm.get('email')?.touched))
+                                                {
+                                                <div class="w-full bg-red-100  p-1">
+                                                    البريد الالكتروني مطلوب
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="md:col-span-6 col-span-1  ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1  items-center">
+                                            <label class="md:col-span-1 " for="mobile">رقم الجوال</label>
+                                            <div class="md:col-span-5 ">
+                                                <input type="text" formControlName="mobile" name="mobile"
+                                                    class="w-full h-8 border-gray-400 border mt-1  px-4   bg-gray-60"
+                                                    value="" />
+                                                @if(VolunteerForm.get('mobile')?.invalid && (submitted ||
+                                                VolunteerForm.get('mobile')?.touched))
+                                                {
+                                                <div class="w-full bg-red-100  p-1">
+                                                    رقم الهاتف مطلوب
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="md:col-span-6 col-span-1  ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1  items-center">
+                                            <label class="md:col-span-1 " for="volunteer_opportunity_name">اسم الفرصة التطوعية </label>
+                                            <div class="md:col-span-5 ">
+                                                <input type="text" formControlName="volunteer_opportunity_name" name="volunteer_opportunity_name"
+                                                    class="w-full h-8 border-gray-400 border mt-1  px-4   bg-gray-60"
+                                                    value="" />
+                                                @if(VolunteerForm.get('volunteer_opportunity_name')?.invalid && (submitted ||
+                                                VolunteerForm.get('volunteer_opportunity_name')?.touched))
+                                                {
+                                                <div class="w-full bg-red-100  p-1">
+                                                    هذا الحقل مطلوب 
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="md:col-span-6 col-span-1  ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1  items-center">
+                                            <label class="md:col-span-1 " for="volunteering_type"> نوع التطوع </label>
+                                            <div class="md:col-span-5 ">
+                                                    <p-dropdown formControlName="volunteering_type" class="w-full mt-1" [options]="volunteering_type"
+                                                        optionValue="value" optionLabel="value" [showClear]="false" placeholder=""></p-dropdown>
+                                                @if(VolunteerForm.get('volunteering_type')?.invalid && (submitted ||
+                                                VolunteerForm.get('volunteering_type')?.touched))
+                                                {
+                                                <div class="w-full bg-red-100  p-1">
+                                                    نوع التطوع مطلوب
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="md:col-span-6 col-span-1  ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1  items-center">
+                                            <label class="md:col-span-1 " for="volunteering_nature">  طبيعة التطوع </label>
+                                            <div class="md:col-span-5 ">
+                                              
+                                                    <p-dropdown formControlName="volunteering_nature" class="w-full mt-1" [options]="volunteering_nature" optionValue="value"
+                                                        optionLabel="value" [showClear]="false" placeholder=""></p-dropdown>
+                                                @if(VolunteerForm.get('volunteering_nature')?.invalid && (submitted ||
+                                                VolunteerForm.get('volunteering_nature')?.touched))
+                                                {
+                                                <div class="w-full bg-red-100  p-1">
+                                                     طبيعة التطوع مطلوب
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="md:col-span-6 col-span-1  ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1  items-center">
+                                            <label class="md:col-span-1 " for="volunteering_place"> مكان التطوع </label>
+                                            <div class="md:col-span-5 ">
+                                                    <p-dropdown formControlName="volunteering_place" class="w-full mt-1" [options]="volunteering_place"
+                                                        optionValue="value" optionLabel="value" [showClear]="false" placeholder=""></p-dropdown>
+                                                @if(VolunteerForm.get('volunteering_place')?.invalid && (submitted ||
+                                                VolunteerForm.get('volunteering_place')?.touched))
+                                                {
+                                                <div class="w-full bg-red-100  p-1">
+                                                     مكان التطوع مطلوب
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="md:col-span-2 col-span-1  ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1  items-center">
+                                            <label class="md:col-span-3 " for="volunteering_readiness">جاهزية التطوع </label>
+                                            <div class="md:col-span-3 ">
+                                                <p-dropdown formControlName="volunteering_readiness" class="w-full mt-1"
+                                                    [options]="volunteering_readiness" optionValue="value"
+                                                    optionLabel="value" [showClear]="false" placeholder=""></p-dropdown>
+                                                @if(VolunteerForm.get('volunteering_readiness')?.invalid && (submitted ||
+                                                VolunteerForm.get('volunteering_readiness')?.touched))
+                                                {
+                                                <div class="w-full bg-red-100  p-1">
+                                                    هذا الحقل مطلوب
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="md:col-span-2 col-span-1  ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1  items-center">
+                                            <label class="md:col-span-3 " for="start_date"> وفت التطوع </label>
+                                            <div class="md:col-span-3 ">
+                                                    <p-calendar formControlName="start_date" class="w-full  mt-1 bg-red-200" />
+                                                @if(VolunteerForm.get('start_date')?.invalid && (submitted ||
+                                                VolunteerForm.get('start_date')?.touched))
+                                                {
+                                                <div class="w-full bg-red-100  p-1">
+                                                    هذا الحقل مطلوب
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="md:col-span-2 col-span-1  ">
+                                        <div class="grid md:grid-cols-6 grid-cols-1  items-center">
+                                            <label class="md:col-span-2 " for="end_date">  الي </label>
+                                            <div class="md:col-span-4 ">
+                                                <p-calendar formControlName="end_date"
+                                                    class="w-full  mt-1 bg-red-200" />
+                                                @if(VolunteerForm.get('end_date')?.invalid && (submitted ||
+                                                VolunteerForm.get('end_date')?.touched))
+                                                {
+                                                <div class="w-full bg-red-100  p-1">
+                                                    هذا الحقل مطلوب
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            @if (!VolunteerForm.get('image')!.value) {
+                            <div class="lg:col-span-2 col-span-1 p-8 pt-2 fileUploadContainer">
+                                <img class="m-auto" src="../../../assets/imags/profile.jpg">
+                                <input #fileInput class="fileInput" type="file" accept="image/*"
+                                    (change)="onSelectImage($event)" />
+                            </div>
+                            }
+                            @if (VolunteerForm.get('image')!.value) {
+                            <div class="lg:col-span-2 col-span-1 p-8 pt-2 fileUploadContainer">
+                                <img class="m-auto w-full" [src]='photoSrc'>
+                                <input #fileInput class="fileInput" type="file" multiple="multiple" accept="image/*"
+                                    (change)="onSelectImage($event)" />
+                            </div>
+                            }
+                            <div class="col-span-4"></div>
+                            <div class="lg:col-span-2 col-span-1 flex flex-col ">
+                                <div class=" p-8 pt-2 fileUploadContainer   ">
+                                    <button class="flex items-center bg-[#FEFCBF] p-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                            stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M7.5 7.5h-.75A2.25 2.25 0 0 0 4.5 9.75v7.5a2.25 2.25 0 0 0 2.25 2.25h7.5a2.25 2.25 0 0 0 2.25-2.25v-7.5a2.25 2.25 0 0 0-2.25-2.25h-.75m0-3-3-3m0 0-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 0 1 2.25 2.25v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5a2.25 2.25 0 0 1-2.25-2.25v-.75" />
+                                        </svg>
+                                        مرفقات
+                                    </button>
+                                    <input #fileInput class="fileInput" (change)="onFileSelect($event)" type="file" multiple />
+                                </div>
+                                <ul>
+                                    @for (file of attachmentFiles; track $index) {
+                                    <li class="flex items-center border-b p-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="red"
+                                            width="24" height="24" style="width: 24px; height: 24px; flex-shrink: 0;"
+                                            (click)="deleteAttachmentFile($index)">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                        </svg>
+                                        <span class="mx-2">
+                                            {{file.name}}
+                                        </span>
+                                    </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- {{VolunteerForm.value| json}} -->
+        </p-accordionTab>
+
+    </p-accordion>
+
+</div>
+<div class="card">
+    <table class="border-collapse border border-slate-400 w-full bg-white text-sm">
+        <thead class="bg-blue-500 text-white">
+            <tr class="p-1">
+                <th class="border border-slate-300 p-1 ...">اسم المتطوع</th>
+                <th class="border border-slate-300 p-1 ...">رقم التواصل</th>
+                <th class="border border-slate-300 p-1 ...">رقم الهوية</th>
+                <th class="border border-slate-300 p-1 ..."> الفرصة التطوعية</th>
+                <th class="border border-slate-300 p-1 ...">نوع التطوع </th>
+                <th class="border border-slate-300 p-1 ...">طبيعة التطوع </th>
+                <th class="border border-slate-300 p-1  ...">  مكان التطوع </th>
+                <th>التفاعلات</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of volunteers; track $index) {
+            <tr class="p-2">
+                <td class=" p-2 border border-slate-300 ...">{{item.name}}</td>
+                <td class=" p-2 border border-slate-300 ...">{{item.mobile}}</td>
+                <td class=" p-2 border border-slate-300 ...">{{item.ID_number}}</td>
+                <td class=" p-2 border border-slate-300 ...">{{item.volunteer_opportunity_name}}</td>
+                <td class=" p-2 border border-slate-300 text-center ...">{{item.volunteering_type}}</td>
+                <td class=" p-2 border border-slate-300 text-center ...">{{item.volunteering_nature}}</td>
+                <td class=" p-2 border border-slate-300 text-center ...">{{item.volunteering_place}}</td>
+                <td class="flex justify-around	p-2 border border-slate-300">
+                    <svg (click)="getUdatedDirectorsBoardMember(item)" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke-width="1.5" stroke="#1E429F" class="size-6 mx-1 cursor-pointer">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                    </svg>
+                    <svg (click)="confirmDeleteVolunteer($event,item.id)" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke-width="1.5" stroke="red" class="size-6 mx-1 cursor-pointer">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                    </svg>
+
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>

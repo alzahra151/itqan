@@ -1,0 +1,123 @@
+.verticalline {
+  border-right: 2px solid black; /* Adjust thickness and color as needed */
+  height: auto; /* Adjust height as needed */
+}
+
+hr{
+    // padding: 1px;
+    border-top-width: 0px; 
+    border: 1px solid black;
+}
+:host ::ng-deep .p-accordion{
+    font-family: arabicFont !important;
+}
+:host ::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link{
+    padding: 0;
+    background-color: #C3DDFD;
+}
+:host ::ng-deep .p-calendar  .p-inputtext  {
+padding: 0px !important;
+// padding-top: 0px ;
+}
+:host ::ng-deep .p-dropdown {
+    // background: #f8f085;
+    border: 1px solid #d1d5db;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    border-radius: 6px;
+    width: 100%;
+    border-radius: 0px;
+    padding-top:3px;
+ padding-bottom:3px
+    // font-family: arabicFont !important;
+}
+:host ::ng-deep  .p-inputtext {
+    padding: .2rem;
+     border-radius: 0px;
+}
+:host ::ng-deep #custonm{
+   background: #f8f085 !important;  
+}
+:host ::ng-deep .p-dropdown-items-wrapper{
+    z-index: 9999;
+}
+ :host ::ng-deep .p-overlay {
+     z-index: 99999 !important; 
+ }
+ :host ::ng-deep .p-dropdown-items {
+  z-index: 99999 !important; 
+ }
+ :host ::ng-deep .p-dropdown-panel  {
+    z-index: 99999 !important;  
+ }
+ select{
+padding: 0;
+border: 0;
+ }
+ /* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 2px; /* Width of the scrollbar */
+  height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #acaaaa; /* Color of the scrollbar thumb */
+  border-radius: 6px; /* Radius of the scrollbar thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Color of the scrollbar thumb on hover */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the scrollbar track */
+}
+
+.Container{
+    box-sizing: border-box !important;
+}
+table{
+    box-sizing: border-box !important;
+    text-xs {
+      font-size: smaller;
+    }
+
+}
+/* Assuming you have a class for the container div */
+.relative {
+    position: relative;
+}
+
+/* Assuming you have a class for the absolute div */
+.absolute {
+    position: absolute;
+}
+
+/* Assuming you have a class for the input field */
+.input-field {
+    /* Adjust this value to properly align the placeholder */
+    padding-right: 40px; /* Adjust according to the width of your icon */
+}
+select{
+  padding-right: 0rem !important;
+}
+
+:host ::ng-deep .p-inputtext	{
+  padding: .1rem;
+  border: unset;
+}
+input:focus{
+  outline: none;
+}
+// :host ::ng-deep .p-datepicker{
+//   z-index: 999 !important;
+// }
+// *{
+//   z-index: 30;
+// }
+// :host ::ng-deep .p-datepicker-group-container {
+//   z-index: 10010 !important;
+
+// }
+// :host ::ng-deep .p-datepicker-group {
+// z-index: 10010 !important;
+// } 

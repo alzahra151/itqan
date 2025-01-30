@@ -1,0 +1,475 @@
+<div class="grid grid-cols-11">
+    <div class="col-span-4 rounded-lg bg-white p-4 m-3">
+        <div class="flex justify-between border-b-2">
+            <div class="flex items-center">
+                <svg class="w-5 h-5 bi bi-circle-fill" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
+                    fill="#b3ff66">
+                    <circle cx="8" cy="8" r="8" />
+                </svg>
+                <span class="text-2xl font-extrabold">{{mission?.name}}</span>
+            </div>
+            <span>عرض المهمة التنفيذية</span>
+        </div>
+        <ul class="space-y-8 text-left  mt-4 ">
+            <li class="">
+                <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <svg fill="#004AAD" class="size-6" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 6 6 L 6 26 L 26 26 L 26 6 L 6 6 z" />
+                    </svg>
+                    <span class="font-bold">الهدف العام </span>
+                </div>
+                <div class="ms-5 text-right text-sm">
+                    {{mission?.executive_plan?.phased_plan?.goal?.name}}
+                </div>
+            </li>
+            <li class="">
+                <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <svg fill="#004AAD" class="size-6" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 6 6 L 6 26 L 26 26 L 26 6 L 6 6 z" />
+                    </svg>
+                    <span>الهدف الاستراتيجي</span>
+                </div>
+                <div class="ms-5 text-right text-sm">
+                    {{mission?.executive_plan?.sub_goal?.name}}
+                </div>
+
+            </li>
+            <li class="">
+                <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <svg fill="#004AAD" class="size-6" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 6 6 L 6 26 L 26 26 L 26 6 L 6 6 z" />
+                    </svg>
+                    <span>المؤشر</span>
+                </div>
+                @for(item of mission?.executive_plan.indicators ;track item){
+                <div class="ms-5 text-right text-sm">
+                    {{item.indicator.title}}
+                </div>
+                <!-- <div class="ms-5 text-right text-sm">
+                    {{item.indicator.title}}
+                </div> -->
+                }
+            </li>
+            <li class="">
+                <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <svg fill="#004AAD" class="size-6" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 6 6 L 6 26 L 26 26 L 26 6 L 6 6 z" />
+                    </svg>
+                    <span>الاثر التنموي</span>
+                </div>
+                @for(item of mission?.executive_plan.expected_impacts ;track item){
+                <div class="ms-5 text-right text-sm">
+                    {{item.expected_impact.title}}
+                </div>
+                }
+            </li>
+            <li class="">
+                <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <svg fill="#004AAD" class="size-6" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 6 6 L 6 26 L 26 26 L 26 6 L 6 6 z" />
+                    </svg>
+                    <span>مكان التنفيذ</span>
+                </div>
+                <div class="ms-5 text-right text-sm">
+                    {{mission?.executive_plan.implementation_place}}
+                </div>
+            </li>
+            <li class="flex">
+                <div class="w-6/12 ">
+                    <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <svg fill="#004AAD" class="size-6" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 6 6 L 6 26 L 26 26 L 26 6 L 6 6 z" />
+                        </svg>
+                        <span> تاريخ البداية: </span>
+                    </div>
+                    <div class="ms-5 text-right text-sm">
+                        {{mission?.executive_plan.start_date |date}}
+                    </div>
+                </div>
+                <div class="w-6/12 ">
+                    <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <svg fill="#004AAD" class="size-6" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 6 6 L 6 26 L 26 26 L 26 6 L 6 6 z" />
+                        </svg>
+                        <span> تاريخ النهاية: </span>
+                    </div>
+                    <div class="ms-5 text-right text-sm">
+                        {{mission?.executive_plan.end_date | date}}
+                    </div>
+                </div>
+            </li>
+            <li class="">
+                <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <svg fill="#004AAD" class="size-6" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 6 6 L 6 26 L 26 26 L 26 6 L 6 6 z" />
+                    </svg>
+                    <span> الادوات والمتطلبات</span>
+                </div>
+                <div class="ms-5 text-right text-sm">
+                    {{mission?.executive_plan.Requirements }}
+                </div>
+            </li>
+            <li class="flex">
+                <div class="w-6/12 flex items-center space-x-3 rtl:space-x-reverse">
+                    <svg fill="#004AAD" class="size-6" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 6 6 L 6 26 L 26 26 L 26 6 L 6 6 z" />
+                    </svg>
+                    <span> وسيلة تقييم </span>
+                </div>
+                <div class="w-6/12 flex items-center space-x-3 rtl:space-x-reverse">
+                    <svg fill="#004AAD" class="size-6" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 6 6 L 6 26 L 26 26 L 26 6 L 6 6 z" />
+                    </svg>
+                    <span>تكرار المهمة</span>
+                </div>
+            </li>
+        </ul>
+        <div class="">
+            <div class=" overflow-auto lg:overflow-hidden">
+                <h1 class="font-bold p-3 flex items-center text-sm">
+                    <svg fill="#014daa" class="size-8" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 6 6 L 6 26 L 26 26 L 26 6 L 6 6 z" />
+                    </svg>
+                    المشاركين في التنفيذ
+                </h1>
+                <table class="table-auto border-collapse border border-slate-400 w-full bg-white text-xs">
+                    <thead class="bg-blue-200 text-black">
+                        <tr class="p-1 whitespace-nowrap">
+                            <th class="border border-slate-300 p-1 px-4 text-xs ..."> الموظف المسؤل
+                            </th>
+                            <th class="border border-slate-300 p-1  flex items-center ...">
+                                <span>الادارة المسؤلة</span>
+
+                            </th>
+                            <th class="border border-slate-300 ">
+                                <div class="flex items-center">
+                                    <span class="px-1"> الاجراء</span>
+
+                                </div>
+                            </th>
+                            <th class="border border-slate-300 p-1 px-5 ">التاريخ </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (mission) {
+                        @for (mission of mission.executive_plan.missions; track mission; let j = $index)
+                        {
+                        <tr class="p-1">
+                            <td class="  border border-slate-300 ...">
+                                {{mission.employee?.name}}
+                            </td>
+                            <td class=" border border-slate-300 ">
+                                {{mission.administration?.name}}
+                            </td>
+
+
+                            <td class=" px-2 border border-slate-300 ...">
+                                {{mission.procedure | translate}}
+                            </td>
+                            <td class=" border border-slate-300 ...">
+                                {{mission?.reminder_date | date}}
+                            </td>
+                           
+                        </tr>
+                        }
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-span-7 rounded-lg bg-white p-4 m-3">
+        <div class="flex justify-between border-b-2 p-2">
+            <div class="flex items-center w-8/12 ">
+                <svg class="w-2 h-2 bi bi-circle-fill" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
+                    fill="black">
+                    <circle cx="8" cy="8" r="8" />
+                </svg>
+                <span class=" font-bold ">منطقة العمل</span>
+            </div>
+            <span class=" flex text-sm">الاجراء :
+                @if(mission?.procedure =='approval' && mission?.status=="pending"){
+                <button class="rounded bg-blue-700 text-white px-2 py-1" (click)="approveMission()">الموافقة</button>
+                }
+                @else if(mission?.status=="approved"){
+                <div class="rounded  mx-1 px-1">تم الموافقة</div>
+                }@else{
+                {{mission.procedure | translate}}
+                }
+            </span>
+        </div>
+        <div class=" grid grid-cols-12 text-sm mt-5 mb-1">
+            <div class="col-span-12 flex justify-end mb-2">
+                @if(mission?.procedure !='approval'&& mission.status=="pending"){
+                <button class="rounded bg-[#5ad15c] text-white px-2 py-1" (click)="approveMission()">بدئ تنفيذ
+                    المهمة</button>
+                }@else if(mission.status=="completed"){
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 bi bi-circle-fill" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
+                        fill="#b3ff66">
+                        <circle cx="8" cy="8" r="8" />
+                    </svg>
+                    <span>المهمة مكتملة</span>
+                </div>
+                }@else{
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 bi bi-circle-fill" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
+                        fill="#b3ff66">
+                        <circle cx="8" cy="8" r="8" />
+                    </svg>
+                    <span>المهمة مستمرة</span>
+                </div>
+                }
+            </div>
+            <span class="col-span-3 flex items-center font-bold">
+                <svg fill="#004AAD" class="size-6" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 6 6 L 6 26 L 26 26 L 26 6 L 6 6 z" />
+                </svg>
+                المستفيدين :
+            </span>
+            <div class="col-span-6 ">
+                متبقي علي المهمة :
+            </div>
+            <div class="col-span-3">
+                عدد المستفيدين :
+                @if(beneficiaries.length>0){ {{beneficiaries.length}}}
+                @else if(employees.length>0){ {{employees.length}}}
+            </div>
+        </div>
+        @if (beneficiaries?.length>0) {
+        <p-table #myTab [value]="beneficiaries" dataKey="id" [tableStyle]="{ 'min-width': '10rem' }">
+            <ng-template pTemplate="header">
+                <tr class="bg-blue-200">
+                    <th>اسم الحالة </th>
+                    <th>رقم الهوية </th>
+                    <th>الجوال</th>
+                    <th class="w-5">التنفيذ </th>
+                    <th class="w-36">ملاحظة</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-beneficiary>
+                <tr>
+                    <td>
+                        <span class="px-2 text-center">{{ beneficiary.beneficiary.name }} سالم السيد</span>
+                    </td>
+                    <td><span class="px-2 text-center">{{ beneficiary?.beneficiary.identity?.value }}</span></td>
+
+                    <td class="">
+                        <span class="px-2 text-center">
+                            {{beneficiary?.beneficiary.contact_numbers[0]?.number}}
+                        </span>
+                    </td>
+                    <td class="">
+                        <div class="flex items-center justify-center  w-full h-full ">
+                            <!-- <input id="default-checkbox" type="checkbox" name="service_done"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"> -->
+                            <label class="checkbox ">
+                                <input type="checkbox" [(ngModel)]="beneficiary.service_done" />
+                                <svg viewBox="0 0 21 18">
+                                    <symbol id="tick-path" viewBox="0 0 21 18" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M5.22003 7.26C5.72003 7.76 7.57 9.7 8.67 11.45C12.2 6.05 15.65 3.5 19.19 1.69"
+                                            fill="none" stroke-width="2.25" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </symbol>
+                                    <defs>
+                                        <mask id="tick">
+                                            <use class="tick mask" href="#tick-path" />
+                                        </mask>
+                                    </defs>
+                                    <use class="tick" href="#tick-path" stroke="currentColor" />
+                                    <path fill="white" mask="url(#tick)"
+                                        d="M18 9C18 10.4464 17.9036 11.8929 17.7589 13.1464C17.5179 15.6054 15.6054 17.5179 13.1625 17.7589C11.8929 17.9036 10.4464 18 9 18C7.55357 18 6.10714 17.9036 4.85357 17.7589C2.39464 17.5179 0.498214 15.6054 0.241071 13.1464C0.0964286 11.8929 0 10.4464 0 9C0 7.55357 0.0964286 6.10714 0.241071 4.8375C0.498214 2.39464 2.39464 0.482143 4.85357 0.241071C6.10714 0.0964286 7.55357 0 9 0C10.4464 0 11.8929 0.0964286 13.1625 0.241071C15.6054 0.482143 17.5179 2.39464 17.7589 4.8375C17.9036 6.10714 18 7.55357 18 9Z" />
+                                </svg>
+                                <svg class="lines" viewBox="0 0 11 11">
+                                    <path d="M5.88086 5.89441L9.53504 4.26746" />
+                                    <path d="M5.5274 8.78838L9.45391 9.55161" />
+                                    <path d="M3.49371 4.22065L5.55387 0.79198" />
+                                </svg>
+                            </label>
+                            <!-- {{beneficiary.service_done}} -->
+                        </div>
+                    </td>
+                    <td class="">
+                        <input [(ngModel)]="beneficiary.note" name="note" class="w-full h-full px-1" id="note" />
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        }
+        @else if(employees?.length>0){
+        <p-table [value]="employees ?? []" [tableStyle]="{ 'min-width': '10rem' }">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>الاسم </th>
+                    <th> القسم</th>
+                    <th> الجوال</th>
+                    <th>العنوان </th>
+                    <th>التنفيذ</th>
+                    <th class="w-36">ملاحظة</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-employee>
+                <tr>
+                    <td>{{ employee?.employee?.name }} </td>
+                    <td>{{employee?.employee?.department?.name}} </td>
+                    <td>{{ employee?.employee?.mobile }}</td>
+                    <td>{{ employee?.employee?.address }}</td>
+                    <td class="">
+                        <div class="flex items-center justify-center  w-full h-full ">
+                            <!-- <input id="default-checkbox" type="checkbox" name="service_done"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"> -->
+                            <label class="checkbox ">
+                                <input type="checkbox" [(ngModel)]="employee.service_done" />
+                                <svg viewBox="0 0 21 18">
+                                    <symbol id="tick-path" viewBox="0 0 21 18" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M5.22003 7.26C5.72003 7.76 7.57 9.7 8.67 11.45C12.2 6.05 15.65 3.5 19.19 1.69"
+                                            fill="none" stroke-width="2.25" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </symbol>
+                                    <defs>
+                                        <mask id="tick">
+                                            <use class="tick mask" href="#tick-path" />
+                                        </mask>
+                                    </defs>
+                                    <use class="tick" href="#tick-path" stroke="currentColor" />
+                                    <path fill="white" mask="url(#tick)"
+                                        d="M18 9C18 10.4464 17.9036 11.8929 17.7589 13.1464C17.5179 15.6054 15.6054 17.5179 13.1625 17.7589C11.8929 17.9036 10.4464 18 9 18C7.55357 18 6.10714 17.9036 4.85357 17.7589C2.39464 17.5179 0.498214 15.6054 0.241071 13.1464C0.0964286 11.8929 0 10.4464 0 9C0 7.55357 0.0964286 6.10714 0.241071 4.8375C0.498214 2.39464 2.39464 0.482143 4.85357 0.241071C6.10714 0.0964286 7.55357 0 9 0C10.4464 0 11.8929 0.0964286 13.1625 0.241071C15.6054 0.482143 17.5179 2.39464 17.7589 4.8375C17.9036 6.10714 18 7.55357 18 9Z" />
+                                </svg>
+                                <svg class="lines" viewBox="0 0 11 11">
+                                    <path d="M5.88086 5.89441L9.53504 4.26746" />
+                                    <path d="M5.5274 8.78838L9.45391 9.55161" />
+                                    <path d="M3.49371 4.22065L5.55387 0.79198" />
+                                </svg>
+                            </label>
+                            <!-- {{beneficiary.service_done}} -->
+                        </div>
+                    </td>
+
+                    <td class="">
+                        <input [(ngModel)]="employee.note" name="note" class="w-full h-full px-1" id="note" />
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        }
+        <div class="my-2">
+            <p-progressBar [value]="progress" />
+        </div>
+
+        <div class="grid grid-cols-12 mt-12">
+            <div class="col-span-11">
+                <span class="flex items-center text-sm ">
+                    <svg fill="#004AAD" class="size-6" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 6 6 L 6 26 L 26 26 L 26 6 L 6 6 z" />
+                    </svg>
+                    <span class="font-bold"> خطوات العمل : </span>اضافة ماتم انجازه
+                </span>
+            </div>
+            <div class="col-span-12">
+                <!-- @if(mission.procedure!=="approval"){ -->
+                <form [formGroup]="completedProcedureForm">
+                    <div class="grid grid-cols-12 gap-x-8">
+                        <div class="md:col-span-6 col-span-1 rounded-md border-2 mt-3">
+                            <!-- <div class="grid md:grid-cols-12 grid-cols-1  items-center"> -->
+                            <!-- <label class="md:col-span-1 " for="full_name"> الهدف العام<span
+                                    class="text-red-500 font-bold">*</span></label> -->
+                            <p-calendar placeholder="التاريخ" formControlName="date" class="w-full"></p-calendar>
+                            <!-- </div> -->
+                        </div>
+                        <div class="md:col-span-6 col-span-1 mt-3 ">
+                            <!-- <label class=" " for="full_name">اسم المهمة <span
+                                    class="text-red-500 font-bold">*</span></label> -->
+                            <input type="text" formControlName="procedure" name="full_name" id="full_name"
+                                placeholder="الاجراء"
+                                class="w-full h-8 border-gray-300  rounded-md   border mt-1  px-4  " />
+                        </div>
+                        <!-- <div class="md:col-span-6 col-span-1 mt-3 ">
+                            <input type="text" formControlName="procedure" name="full_name" id="full_name"
+                                placeholder=""
+                                class="w-full h-8 border-gray-300  rounded-md   border mt-1  px-4  " />
+                        </div> -->
+                        <div class="md:col-span-6 col-span-1 mt-3 ">
+                            <!-- <label class=" " for="full_name">اسم المهمة <span class="text-red-500 font-bold">*</span></label> -->
+                            <input type="number" formControlName="number_value" name="full_name" id="full_name"
+                                placeholder=" العدد \القيمة"
+                                class="w-full h-8 border-gray-300  rounded-md   border mt-1  px-4  " />
+                        </div>
+                        <div class="md:col-span-6 col-span-1 mt-3 ">
+                            <!-- <label class=" " for="full_name">اسم المهمة <span class="text-red-500 font-bold">*</span></label> -->
+                            <input type="text" formControlName="description" name="full_name" id="full_name"
+                                placeholder="البيانات"
+                                class="w-full h-8 border-gray-300  rounded-md   border mt-1  px-4  " />
+                        </div>
+                    </div>
+                    <div class="flex justify-end py-4">
+                        <button (click)="addCompletedProcedure()" type="submit"
+                            class="rounded px-2 text-white bg-[#004AAD]"
+                            [disabled]="completedProcedureForm.invalid">اضافة
+                        </button>
+                    </div>
+                </form>
+                <!-- } -->
+                <p-table #myTab [value]="mission?.completed_procedures" dataKey="id"
+                    [tableStyle]="{ 'min-width': '10rem' }">
+                    <ng-template pTemplate="header">
+                        <tr class="bg-blue-200">
+
+                            <th> التاريخ </th>
+                            <th>الاجراء </th>
+                            <th> عدد/قيمة</th>
+                            <th> البيات</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-completed_procedure>
+                        <tr>
+                            <td>
+                                <span class="px-2 text-center">
+                                    {{completed_procedure.date |date}}
+                                </span>
+                            </td>
+                            <td><span class="px-2 text-center">
+                                    {{completed_procedure.procedure}}
+                                </span></td>
+
+                            <td class="">
+                                <span class="px-2 text-center">
+                                    {{completed_procedure.number_value}}
+                                </span>
+                            </td>
+                            <td class="">
+                                <span class="px-2 text-center">
+                                    {{completed_procedure.description}}
+                                </span>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+        <div class="flex justify-between pt-10 ">
+            @if(!mission.executive_plan.completion_requires_beneficiaries || mission.number_value< 0 &&
+                mission?.status!=="completed" ) { <button (click)="updateList()" type="submit"
+                class="rounded px-2 py-1 text-white bg-green-500">انهاء المهمة
+                </button>
+                }
+                @if(mission?.status!=="completed" ){
+                <button (click)="updateList()" type="submit" class="rounded px-2 py-1 text-white bg-[#004AAD]">حفظ
+                    التغييرات
+                </button>
+                }@if(mission?.status=="completed"){
+                <button (click)="updateList()" type="submit" class="rounded px-2 py-1 text-white bg-green-500">
+                </button>
+                }
+                @if(mission?.status!=="completed" ){
+                <!-- <button (click)="updateList()" type="submit" class="rounded px-2 py-1 text-white bg-[#004AAD]">حفظ
+                        التغييرات
+                    </button> -->
+                }
+        </div>
+    </div>
+</div>
+<p-confirmDialog />

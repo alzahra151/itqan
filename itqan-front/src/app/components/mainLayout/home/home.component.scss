@@ -1,0 +1,15 @@
+.nn{
+    color: blueviolet;
+}
+
+// ::ng-deep p-chart div{
+// height: 15rem;
+// }
+
+::ng-deep p-chart div >canvas{
+// height:160px !important;
+}
+li{
+    margin-top: 0px !important;
+    font-weight: bold !important;
+}

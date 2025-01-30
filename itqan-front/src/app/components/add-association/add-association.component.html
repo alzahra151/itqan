@@ -1,0 +1,206 @@
+@if (!associationId) {
+<div class="m-3">
+    <form [formGroup]="associationForm">
+        <div class="bg-white rounded  shadow-lg p-1 px-4 p-4 mb-6 w-full">
+            <div class="flex p-1 bg-blue-200 mb-5"><svg xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 512 640"
+                    enable-background="new 0 0 512 512" xml:space="preserve" width="20px" height="30px">
+                    <g>
+                        <path
+                            d="M75.4,125h110.2c7.8,0,14.1-6.3,14.1-14.1c0-7.8-6.3-14.1-14.1-14.1H75.4c-7.8,0-14.1,6.3-14.1,14.1   C61.3,118.7,67.6,125,75.4,125z" />
+                        <path
+                            d="M75.4,203.7h222.1c7.8,0,14.1-6.3,14.1-14.1c0-7.8-6.3-14.1-14.1-14.1H75.4c-7.8,0-14.1,6.3-14.1,14.1   C61.3,197.4,67.6,203.7,75.4,203.7z" />
+                        <path
+                            d="M75.4,282.4h222.1c7.8,0,14.1-6.3,14.1-14.1c0-7.8-6.3-14.1-14.1-14.1H75.4c-7.8,0-14.1,6.3-14.1,14.1   C61.3,276.1,67.6,282.4,75.4,282.4z" />
+                        <path
+                            d="M182,332.8H75.4c-7.8,0-14.1,6.3-14.1,14.1c0,7.8,6.3,14.1,14.1,14.1H182c7.8,0,14.1-6.3,14.1-14.1   C196.1,339.2,189.8,332.8,182,332.8z" />
+                        <path
+                            d="M148.5,411.5H75.4c-7.8,0-14.1,6.3-14.1,14.1c0,7.8,6.3,14.1,14.1,14.1h73.1c7.8,0,14.1-6.3,14.1-14.1   C162.7,417.8,156.3,411.5,148.5,411.5z" />
+                        <path
+                            d="M494.7,177.7c-17-17.4-45.4-22-65.3-3.4l-58.5,58.5V117.3c0-3.7-1.5-7.3-4.1-10L265.6,6.1c-2.6-2.6-6.2-4.1-10-4.1H44.4   C21,2,2,21,2,44.3v423.3C2,491,21,510,44.4,510h284.2c23.3,0,42.3-19,42.3-42.3v-97.5L498.1,243   C515.2,225.9,513.7,196.6,494.7,177.7z M322.7,103.2h-53l0-53L322.7,103.2z M342.7,467.7c0,7.8-6.3,14.1-14.1,14.1H44.4   c-7.8,0-14.1-6.3-14.1-14.1V44.3c0-7.8,6.3-14.1,14.1-14.1h197.2l0,87c0,7.8,6.3,14.1,14.1,14.1h87v129.8L219.5,384.3   c-1.9,1.9-3.2,4.3-3.8,6.9l-13.9,62.6c-1,4.7,0.4,9.6,3.8,13c4,3.8,8.4,4.6,13,3.8l62.6-13.9c2.6-0.6,5-1.9,6.9-3.8l54.5-54.5   V467.7z M478.1,223.1l-207,207l-36.9,8.2l8.2-36.9l207-207c6.5-6.2,17.4-4.3,25.4,3.4C482.6,205.5,484.1,217.1,478.1,223.1z" />
+                    </g>
+                </svg>
+                <h6 class="mx-1">بيانات الجمعية</h6>
+            </div>
+            <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+                <div class="lg:col-span-2">
+                    <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-6">
+                        <div class="md:col-span-6 col-span-1  ">
+                            <div class="grid md:grid-cols-6 grid-cols-1 flex items-center">
+                                <label class="md:col-span-1 " for="full_name">اسم الجمعية</label>
+                                <div class="md:col-span-5">
+                                    <input formControlName="name" type="text" name="full_name" id="full_name"
+                                        class="w-full h-8 border-gray-400 border  mt-1  px-4   bg-gray-60" value="" />
+                                    @for (item of message; track $index) {
+                                    <div class="w-full bg-red-100 text-red-700">
+                                        @if(item?.context.key=='name'){<p class="p-1">{{ item?.message }}</p>}
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:col-span-6 col-span-1  ">
+                            <div class="grid md:grid-cols-6 grid-cols-1 flex items-center">
+                                <label class="md:col-span-1 " for="full_name">عنوان الجمعية</label>
+                                <div class="md:col-span-5">
+                                    <input formControlName="address" type="text" name="full_name" id="full_name"
+                                        class="w-full  h-8 border-gray-400 border mt-1  px-4   bg-gray-60" value="" />
+                                    @for (item of message; track $index) {
+                                    <div class="w-full  bg-red-100 text-red-700">
+                                        @if(item?.context.key=='address'){<p class=" p-1">{{ item?.message }}</p>}
+
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:col-span-6 col-span-1  ">
+                            <div class="grid md:grid-cols-6 grid-cols-1 flex items-center">
+                                <label class="md:col-span-1 " for="full_name">رقم الجمعية</label>
+                                <div class="md:col-span-5">
+                                    <input formControlName="number" type="text" name="full_name" id="full_name"
+                                        class="w-full h-8 border-gray-400 border mt-1  px-4   bg-gray-60" value="" />
+                                    @for (item of message; track $index) {
+                                    <div class="w-full  bg-red-100 text-red-700">
+                                        @if(item?.context.key=='number'){<p class=" p-1">{{ item?.message }}</p>}
+
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:col-span-3 col-span-1  ">
+                            <div class="grid md:grid-cols-3 grid-cols-1 flex items-center">
+                                <label class="md:col-span-1 " for="full_name"> رقم الهاتف 1</label>
+                                <div class="md:col-span-2">
+                                    <input formControlName="mobile" type="text" name="full_name" id="full_name"
+                                        class="w-full h-8 border-gray-400 border mt-1  px-4   bg-gray-60" value="" />
+                                    @for (item of message; track $index) {
+                                    <div class="w-full  bg-red-100 text-red-700">
+                                        @if(item?.context.key=='mobile'){<p class=" p-1">{{ item?.message }}</p>}
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:col-span-3 col-span-1  ">
+                            <div class="grid md:grid-cols-3 grid-cols-1 flex items-center">
+                                <label class="md:col-span-1 " for="full_name"> رقم الهاتف 2</label>
+                                <div class="md:col-span-2">
+                                    <input formControlName="mobile2" type="text" name="full_name" id="full_name"
+                                        class="w-full  h-8 border-gray-400 border mt-1  px-4   bg-gray-60" value="" />
+                                    @for (item of message; track $index) {
+                                    <div class="w-full  bg-red-100 text-red-700">
+                                        @if(item?.context.key=='mobile2'){<p class=" p-1">{{ item?.message }}</p>}
+
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:col-span-3 col-span-1  ">
+                            <div class="grid md:grid-cols-3 grid-cols-1 flex items-center">
+                                <label class="md:col-span-1 " for="full_name"> رقم الجوال 1</label>
+                                <div class="md:col-span-2">
+                                    <input type="text" formControlName="phone" name="full_name" id="full_name"
+                                        class="w-full h-8 border-gray-400 border mt-1  px-4   bg-gray-60" value="" />
+                                    @for (item of message; track $index) {
+                                    <div class="w-full  bg-red-100 text-red-700">
+                                        @if(item?.context.key=='phone'){<p class=" p-1">{{ item?.message }}</p>}
+
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:col-span-3 col-span-1  ">
+                            <div class="grid md:grid-cols-3 grid-cols-1 flex items-center">
+                                <label class="md:col-span-1 " for="full_name"> رقم الجوال 2</label>
+                                <div class="md:col-span-2">
+                                    <input formControlName="phone2" type="text" name="full_name" id="full_name"
+                                        class="w-full h-8 border-gray-400 border mt-1  px-4   bg-gray-60" value="" />
+                                    @for (item of message; track $index) {
+                                    <div class="w-full  bg-red-100 text-red-700">
+                                        @if(item?.context.key=='phone2'){<p class=" p-1">{{ item?.message }}</p>}
+
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:col-span-3 col-span-1  ">
+                            <div class="grid md:grid-cols-3 grid-cols-1 flex items-center">
+                                <label class="md:col-span-1 " for="full_name"> رقم السجل</label>
+                                <div class="md:col-span-2 ">
+                                    <input type="number" formControlName="CR_number" name="CR_number"
+                                        class="w-full h-8 border-gray-400 border mt-1  px-4   bg-gray-60" value="" />
+                                    @for (item of message; track $index) {
+                                    <div class="w-full  bg-red-100 text-red-700">
+                                        @if(item?.context.key=='CR_number'){<p class=" p-1">{{ item?.message }}</p>}
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:col-span-3 col-span-1  ">
+                            <div class="grid md:grid-cols-3 grid-cols-1 flex items-center">
+                                <label class="md:col-span-1 " for="full_name"> الرقم الضريبي</label>
+                                <div class="md:col-span-2">
+                                    <input type="number" formControlName="tax_number" name="tax_number" id="full_name"
+                                        class="w-full h-8 border-gray-400 border mt-1  px-4   bg-gray-60" value="" />
+                                    @for (item of message; track $index) {
+                                    <div class="w-full  bg-red-100 text-red-700">
+                                        @if(item?.context.key=='tax_number'){<p class=" p-1">{{ item?.message }}</p>}
+
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:col-span-6 col-span-1  ">
+                            <div class="grid md:grid-cols-6 grid-cols-1 flex items-center">
+                                <label class="md:col-span-1 " for="full_name"> حقل1</label>
+                                <input type="text" name="full_name" id="full_name"
+                                    class="md:col-span-5 h-8 border-gray-400 border mt-1  px-4   bg-gray-60" value="" />
+                            </div>
+                        </div>
+                        <div class="md:col-span-6 col-span-1  ">
+                            <div class="grid md:grid-cols-6 grid-cols-1 flex items-center">
+                                <label class="md:col-span-1 " for="full_name"> حقل 2</label>
+                                <input type="text" name="full_name" id="full_name"
+                                    class="md:col-span-5 h-8 border-gray-400 border mt-1  px-4   bg-gray-60" value="" />
+                            </div>
+                        </div>
+                        <div class="md:col-span-6 text-right">
+                            <div class="inline-flex items-end">
+                                <button class=" hover:bg-blue-700 text-white font-bold py-2 px-4 ">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @if (!associationForm.get('image')!.value) {
+                <div class="p-8 pt-2 fileUploadContainer">
+                    <img class="m-auto w-full" src='../../../assets/imags/Placeholder-fotor-20240406154635.png'>
+                    <input #fileInput class="fileInput" type="file" multiple="multiple" accept="image/*"
+                        (change)="setFileData($event)" />
+                </div>
+                }
+                @if (associationForm.get('image')!.value) {
+                <div class="p-8 pt-2 fileUploadContainer">
+                    <img class="m-auto w-full" [src]='photoSrc'>
+                    <input #fileInput class="fileInput" type="file" multiple="multiple" accept="image/*"
+                        (change)="setFileData($event)" />
+                </div>
+                }
+            </div>
+            <div class="flex md:justify-end justify-center   w-full  px-8">
+                <button (click)="addAssociation()" class=" bg-blue-800 rounded-lg px-5 py-1 text-white "
+                    label="Submit">حفظ</button>
+            </div>
+        </div>
+    </form>
+    <!-- {{associationForm.value | json}} -->
+</div>
+}@else {
+<app-association></app-association>
+}

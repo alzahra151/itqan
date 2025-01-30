@@ -1,0 +1,23 @@
+<p-table  [value]="data" 
+  [paginator]="paginator" 
+  [rows]="rows" 
+  [tableStyle]="tableStyle">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>الاسم </th>
+            <th> القسم</th>
+            <th> الجوال</th>
+            <th>العنوان </th>
+
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-employee>
+        <tr>
+            <td>{{ employee?.name }}</td>
+            <td>{{employee?.department?.name}}</td>
+            <td>{{ employee?.mobile }}</td>
+            <td>{{ employee?.address }}</td>
+
+        </tr>
+    </ng-template>
+</p-table>

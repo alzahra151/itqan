@@ -1,0 +1,188 @@
+<div class="bg-white m-4">
+    @if(plan){
+
+    <div class="grid grid-cols-12 lg:mx-6 bg-white mt-2 p-3 items-center  ">
+        <div class="col-span-8 lg:px-2 px-1 border-2 rounded-lg p-1 mx-1 text-2xl text-weight">
+            {{plan.name}}
+            <!-- الخطة الاستراتيجية 2020-2022 -->
+        </div>
+        <div class="col-span-2 lg:px-2 px-1  border-2 rounded-lg  p-1 mx-1 text-lg font-extrabold">
+            من {{plan.start_date | date}}
+        </div>
+        <div class="col-span-2 lg:px-2 px-1  border-2 rounded-lg  p-1 mx-1 text-lg font-extrabold">
+
+            حتي {{plan.end_date | date}}
+        </div>
+        <!-- <button class=" col-span-1 bg-[#014daa] rounded-lg px-3 text-white py-2 mx-1">السابق</button>
+        <button [routerLink]="['/home/edit-stratgy-plan',plan.id]" routerLinkActive="router-link-active"
+            class="col-span-1 bg-[#014daa] rounded-lg px-3 text-white py-2 mx-1 ">تعديل </button>
+        <button [routerLink]="['/home/add-phased-plan',plan.id]" routerLinkActive="router-link-active"
+            class="col-span-2 bg-[#014daa] rounded-lg px-3 text-white py-2 mx-1 ">اضافة خطة مرحلية </button> -->
+    </div>
+
+    <div class="grid grid-cols-12  lg:mx-4 p-2  items-center">
+        <div class="col-span-12 mb-2  border-2 rounded-lg p-4 mx-3">
+            {{plan.introduction}}مقدمة
+        </div>
+        <div class="col-span-12 bg-white lg:p-4 p-2 mb-4 ">
+            <div class="">
+                <div class="flex items-center">
+                    <svg fill="#014daa" class="size-7" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 6 6 L 6 26 L 26 26 L 26 6 L 6 6 z" />
+                    </svg>
+                    <h5 class="my-1  ">الاهداف الاساسية للخطة الاستراتيجية</h5>
+                </div>
+               
+                <div class="flex">
+
+                    <table class="table-auto border-collapse border border-slate-400 w-full bg-white text-sm">
+                        <thead class="bg-blue-200 ">
+                            <tr class="p-1 whitespace-nowrap">
+
+                                <th class="border border-slate-300 p-1 w-5/12"> الهدف</th>
+                                <th class="border border-slate-300 p-1 w-5/12"> الشرح</th>
+                                <th class="border border-slate-300 p-1 w-1/12 "> الاختصار</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (item of plan.goals; track $index) {
+                            <tr class="p-2 ">
+                                <!-- <td></td> -->
+                                <td class=" border border-slate-300 p-1 ">
+                                    {{item.name}}
+                                </td>
+                                <td class=" px-1 border border-slate-300 p-1">
+                                    {{item.description}}
+                                </td>
+                                <td class=" px-1 border border-slate-300 text-center p-1">
+                                    {{item.abbreviation}}
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-12 bg-white lg:p-4">
+            <div class="">
+                <div class="flex items-center">
+                    <svg fill="#014daa" class="size-7" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 6 6 L 6 26 L 26 26 L 26 6 L 6 6 z" />
+                    </svg>
+                    <h5 class="my-1 ">الاهداف الفرعية</h5>
+                </div>
+              
+                <div class="flex ">
+
+                    <table class="table-auto border-collapse border border-slate-400 w-full bg-white text-sm mb-2">
+                        <thead class="bg-blue-200 ">
+                            <tr class="p-1 whitespace-nowrap">
+                                <th class="border border-slate-300 p-1 w-5/12 "> الهدف </th>
+                                <th class="border border-slate-300 p-1 w-5/12"> الشرح</th>
+                                <th class="border border-slate-300 p-1 w-1/12 "> الهدف الرئيسي</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (item of plan.sub_goals; track $index) {
+                            <tr class="">
+                                <td class="border border-slate-300 p-1">
+                                    {{item?.name}}
+                                </td>
+                                <td class="border border-slate-300 p-1">
+                                    {{item?.description}}
+                                </td>
+                                <td class=" text-center border border-slate-300 p-1">
+                                    {{item?.goal?.abbreviation}}
+                                </td>
+                            </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-12 mt-5">
+            <h3 class="p-2 border-b-2 w-full flex justify-between">
+                <div class="flex items-center">
+                    <svg fill="#014daa" class="size-7" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 6 6 L 6 26 L 26 26 L 26 6 L 6 6 z" />
+                    </svg>
+                    <span> الخطط المرحلية </span>
+                </div>
+                <div class="text-sm">
+                    <button [routerLink]="['/home/edit-stratgy-plan',plan.id]" routerLinkActive="router-link-active"
+                        class="col-span-1 bg-[#014daa] rounded-lg px-3 text-white p-1 mx-1 ">تعديل </button>
+                    <button [routerLink]="['/home/add-phased-plan',plan.id]" routerLinkActive="router-link-active"
+                        class="col-span-2 bg-[#014daa] rounded-lg px-3 text-white p-1 mx-1 ">اضافة خطة مرحلية </button>
+                </div>
+            </h3>
+            <div class="grid grid-cols-12 mx-3">
+                @for (item of plan.phased_plans; track $index) {
+                <div [routerLink]="['/home/phased-plans',item.id]"
+                    class="md:col-span-4 col-span-12 mx-2 p-2 bg-white border-2 mb-2 mt-3 rounded-lg">
+                    <div class="">
+                        <div class="w-full">
+                            <span class="text-xs flex items-center">
+                                <svg fill="#00FF00" width="17px" height="17px" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" />
+                                </svg>
+                                <h4 class="font-bold mx-1">{{item.title}}</h4>
+                            </span>
+                        </div>
+                        <div class="w-full m-auto flex items-center mt-2">
+                            <div class="text-sm">
+                                <span class="mx-2"> من {{item.start_date | date}}</span>
+                                <span class="mx-2"> حتي {{item.end_date | date}}</span>
+                            </div>
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" width="80px" height="80px"
+                                viewBox="0 0 31 32" enable-background="new 0 0 31 32" xml:space="preserve"
+                                class="w-8 h-8">
+                                <g>
+                                    <path fill="#808184"
+                                        d="M23,4.5c-0.276,0-0.5,0.224-0.5,0.5v3.229l-2.295,2.26c-2.146-2.006-5.017-3.244-8.179-3.244
+                		c-6.617,0-12,5.383-12,12c0,3.531,1.542,6.7,3.977,8.898l-2.355,3.024c-0.17,0.218-0.131,0.532,0.087,0.702
+                		c0.092,0.071,0.2,0.105,0.308,0.105c0.148,0,0.296-0.066,0.395-0.193l2.335-2.999c2.017,1.538,4.527,2.463,7.254,2.463
+                		c2.724,0,5.231-0.923,7.247-2.458l2.271,3.013C21.642,31.931,21.791,32,21.942,32c0.105,0,0.211-0.033,0.301-0.101
+                		c0.221-0.167,0.265-0.48,0.099-0.7l-2.299-3.051c2.438-2.198,3.982-5.37,3.982-8.903c0-3.096-1.188-5.912-3.12-8.043L23.143,9H26.5
+                		C26.776,9,27,8.776,27,8.5S26.776,8,26.5,8h-2.342l1.016-1H28.5C28.776,7,29,6.776,29,6.5S28.776,6,28.5,6h-2.311l1.016-1H30.5
+                		C30.776,5,31,4.776,31,4.5S30.776,4,30.5,4h-3V1c0-0.276-0.224-0.5-0.5-0.5S26.5,0.724,26.5,1v3.291l-1,0.985V3
+                		c0-0.276-0.224-0.5-0.5-0.5S24.5,2.724,24.5,3v3.26l-1,0.985V5C23.5,4.724,23.276,4.5,23,4.5z M23.025,19.246
+                		c0,6.065-4.935,11-11,11s-11-4.935-11-11s4.935-11,11-11c2.883,0,5.503,1.124,7.467,2.946l-2.137,2.105
+                		c-1.417-1.27-3.281-2.051-5.329-2.051c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8c0-2.004-0.746-3.833-1.968-5.238l2.136-2.103
+                		C21.948,13.854,23.025,16.423,23.025,19.246z M15.025,19.246c0,1.654-1.346,3-3,3s-3-1.346-3-3s1.346-3,3-3
+                		c0.655,0,1.257,0.217,1.751,0.574l-2.101,2.069c-0.197,0.194-0.199,0.511-0.006,0.707c0.098,0.1,0.228,0.149,0.356,0.149
+                		c0.127,0,0.254-0.048,0.351-0.144l2.104-2.072C14.821,18.017,15.025,18.607,15.025,19.246z M14.489,16.118
+                		c-0.681-0.538-1.53-0.873-2.463-0.873c-2.206,0-4,1.794-4,4s1.794,4,4,4s4-1.794,4-4c0-0.911-0.318-1.743-0.834-2.416l2.154-2.121
+                		c1.045,1.223,1.68,2.806,1.68,4.537c0,3.86-3.141,7-7,7s-7-3.14-7-7s3.141-7,7-7c1.769,0,3.383,0.665,4.617,1.752L14.489,16.118z" />
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                    <!-- <div class="flex justify-end w-full text-xs px-4">
+                        <span>حالة الخطة</span>
+                        <span>: مستمرة
+                        </span>
+
+                    </div> -->
+                    <!-- @if (IsManager) { -->
+                    <!-- <button  routerLinkActive="router-link-active"
+                        class="text-sm bg-[#014daa] text-white px-2 rounded">التفاصيل</button> -->
+                    <!-- }@else{
+                    <button [routerLink]="['/home/phased-plans', item.id, 'employee', employeeId]"
+                        routerLinkActive="router-link-active"
+                        class="text-sm bg-blue-600 text-white px-2 rounded">التفاصيل</button>
+                    } -->
+                </div>
+
+                }
+            </div>
+        </div>
+    </div>
+    }
+
+    <!-- </form> -->
+    <!-- {{strategicPlanForm.value | json}} -->

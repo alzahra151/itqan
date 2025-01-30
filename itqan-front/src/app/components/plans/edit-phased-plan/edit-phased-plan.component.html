@@ -1,0 +1,135 @@
+<div class=" text-sm bg-white rounded-lg m-4">
+    <h5 class="mx-1 text-center mt-1"> </h5>
+    <!-- <form class="w-full"> -->
+    <div class="grid grid-cols-12   m-1 p-2  items-center bg-blue-100">
+        <div class="col-span-8 lg:px-2 px-1   p-1 mx-1 bg-blue-100">
+            الخطة استراتيجية : {{stratigicPlan.name}}
+        </div>
+        <div class="col-span-2 lg:px-2 px-1 bg-blue-100 p-1 mx-1">
+            من : {{stratigicPlan.start_date | date}}
+        </div>
+        <div class="col-span-2 lg:px-2 px-1 bg-blue-100 p-1 mx-1">
+
+            الي : {{stratigicPlan.end_date | date}}
+        </div>
+        <!-- <div class="col-span-12 my-3 bg-white p-4">
+            {{stratigicPlan.introduction}}مقدمة
+        </div> -->
+    </div>
+  
+    <h5 class="mx-1 border-b-2 mt-1 flex p-2">
+        <svg class="w-5 h-5 bi bi-circle-fill mx-2" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#b3ff66">
+            <circle cx="8" cy="8" r="8" />
+        </svg>
+        تعديل الخطة المرحلية
+    </h5>
+    <form class="w-full" [formGroup]="planForm">
+        <div class="grid grid-cols-12  lg:m-4 m-1 p-2 items-center">
+            <div class="col-span-8 lg:px-2 px-1 ">
+                <input formControlName="title" type="text" name="full_name" id="full_name"
+                    placeholder="عنوان الخطة المرحلية" class=" bg-white w-full h-7 border border-gray-300 rounded-md mt-1  px-4   bg-gray-60"
+                    value="" />
+                @if(planForm.get('title')?.invalid && (submitted ||
+                planForm.get('title')?.touched))
+                {
+                <div class="w-full bg-red-100  p-1">
+                    العنوان مطلوب
+                </div>
+                }
+            </div>
+            <div class="col-span-2 lg:px-2 px-1">
+                <p-calendar formControlName="start_date" placeholder="تاريخ البداية"></p-calendar>
+                @if(planForm.get('start_date')?.invalid && (submitted ||
+                planForm.get('start_date')?.touched))
+                {
+                <div class="w-full bg-red-100  p-1">
+                    تاريخ البداية مطلوب
+                </div>
+                }
+            </div>
+            <div class="col-span-2 lg:px-2 px-1 ">
+
+                <p-calendar formControlName="end_date" placeholder="تاريخ النهاية"></p-calendar>
+                @if(planForm.get('end_date')?.invalid && (submitted ||
+                planForm.get('end_date')?.touched))
+                {
+                <div class="w-full bg-red-100  p-1">
+                    تاريخ النهاية مطلوب
+                </div>
+                }
+            </div>
+            <div class="col-span-12 my-3">
+                <textarea formControlName="description" class="w-full mt-2 border border-gray-300 rounded-md" rows=""
+                    placeholder="مقدمة الخطة"></textarea>
+            </div>
+            <div class="col-span-12 bg-white lg:p-4 p-2 pt-0 mb-4 ">
+                <div class="">
+                    <h5> الهدف الاساسي للخطة</h5>
+                    <div class="flex bg-blue-200">
+                        <div class="w-6/12 p-2 ">
+                            الهدف الرئيسي
+                        </div>
+                        <div class="w-6/12 p-2 ">
+                            الوصف
+                        </div>
+                    </div>
+                    <div class="border border-1 flex">
+                        <div class="w-6/12 border border-1">
+                            <p-dropdown [options]="stratigicPlan.goals " class="" dataKey="id" optionValue="id"
+                                (onChange)="selecteGoal($event)" formControlName="goal_id" optionLabel="name" [showClear]="false"
+                                placeholder="اختر الهدف الرئيسي"></p-dropdown>
+                            @if(planForm.get('goal_id')?.invalid && (submitted ||
+                            planForm.get('goal_id')?.touched))
+                            {
+                            <div class="w-full bg-red-100  p-1">
+                                الهدف مطلوب
+                            </div>
+                            }
+                            <!-- {{planForm.get('goal_id')?.invalid | json}}
+                                {{planForm.get('goal_id')?.touched | json}} -->
+                        </div>
+                        <div class="w-6/12 border border-1 p-2">
+                            {{goalDescrirtion}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-12 bg-white lg:p-4 p-2 mb-4 ">
+                <div class="">
+                    <h5> الاهداف الفرعية للخطة</h5>
+                    <div class="flex bg-blue-200">
+                        <div class="w-6/12 p-2 ">
+                            الاهداف الفرعية
+                        </div>
+                        <div class="w-6/12 p-2 ">
+                            الوصف
+                        </div>
+                    </div>
+                    <div class="border border-1 grid grid-cols-12">
+                        @for (item of subGoals; track $index) {
+                        <div class="col-span-6">
+                            <div class=" border border-1 p-1">
+                                {{item.name}}
+                            </div>
+                        </div>
+
+                        <div class="col-span-6">
+                            <div class=" border border-1 p-1">
+                                {{item.description}}
+                            </div>
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </form>
+    <div class="col-span-12 bg-white  p-3 justify-end flex">
+        <button class="bg-[#014daa] text-white rounded-lg px-3  py-2 mx-1" (click)="backRoute()">السابق</button>
+        <!-- <button class="bg-[#014daa] rounded-lg px-3  py-2 mx-1   ">حفظ
+                        </button> -->
+        <button (click)="UpdatePhasedPlan()" class="bg-[#014daa] text-white rounded-lg px-7  py-2 mx-1">
+            حفظ</button>
+    </div>
+    <!-- {{planForm.value | json}} -->

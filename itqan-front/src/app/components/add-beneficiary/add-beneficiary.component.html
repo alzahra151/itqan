@@ -1,0 +1,692 @@
+<div>
+    <!-- <div class="card">
+        <p-progressBar mode="indeterminate" [style]="{'height': '6px'}" />
+    </div> -->
+    <p-toast></p-toast>
+    <form class="w-full" [formGroup]="beneficiaryForm">
+
+        <div class="grid md:grid-cols-12 grid-cols-1 bg-white">
+
+            <div class="col-span-12 bg-[#014daa] p-1 text-white m-1">بيانات الحالات - حالة جديدة</div>
+            <div class=" col-span-12 flex justify-end  mx-5">
+                <button [disabled]="showProgress" [ngClass]="showProgress?'bg-blue-200': 'bg-[#014DAA]'"
+                    class="  rounded-lg px-10 text-white py-2 mx-1" (click)=" onsubmit() ">حفظ</button>
+            </div>
+            <div class="col-span-12  p-1">
+                <fieldset class="w-full p-1 ">
+                    <legend class="p-1 bg-[#3F83F8] text-white text-sm ">بيانات اساسية</legend>
+                    <div class="grid md:grid-cols-10 grid-cols-12 text-xs gap-4 ">
+                        <div class="col-span-3 p-2 px-2 mainInfo">
+                            <div class="grid md:grid-cols-11 grid-cols-1 flex items-center justify-start">
+                                <label class="md:col-span-3 text-xs" for="full_name">تاريخ السجل </label>
+                                <!-- <input type="text" name="full_name" id="full_name"
+                                    class="md:col-span-8  h-8 border-gray-400 border mt-1  px-41  bg-gray-60"
+                                    value="" /> -->
+                                <div class="md:col-span-8 ">
+                                    <p-calendar formControlName="record_history" class="w-full" />
+                                    @if(beneficiaryForm.get('record_history')?.invalid && (submitted ||
+                                    beneficiaryForm.get('record_history')?.touched))
+                                    {
+                                    <div class="w-full bg-red-100  p-1">
+                                        تاريخ السجل مطلوب
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                            <!-- <div class="grid md:grid-cols-11 grid-cols-1 flex items-center">
+                                <label class="md:col-span-3 " for="full_name">رقم الملف </label>
+                                <div class="md:col-span-8 ">
+                                    <input formControlName="file_no" type="text" name="full_name" id="file_no"
+                                        class="w-full  h-8 border-gray-400 border mt-1  px-1   bg-gray-60" value="" />
+                                    @if(beneficiaryForm.get('file_no')?.invalid && (submitted ||
+                                    beneficiaryForm.get('file_no')?.touched))
+                                    {
+                                    <div class="w-full bg-red-100  p-1">
+                                        رقم الملف مطلوب
+                                    </div>
+                                    }
+                                </div>
+                            </div> -->
+                            <div class="grid md:grid-cols-11 grid-cols-1 flex items-center">
+                                <label class="md:col-span-3 " for="full_name"> الاسم رباعي</label>
+                                <div class="md:col-span-8 ">
+                                    <input formControlName="name" type="text" name="full_name" id="full_name"
+                                        class="w-full text-xs h-8 border-gray-400 border mt-1    bg-gray-60" value="" />
+                                    @if(beneficiaryForm.get('name')?.invalid && (submitted ||
+                                    beneficiaryForm.get('name')?.touched))
+                                    {
+                                    <div class="w-full bg-red-100  p-1">
+                                        الاسم مطلوب
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="grid md:grid-cols-11 grid-cols-1 flex items-center">
+                                <label class="md:col-span-3 " for="full_name">الجنس </label>
+                                <div class="md:col-span-8 mt-1">
+                                    <p-dropdown formControlName="gender" class="w-full " [options]="gender"
+                                        optionValue="value" optionLabel="value" [showClear]="false"
+                                        placeholder=""></p-dropdown>
+                                    @if(beneficiaryForm.get('gender')?.invalid && (submitted ||
+                                    beneficiaryForm.get('gender')?.touched))
+                                    {
+                                    <div class="w-full bg-red-100  p-1">
+                                        الجنس مطلوب
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="grid md:grid-cols-11 grid-cols-1 flex items-center">
+                                <label class="md:col-span-3 " for="full_name"> تاريخ الميلاد</label>
+                                <div class="md:col-span-8  mt-1">
+                                    <p-calendar formControlName="birth_date" class="w-full  mt-1"
+                                        (onSelect)="onBirthDateSelect($event)" />
+                                    @if(beneficiaryForm.get('birth_date')?.invalid && (submitted ||
+                                    beneficiaryForm.get('birth_date')?.touched))
+                                    {
+                                    <div class="w-full bg-red-100  p-1">
+                                        تاريخ الميلاد مطلوب
+                                    </div>
+                                    }
+                                </div>
+
+                            </div>
+                            <div class="grid md:grid-cols-11 grid-cols-1 flex items-center">
+                                <label class="md:col-span-3 " for="full_name"> الجنسية</label>
+                                <div class="md:col-span-8 ">
+                                    <input formControlName="nationality" type="text" name="full_name" id="full_name"
+                                        class="w-full h-8 border-gray-400 border mt-1  px-1   bg-gray-60" value="" />
+                                    @if(beneficiaryForm.get('nationality')?.invalid && (submitted ||
+                                    beneficiaryForm.get('nationality')?.touched))
+                                    {
+                                    <div class="w-full bg-red-100  p-1">
+                                        الجنسية مطلوبة
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="grid md:grid-cols-11 grid-cols-1 flex items-center">
+                                <label class="md:col-span-3 " for="full_name"> السن</label>
+                                <div class="md:col-span-8 border-gray-400 border  mt-1  p-1 ">
+                                    {{age}}
+                                    <!-- <input type="number" formControlName="age" name="full_name" id="full_name"
+                                        class="w-full  h-8 border-gray-400 border mt-1  px-1   bg-gray-60" value="" />
+                                    @if(beneficiaryForm.get('age')?.invalid && (submitted ||
+                                    beneficiaryForm.get('age')?.touched))
+                                    {
+                                    <div class="w-full bg-red-100  p-1">
+                                         السن مطلوب
+                                    </div>
+                                    } -->
+                                </div>
+                            </div>
+                            <div class="grid md:grid-cols-11 grid-cols-1 flex items-center " formGroupName="identity">
+                                <label class="md:col-span-3 " for="full_name"> اثبات الشخصية</label>
+                                <!-- <div class="md:col-span-8 "> -->
+                                <p-dropdown formControlName="type" class="md:col-span-3 mt-1" [options]="identityType"
+                                    optionValue="value" optionLabel="value" [showClear]="false"
+                                    placeholder=""></p-dropdown>
+                                <input type="text" formControlName="value"
+                                    class="md:col-span-5  h-6 border-gray-300 border mt-1  px-1   bg-gray-60">
+                                <div class="md:col-span-3"></div>
+                                @if(beneficiaryForm.get('identity.value')?.invalid && (submitted ||
+                                beneficiaryForm.get('identity.value')?.touched))
+                                {
+                                <div class="md:col-span-8 bg-red-100 p-1">
+                                    الهوية مطلوبة
+                                </div>
+                                }
+                            </div>
+                            <div class="grid md:grid-cols-11 grid-cols-1 flex items-center ">
+                                <label class="md:col-span-3 " for="full_name"> الحالة الاجتماعية </label>
+                                <div class="md:col-span-8 mt-1">
+                                    <!-- <p-dropdown formControlName="marital_status" class="w-full" [options]="maritalStatus" optionValue="value"
+                                        optionLabel="value" [showClear]="false" placeholder=" "></p-dropdown> -->
+                                        <p-dropdown formControlName="marital_status" class="w-full " [options]="maritalStatus" optionValue="value" optionLabel="value"
+                                            [showClear]="false" placeholder=""></p-dropdown>
+                                    @if(beneficiaryForm.get('marital_status')?.invalid && (submitted ||
+                                    beneficiaryForm.get('marital_status')?.touched))
+                                    {
+                                    <div class="w-full bg-red-100  p-1">
+                                        الحالة الاجتماعية مطلوب
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-2  text-xs ">
+                          
+                            <div class="grid md:grid-cols-12 grid-cols-1 flex items-center ">
+                                <label class="md:col-span-5 " for="full_name"> فئة المنتفع </label>
+                                <div class="md:col-span-7 ">
+                                    <!-- <p-dropdown class="w-full mt-1" [options]="type" optionValue="value"
+                                        optionLabel="value" formControlName="type" [showClear]="false"
+                                        placeholder=" "></p-dropdown> -->
+                                        <p-dropdown formControlName="type" class="w-full " [options]="type" optionValue="value"
+                                            optionLabel="value" [showClear]="false" placeholder=""></p-dropdown>
+                                    @if(beneficiaryForm.get('type')?.invalid && (submitted ||
+                                    beneficiaryForm.get('type')?.touched))
+                                    {
+                                    <div class="w-full bg-red-100  p-1">
+                                        الفئة مطلوبة
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                            <div formArrayName="dependents"
+                                class="grid md:grid-cols-12 mt-2 grid-cols-1 overflow-y-scroll max-h-60 border border-gray-300  scroll-container">
+                                <div class="text-center py-1  md:col-span-12 ">
+                                    المعالين
+                                </div>
+                                <div class="bg-gray-200 h-8 flex md:col-span-12 p-1 mt-1 ">
+                                    <div class="w-8/12 text-center flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="#014daa" class="w-6 h-6"
+                                            (click)="addDependent()">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M12 4.5v15m7.5-7.5h-15" />
+                                        </svg>
+                                        صلة القرابة
+                                    </div>
+                                    <div class="w-4/12 text-center">العدد</div>
+                                </div>
+                                @for (item of DependetList.controls; track $index) {
+                                <div class=" h-8 flex md:col-span-12 p-1 " [formGroupName]="$index">
+                                    <div class=" flex items-center ">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="red" class="w-6 h-6 ">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                        </svg>
+                                        <p-dropdown dir="rtl" class="w-9/12" [options]="Kinship" appendTo="body"
+                                            optionValue="value" optionLabel="value" [showClear]="false"
+                                            formControlName="kinship" placeholder="اختر صلة القرابة"></p-dropdown>
+                                        <input formControlName="numbers" type="number"
+                                            class="w-3/12 p-0 border border-gray-300 text-center">
+
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                        <!-- <div class="col-span-4 bg-red-200"> -->
+                        <div class="col-span-3 p-2 px-1 ">
+                            <div class="grid md:grid-cols-12 grid-cols-1 flex items-center justify-start">
+                                <label class="md:col-span-3 " for="full_name"> المستوي العلمي </label>
+                                <div class="md:col-span-8">
+                                    <input formControlName="educational_level" type="text" name="full_name"
+                                        id="full_name"
+                                        class="w-full  h-8 border-gray-400 border mt-1  px-1   bg-gray-60" value="" />
+                                    @if(beneficiaryForm.get('educational_level')?.invalid && (submitted ||
+                                    beneficiaryForm.get('educational_level')?.touched))
+                                    {
+                                    <div class="w-full bg-red-100  p-1">
+                                        المستوي التعليمي مطلوب
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="grid md:grid-cols-12 grid-cols-1 flex items-center">
+                                <label class="md:col-span-3 " for="full_name">شهادات علمية </label>
+                                <input formControlName="scientific_certificates" type="text" name="full_name"
+                                    id="full_name"
+                                    class="md:col-span-8  h-8 border-gray-400 border mt-1  px-1   bg-gray-60"
+                                    value="" />
+                            </div>
+                            <div class="grid md:grid-cols-12 grid-cols-1 flex items-center">
+                                <label class="md:col-span-3 " for="full_name"> المهنة/الوظيفة</label>
+                                <div class="md:col-span-8">
+                                    <input formControlName="job" type="text" name="full_name" id="full_name"
+                                        class="w-full  h-8 border-gray-400 border mt-1  px-1   bg-gray-60" value="" />
+                                    @if(beneficiaryForm.get('job')?.invalid && (submitted ||
+                                    beneficiaryForm.get('job')?.touched))
+                                    {
+                                    <div class="w-full bg-red-100  p-1">
+                                        رقم الملف مطلوب
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="grid md:grid-cols-12 grid-cols-1 flex items-center">
+                                <label class="md:col-span-3 " for="full_name">جهة العمل </label>
+                                <input formControlName="employer" type="text" name="full_name" id="full_name"
+                                    class="md:col-span-8 h-8 border-gray-400 border mt-1  px-1  bg-gray-60" value="" />
+                            </div>
+                            <div class="grid md:grid-cols-12 grid-cols-1 flex items-center mt-1">
+                                <label class="md:col-span-3 " for="full_name"> الدخل الشهري </label>
+                                <div class="flex items-center col-span-8 bg-green-400">
+                                    <span class="w-2/12 text-center text-white">من</span>
+                                    <input formControlName="monthly_income_from" type="number"
+                                        class="w-4/12 p-0 border border-gray-400 text-center">
+                                    <span class="w-2/12 text-center text-white">الي</span>
+                                    <input formControlName="monthly_income_to" type="number"
+                                        class="w-4/12 p-0 border border-gray-400 text-center">
+                                </div>
+                                @if(beneficiaryForm.get('monthly_income_from')?.invalid && (submitted ||
+                                beneficiaryForm.get('monthly_income_from')?.touched))
+                                {
+                                <div class="md:col-span-11 bg-red-100 p-1">
+                                    الدخل الشهرى مطلوب
+                                </div>
+                                }
+
+                            </div>
+                            <div class="grid md:grid-cols-12 grid-cols-1 flex items-center">
+                                <label class="md:col-span-3 " for="full_name"> طبيعة السكن</label>
+                                <div class="md:col-span-8">
+                                    <input formControlName="housing_type" type="text" name="full_name" id="full_name"
+                                        class="w-full  h-8 border-gray-400 border mt-1  px-4   bg-gray-60" value="" />
+                                    @if(beneficiaryForm.get('housing_type')?.invalid && (submitted ||
+                                    beneficiaryForm.get('housing_type')?.touched))
+                                    {
+                                    <div class="w-full bg-red-100  p-1">
+                                        طبيعة السكن مطلوب
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="grid md:grid-cols-12 grid-cols-1 flex items-center ">
+                                <div class="col-span-11 border  border-gray-300 p-1 mt-2">
+                                    <div class="card flex justify-content-center">
+                                        <div class="flex flex-wrap gap-3">
+                                            <div class="flex align-items-center">
+                                                <p-radioButton name="mobility_status" value="ليس لديه وسيلة نقل"
+                                                    formControlName="mobility_status" inputId="ingredient1" />
+                                                <label for="ingredient1" class="ml-2">
+                                                    ليس لديه وسيلة نقل
+                                                </label>
+                                            </div>
+
+                                            <div class="flex align-items-center">
+                                                <p-radioButton name="mobility_status" formControlName="mobility_status"
+                                                    value="لايستطيع الحركة بمفرده" inputId="ingredient2" />
+                                                <label for="ingredient2" class="ml-2">
+                                                    لايستطيع الحركة بمفرده
+                                                </label>
+                                            </div>
+                                            <div class="flex align-items-center">
+                                                <p-radioButton name="mobility_status" formControlName="mobility_status"
+                                                    value="ليس لديه خادم" inputId="ingredient3" />
+                                                <label for="ingredient3" class="ml-2">
+                                                    ليس لديه خادم
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- </div> -->
+                        <div class="col-span-2 ">
+                            <div class="p-8 pt-2 fileUploadContainer w-full  flex flex-col items-center">
+                                @if (!selectedImage) {
+                                <img class="m-auto" src="../../../assets/imags/profil.jpg">
+                                }@else {
+                                <img class="m-auto" [src]="photoSrc">
+                                }
+                                <input #fileInput class="fileInput" type="file" multiple="multiple" accept="image/*"
+                                    (change)="OnselectedImage($event)" />
+                                <span class="text-center ">اضافة صورة شخصية للحالة</span>
+                            </div>
+
+                            <div class="p-8 pt-2 fileUploadContainer">
+                                <button class="flex items-center bg-[#FEFCBF] p-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M7.5 7.5h-.75A2.25 2.25 0 0 0 4.5 9.75v7.5a2.25 2.25 0 0 0 2.25 2.25h7.5a2.25 2.25 0 0 0 2.25-2.25v-7.5a2.25 2.25 0 0 0-2.25-2.25h-.75m0-3-3-3m0 0-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 0 1 2.25 2.25v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5a2.25 2.25 0 0 1-2.25-2.25v-.75" />
+                                    </svg>
+                                    ارفاق اوراق ثبوتية وشهادات
+                                </button>
+                                <input (change)="onCertificateFileSelected($event)" #fileInput class="fileInput"
+                                    type="file" multiple />
+                            </div>
+                            <ul>
+                                @for (file of certificateSelectedFiles; track $index) {
+                                <li class="flex items-center border-b p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="red" width="24" height="24"   style="width: 24px; height: 24px; flex-shrink: 0;"
+                                        (click)="deleteCertificateFile($index)">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                    </svg>
+                                    <span class="mx-2">
+                                        {{file.name}}
+                                    </span>
+                                </li>
+                                }
+                            </ul>
+                            @if(showProgress && certificateSelectedFiles.length>0){
+                            <div class="card">
+                                <p-progressBar mode="indeterminate" [style]="{'height': '6px'}" />
+                                <span class=" text-center">يتم رفع الملفات</span>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="w-full ">
+                    <legend class="p-1 bg-[#3F83F8] text-white text-sm ">بيانات الاتصال</legend>
+                    <div class="grid md:grid-cols-10 grid-cols-12 text-xs gap-4">
+                        <div class="col-span-3 p-2 px-2 ">
+                            <div class="grid md:grid-cols-11 grid-cols-1 flex items-center mt-1"
+                                formGroupName="home_number">
+                                <label class="md:col-span-3 " for="full_name"> هاتف المنزل</label>
+
+                                <input formControlName="number" type="text" name="full_name" id="full_name"
+                                    class="md:col-span-8 h-8 border-gray-400 border mt-1  px-1   bg-gray-60" value="" />
+
+                            </div>
+                            <div class="grid md:grid-cols-11 grid-cols-1 flex items-center mt-1"
+                                formGroupName="work_number">
+                                <label class="md:col-span-3 " for="full_name"> هاتف العمل </label>
+
+                                <input formControlName="number" type="text" name="full_name" id="full_name"
+                                    class="md:col-span-8  h-8 border-gray-400 border mt-1  px-1   bg-gray-60"
+                                    value="" />
+                            </div>
+                            <div class="grid md:grid-cols-11 grid-cols-1 flex items-center"
+                                formGroupName="phone_number">
+                                <label class="md:col-span-3 " for="full_name"> هاتف جوال </label>
+                                <div class="md:col-span-8">
+                                    <input formControlName="number" type="text" name="full_name" id="full_name"
+                                        class="w-full  h-8 border-gray-400 border mt-1  px-1   bg-gray-60" value="" />
+                                    @if(beneficiaryForm.get("phone_number.number")?.invalid && (submitted ||
+                                    beneficiaryForm.get("phone_number.number")?.touched))
+                                    {
+                                    <div class="w-full bg-red-100  p-1">
+                                        الجوال مطلوب
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="grid md:grid-cols-11 grid-cols-1 flex items-center"
+                                formGroupName="whatsApp_number">
+                                <label class="md:col-span-3 " for="full_name"> رقم واتس اب</label>
+                                <div class="md:col-span-8">
+                                    <input formControlName="number" type="text" name="full_name" id="full_name"
+                                        class="w-full text-xs h-8 border-gray-400 border mt-1    bg-gray-60" value="" />
+                                    @if(beneficiaryForm.get("whatsApp_number.number")?.invalid && (submitted ||
+                                    beneficiaryForm.get("whatsApp_number.number")?.touched))
+                                    {
+                                    <div class="w-full bg-red-100  p-1">
+                                        رقم الواتس اب مطلوب
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="grid md:grid-cols-11 grid-cols-1 flex items-center">
+                                <label class="md:col-span-3 " for="full_name">بريد الكتروني </label>
+                                <input formControlName="email" type="text" name="full_name" id="full_name"
+                                    class="md:col-span-8 h-8 border-gray-400 border mt-1  px-1   bg-gray-60" value="" />
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-span-4 bg-red-200"> -->
+                        <div class="col-span-5 p-2 px-1 ">
+                            <div class="grid md:grid-cols-12 grid-cols-1 flex items-center">
+                                <label class="md:col-span-2 " for="full_name"> عنوان المنزل </label>
+                                <div class="md:col-span-9">
+                                    <input formControlName="home_address" type="text" name="full_name" id="full_name"
+                                        class="w-full  h-8 border-gray-400 border mt-1  px-1   bg-gray-60" value="" />
+                                    @if(beneficiaryForm.get("home_address")?.invalid && (submitted ||
+                                    beneficiaryForm.get("home_address")?.touched))
+                                    {
+                                    <div class="w-full bg-red-100  p-1">
+                                        العنوان مطلوب
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="grid md:grid-cols-12 grid-cols-1 flex items-center justify-start">
+                                <label class="md:col-span-2 " for="full_name"> عنوان العمل </label>
+                                <input formControlName="work_address" type="text" name="full_name" id="full_name"
+                                    class="md:col-span-9  h-8 border-gray-400 border mt-1  px-1   bg-gray-60"
+                                    value="" />
+                            </div>
+                            <div class="" formGroupName="colse_person">
+                                <div class="grid md:grid-cols-12 grid-cols-1 flex items-center">
+                                    <label class="md:col-span-2 " for="full_name"> عنوان شخص قريب</label>
+                                    <div class="md:col-span-9">
+                                        <input formControlName="address" type="text" name="full_name" id="full_name"
+                                            class="w-full h-8 border-gray-400 border mt-1  px-1   bg-gray-60"
+                                            value="" />
+                                        @if(beneficiaryForm.get("colse_person.address")?.invalid && (submitted ||
+                                        beneficiaryForm.get("colse_person.address")?.touched))
+                                        {
+                                        <div class="w-full bg-red-100  p-1">
+                                            العنوان مطلوب
+                                        </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-12 grid-cols-1 flex items-center">
+                                    <label class="md:col-span-2 " for="full_name"> اسم شخص قريب </label>
+                                    <div class="md:col-span-9">
+                                        <input formControlName="name" type="text" name="full_name" id="full_name"
+                                            class="w-full h-8 border-gray-400 border mt-1  px-1  bg-gray-60" value="" />
+                                        @if(beneficiaryForm.get("colse_person.name")?.invalid && (submitted ||
+                                        beneficiaryForm.get("colse_person.name")?.touched))
+                                        {
+                                        <div class="w-full bg-red-100  p-1">
+                                            الاسم مطلوب
+                                        </div>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="grid md:grid-cols-12 grid-cols-1 flex items-center">
+                                    <label class="md:col-span-2 " for="full_name"> جوال شخص قريب</label>
+                                    <div class="md:col-span-9">
+                                        <input formControlName="mobile" type="text" name="full_name" id="full_name"
+                                            class="w-full  h-8 border-gray-400 border mt-1  px-4   bg-gray-60"
+                                            value="" />
+                                        @if(beneficiaryForm.get("colse_person.mobile")?.invalid && (submitted ||
+                                        beneficiaryForm.get("colse_person.mobile")?.touched))
+                                        {
+                                        <div class="w-full bg-red-100  p-1">
+                                            الجوال مطلوب
+                                        </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- </div> -->
+                        <div class="col-span-2 ">
+                            <div class="p-8 pt-2 fileUploadContainer">
+                                <img class="m-auto w-6/12" src='../../../assets/imags/images.png'>
+                                <input #fileInput class="fileInput" type="file" multiple="multiple"
+                                    (change)="onContactFileSelected($event)" />
+                            </div>
+                            <ul>
+                                @for (file of contactSelectedFiles; track $index) {
+                                <li class="flex items-center border-b p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="red" width="24" height="24" style="width: 24px; height: 24px; flex-shrink: 0;"
+                                        (click)="deleteContactFile($index)">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                    </svg>
+                                    <span class="mx-2">
+                                        {{file.name}}
+                                    </span>
+                                </li>
+                                }
+                            </ul>
+                            @if (showProgress && contactSelectedFiles.length>0) {
+                            <div class="card">
+                                <p-progressBar mode="indeterminate" [style]="{'height': '6px'}" />
+                                <span class=" text-center">يتم رفع الملفات</span>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="w-full p-1 ">
+                    <legend class="p-1 bg-[#3F83F8] text-white text-sm ">بيانات المرض</legend>
+                    <div class="grid md:grid-cols-10 grid-cols-12 text-xs gap-4">
+                        <div class="col-span-3 p-2 px-2 " formGroupName="illnesses">
+                            <div class="grid md:grid-cols-11 grid-cols-1 flex items-center justify-start ">
+                                <label class="md:col-span-3 " for="full_name"> اسم المرض</label>
+                                <div class="md:col-span-8">
+                                    <input formControlName="name" type="text" name="full_name" id="full_name"
+                                        class="w-full  h-8 border-gray-400 border mt-1  px-41  bg-gray-60" value="" />
+                                    @if(beneficiaryForm.get("illnesses.name")?.invalid && (submitted ||
+                                    beneficiaryForm.get("illnesses.name")?.touched))
+                                    {
+                                    <div class="w-full bg-red-100  p-1">
+                                        اسم المرض مطلوب
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="grid md:grid-cols-11 grid-cols-1 flex items-center mt-1">
+                                <label class="md:col-span-3 " for="full_name"> تاريخ الاصابة</label>
+                                <div class="md:col-span-8">
+                                    <p-calendar formControlName="injury_history" class="w-full mt-1 " />
+                                    @if(beneficiaryForm.get("illnesses.injury_history")?.invalid && (submitted ||
+                                    beneficiaryForm.get("illnesses.injury_history")?.touched))
+                                    {
+                                    <div class="w-full bg-red-100  p-1">
+                                        تاريخ المرض مطلوب
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="grid md:grid-cols-11 grid-cols-1 flex items-center">
+                                <label class="md:col-span-3 " for="full_name"> طبيعة المرض </label>
+                                <input formControlName="illness_nature" type="text" name="full_name" id="full_name"
+                                    class="md:col-span-8 text-xs h-8 border-gray-400 border mt-1    bg-gray-60"
+                                    value="" />
+                            </div>
+                            <div class="grid md:grid-cols-11 grid-cols-1 flex ">
+                                <label class="md:col-span-3 " for="full_name">اخر تشخيص </label>
+                                <textarea formControlName="latest_diagnosis" rows="3"
+                                    class="md:col-span-8  border-gray-400 border mt-1  px-1 bg-gray-60 text-area"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="col-span-5 text-xs  p-2 flex " formArrayName="services">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                    stroke="#014daa" class="w-6 h-6 cursor-pointer " (click)="addService()">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                </svg>
+                            </div>
+                            <div class="grid grid-cols-12">
+                                @for (service of services.controls; track $index) {
+                                <div class="col-span-12 mb-2 border border-gray-400 p-2 mx-1 w-full"
+                                    [formGroupName]="$index">
+                                    <div class=" flex justify-end">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="red" class="w-6 h-6 cursor-pointer "
+                                            (click)="deleteService($index)">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M6 18 18 6M6 6l12 12" />
+                                        </svg>
+                                    </div>
+                                    <div class="mb-3">
+                                        <p-dropdown formControlName="service_id" class="w-full mb-2"
+                                            [options]="servicesList" dataKey="id" optionValue="id" optionLabel="name"
+                                            [showClear]="false" placeholder="اختر الخدمة"></p-dropdown>
+                                        @if(service.get("service_id")?.invalid && (submitted ||
+                                        service.get("service_id")?.touched))
+                                        {
+                                        <div class="w-full bg-red-100  p-1">
+                                            الخدمة مطلوبة
+                                        </div>
+                                        }
+                                    </div>
+                                    <fieldset class="p-1 pt-3">
+                                        <legend>الخدمة محددة بوقت: </legend>
+                                        <div class="grid gap-2 mb-2 md:grid-cols-2 ">
+                                            <div class="flex items-center flex-wrap">
+                                                <label
+                                                    class="block w-4/12  test-xs font-medium text-gray-900 dark:text-white">
+                                                    من تاريخ</label>
+                                                <p-calendar formControlName="start_date" class="w-8/12 " />
+                                                @if(service.get("start_date")?.invalid && (submitted ||
+                                                service.get("start_date")?.touched))
+                                                {
+                                                <div class="w-full bg-red-100  p-1">
+                                                    التاريخ مطلوب
+                                                </div>
+                                                }
+                                            </div>
+                                            <div class="flex items-center flex-wrap">
+                                                <label
+                                                    class="block mb-2 w-4/12   test-xs font-medium text-gray-900 dark:text-white">
+                                                    الي تاريخ</label>
+                                                <p-calendar formControlName="end_date" class="w-8/12 " />
+                                                @if(service.get("end_date")?.invalid && (submitted ||
+                                                service.get("end_date")?.touched))
+                                                {
+                                                <div class="w-full bg-red-100  p-1">
+                                                    التاريخ مطلوب
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset class="p-1 pt-3 mt-3">
+                                        <legend>الخدمة متكررة: </legend>
+                                        <div class="card flex justify-content-center">
+                                            <div class="flex flex-wrap gap-3 " formArrayName="repeat_days">
+                                                @for ( day of weekDays; track day;let dayIndex=$index) {
+                                                <div class="flex align-items-center">
+                                                    <label>
+                                                        <input type="checkbox" name="day" [value]="day"
+                                                            (click)="getSelectedDays($event,$index)" />
+                                                        {{day}}
+                                                    </label>
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="col-span-2 ">
+                            <div class="col-span-2 ">
+                                <div class="p-8 pt-2 fileUploadContainer">
+                                    <img class="m-auto w-6/12" src='../../../assets/imags/images.png'>
+                                    <input #fileInput class="fileInput" type="file" multiple
+                                        (change)="onIlnessFileSelected($event)" />
+                                </div>
+                                <ul>
+                                    @for (file of illnessSelectedFiles; track $index) {
+                                    <li class="flex items-center border-b p-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="red"  style="width: 24px; height: 24px; flex-shrink: 0;"
+                                            (click)="deleteIllnessFile($index)">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                        </svg>
+                                        <span class="mx-2">
+                                            {{file.name}}
+                                        </span>
+                                    </li>
+                                    }
+                                </ul>
+                                @if (showProgress && illnessSelectedFiles.length>0) {
+                                <div class="card">
+                                    <p-progressBar mode="indeterminate" [style]="{'height': '6px'}" />
+                                    <span class=" text-center">يتم رفع الملفات</span>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+          
+        </div>
+
+
+    </form>
+    <!-- {{beneficiaryForm.value | json}} -->
+</div>
